@@ -12,25 +12,31 @@ import '../param_controller.dart';
 class BaseInfo extends StatelessWidget {
   const BaseInfo({
     Key? key,
-    required this.controller,
+    required this.index,
   }) : super(key: key);
 
-  final CapitalGainsParameter controller;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.find<CapitalGainsParameter>();
     return Obx(() {
       List<Widget> widgets = [];
 
-      widgets.add(Padding(
-        padding: const EdgeInsets.only(top: 30.0),
-        child: Text("기본 정보",
-            textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.headline4),
+      widgets.add(FractionallySizedBox(
+        widthFactor: 0.7,
+        child: Padding(
+          padding: const EdgeInsets.only(top: 30.0, bottom: 30.0),
+          child: Text("1. 기본 정보",
+              textAlign: TextAlign.left,
+              style: Theme.of(context).textTheme.headline4?.copyWith(
+                  fontWeight: FontWeight.bold,
+                  color: Color.fromARGB(200, 0, 0, 0))),
+        ),
       )); // 제목
 
       widgets.add(FractionallySizedBox(
-        widthFactor: 0.5,
+        widthFactor: 0.7,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -44,7 +50,7 @@ class BaseInfo extends StatelessWidget {
                 ),
               ),
               controller: TextEditingController(
-                  text: controller.param.value["fullAddress"] ?? ""),
+                  text: controller.param[index]["fullAddress"] ?? ""),
               readOnly: true,
               onTap: () {
                 showDialog(
@@ -52,7 +58,7 @@ class BaseInfo extends StatelessWidget {
                     builder: (context) {
                       return AlertDialog(
                         title: Text("주소 검색"),
-                        content: CustomAddress(),
+                        content: CustomAddress(index: index),
                       );
                     });
               },
@@ -62,41 +68,47 @@ class BaseInfo extends StatelessWidget {
       )); // 1. 주소
 
       widgets.add(CustomDropdownButton(
-          baseInfo[2]["smallTitle"], baseInfo[2]["contents"])); // 2. 양도시 종류
+          index: index,
+          keyValue: baseInfo[2]["smallTitle"],
+          contents: baseInfo[2]["contents"])); // 2. 양도시 종류
 
-      if (controller.param.value[baseInfo[2]["smallTitle"]] != null) {
+      if (controller.param[index][baseInfo[2]["smallTitle"]] != null) {
         widgets.add(CustomDropdownButton(
-            baseInfo[3]["smallTitle"],
-            filtermap1[controller
-                .param.value[baseInfo[2]["smallTitle"]]])); // 3. 취득 원인
+            index: index,
+            keyValue: baseInfo[3]["smallTitle"],
+            contents: filtermap1[controller.param[index]
+                [baseInfo[2]["smallTitle"]]])); // 3. 취득 원인
       }
-      if (controller.param.value["취득 원인"] == "상속") {
+      if (controller.param[index]["취득 원인"] == "상속") {
         // 19.5 상속시 동일세대원 여부(20220913 추가)
-        widgets.add(CustomOXDropdownButton("상속시 동일세대원 여부"));
+        widgets.add(
+            CustomOXDropdownButton(index: index, keyValue: "상속시 동일세대원 여부"));
       }
-      if (controller.param.value[baseInfo[3]["smallTitle"]] != null) {
+      if (controller.param[index][baseInfo[3]["smallTitle"]] != null) {
         // 취득시 종류
         widgets.add(CustomDropdownButton(
-            baseInfo[4]["smallTitle"],
-            filtermap2[controller.param.value["양도시 종류"]]
-                [controller.param.value["취득 원인"]])); // // 4. 취득시 종류
+            index: index,
+            keyValue: baseInfo[4]["smallTitle"],
+            contents: filtermap2[controller.param[index]["양도시 종류"]]
+                [controller.param[index]["취득 원인"]])); // // 4. 취득시 종류
       }
-      if (controller.param.value["취득시 종류"] != null &&
-          filterMap[controller.param.value["양도시 종류"]]
-                      [controller.param.value["취득 원인"]]
-                  [controller.param.value["취득시 종류"]] !=
+      if (controller.param[index]["취득시 종류"] != null &&
+          filterMap[controller.param[index]["양도시 종류"]]
+                      [controller.param[index]["취득 원인"]]
+                  [controller.param[index]["취득시 종류"]] !=
               null &&
-          !filterMap[controller.param.value["양도시 종류"]]
-                      [controller.param.value["취득 원인"]]
-                  [controller.param.value["취득시 종류"]]
+          !filterMap[controller.param[index]["양도시 종류"]]
+                      [controller.param[index]["취득 원인"]]
+                  [controller.param[index]["취득시 종류"]]
               .keys
               .toList()
               .contains("data")) {
         widgets.add(CustomDropdownButton(
-            "분양권",
-            filterMap[controller.param.value["양도시 종류"]]
-                        [controller.param.value["취득 원인"]]
-                    [controller.param.value["취득시 종류"]]
+            index: index,
+            keyValue: "분양권",
+            contents: filterMap[controller.param[index]["양도시 종류"]]
+                        [controller.param[index]["취득 원인"]]
+                    [controller.param[index]["취득시 종류"]]
                 .keys
                 .toList()));
       }

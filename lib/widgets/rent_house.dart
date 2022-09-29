@@ -9,16 +9,17 @@ import 'package:intl/intl.dart';
 class RentHouse extends StatelessWidget {
   const RentHouse({
     Key? key,
-    required this.controller,
+    required this.index,
   }) : super(key: key);
 
-  final CapitalGainsParameter controller;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.find<CapitalGainsParameter>();
     return GetBuilder<MyCustomParameter>(builder: (_) {
       // 임대주택
-      if (controller.param.value["양도시 종류"] != "주택(주거용 오피스텔 포함)") {
+      if (controller.param[index]["양도시 종류"] != "주택(주거용 오피스텔 포함)") {
         return Container();
       }
 
@@ -33,33 +34,36 @@ class RentHouse extends StatelessWidget {
       ));
 
       DateTime referenceDate = DateTime(2018, 9, 14);
-      if (Get.find<MyCustomParameter>().param.value["계약일"] != null &&
-          Get.find<MyCustomParameter>().param.value["취득일"] != null) {
+      if (Get.find<MyCustomParameter>().param[index]["계약일"].runtimeType ==
+              DateTime &&
+          Get.find<MyCustomParameter>().param[index]["취득일"].runtimeType ==
+              DateTime) {
         if (Get.find<MyCustomParameter>()
-                    .param
-                    .value["계약일"]
+                    .param[index]["계약일"]
                     .difference(referenceDate)
                     .inDays >=
                 0 &&
             Get.find<MyCustomParameter>()
-                    .param
-                    .value["취득일"]
+                    .param[index]["취득일"]
                     .difference(referenceDate)
                     .inDays >=
                 0) {
           // 계약, 취득일 당시 조정지역
-          if (Get.find<MyCustomParameter>().param.value[
-                  "${controller.param.value['pnu']}-${DateFormat('yyyyMMdd').format(Get.find<MyCustomParameter>().param.value['계약일']).toString()}"] &&
-              Get.find<MyCustomParameter>().param.value[
-                  "${controller.param.value['pnu']}-${DateFormat('yyyyMMdd').format(Get.find<MyCustomParameter>().param.value['취득일']).toString()}"]) {
-            widgets.add(CustomOXDropdownButton("계약&취득 당시 무주택 여부"));
+          if (Get.find<MyCustomParameter>().param[index][
+                  "${controller.param[index]['pnu']}-${DateFormat('yyyyMMdd').format(Get.find<MyCustomParameter>().param[index]['계약일']).toString()}"] &&
+              Get.find<MyCustomParameter>().param[index][
+                  "${controller.param[index]['pnu']}-${DateFormat('yyyyMMdd').format(Get.find<MyCustomParameter>().param[index]['취득일']).toString()}"]) {
+            widgets.add(CustomOXDropdownButton(
+                index: index, keyValue: "계약&취득 당시 무주택 여부"));
           }
         }
       }
 
-      widgets.add(CustomDatePicker("임대주택 등록일"));
-      widgets.add(CustomDropdownButton("임대주택 유형", ["단기", "장기일반"]));
-      widgets.add(CustomDropdownButton("전용면적", ["85㎡이하", "85㎡초과"]));
+      widgets.add(CustomDatePicker(index: index, keyValue: "임대주택 등록일"));
+      widgets.add(CustomDropdownButton(
+          index: index, keyValue: "임대주택 유형", contents: ["단기", "장기일반"]));
+      widgets.add(CustomDropdownButton(
+          index: index, keyValue: "전용면적", contents: ["85㎡이하", "85㎡초과"]));
 
       return Column(children: widgets);
     });

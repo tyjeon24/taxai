@@ -28,16 +28,20 @@ String formatPrice(String? priceString) {
 }
 
 class CustomPrice extends StatelessWidget {
-  String keyValue = "";
-  CustomPrice(this.keyValue);
+  CustomPrice({
+    Key? key,
+    required this.index,
+    required this.keyValue,
+  }) : super(key: key);
 
+  final int index;
+  final String keyValue;
+  final controller = Get.find<CapitalGainsParameter>();
   @override
   Widget build(BuildContext context) {
-    final controller = Get.find<CapitalGainsParameter>();
-
     return Obx(() {
       return FractionallySizedBox(
-        widthFactor: 0.5,
+        widthFactor: 0.7,
         child: Padding(
           padding: const EdgeInsets.only(top: 30.0),
           child: Column(
@@ -55,9 +59,9 @@ class CustomPrice extends StatelessWidget {
                 keyboardType: TextInputType.number,
                 inputFormatters: [FilteringTextInputFormatter.digitsOnly],
                 onChanged: (newPrice) =>
-                    controller.setParam(keyValue, newPrice),
+                    controller.setParam(index, keyValue, newPrice),
               ),
-              Text(formatPrice(controller.param.value[keyValue]),
+              Text(formatPrice(controller.param[index][keyValue]),
                   style: Theme.of(context).textTheme.caption)
             ],
           ),

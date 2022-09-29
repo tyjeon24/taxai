@@ -1,13 +1,13 @@
-import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'first_filter.dart';
 
 class CapitalGainsParameter extends GetxController {
   var param = {}.obs;
-  var firstFilteredList = [];
 
-  void setParam(key, value) {
-    param[key] = value;
+  void setParam(index, key, value) {
+    if (param[index] == null) {
+      param[index] = {}.obs;
+    }
+    param[index][key] = value;
   }
 
   void initParam(List<String> remainingFilter) {
@@ -28,8 +28,11 @@ class CapitalGainsParameter extends GetxController {
 class MyCustomParameter extends GetxController {
   var param = {}.obs;
 
-  void setParam(key, value) {
-    param[key] = value;
+  void setParam(index, key, value) {
+    if (param[index] == null) {
+      param[index] = {}.obs;
+    }
+    param[index][key] = value;
   }
 
   @override

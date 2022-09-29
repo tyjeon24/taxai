@@ -3,9 +3,12 @@ import 'custom_dropdown.dart';
 import 'custom_price.dart';
 
 class CommonAdditionalInfo extends StatelessWidget {
-  const CommonAdditionalInfo({
+  CommonAdditionalInfo({
     Key? key,
+    required this.index,
   }) : super(key: key);
+
+  final int index;
 
   @override
   Widget build(BuildContext context) {
@@ -13,8 +16,9 @@ class CommonAdditionalInfo extends StatelessWidget {
       children: [
         // 7 취득후 거주기간
         CustomDropdownButton(
-          "취득후 거주기간",
-          const [
+          index: index,
+          keyValue: "취득후 거주기간",
+          contents: const [
             "1년미만",
             "2년미만",
             "3년이상",
@@ -28,15 +32,16 @@ class CommonAdditionalInfo extends StatelessWidget {
           ],
         ),
         // 8 양도가액 CustomPrice
-        CustomPrice("양도가액"),
+        CustomPrice(index: index, keyValue: "양도가액"),
 
         // 9 취득가액 및 필요경비 CustomPrice
-        CustomPrice("취득가액 및 필요경비"),
+        CustomPrice(index: index, keyValue: "취득가액 및 필요경비"),
 
         // 10 주택 지분
         CustomDropdownButton(
-          "주택 지분",
-          const ["단독명의", "공동명의"],
+          index: index,
+          keyValue: "주택 지분",
+          contents: const ["단독명의", "공동명의"],
         ),
       ],
     );

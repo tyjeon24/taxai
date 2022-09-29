@@ -5,18 +5,24 @@ import 'package:intl/intl.dart';
 import 'custom_title.dart';
 
 class CustomDatePicker extends StatelessWidget {
-  var keyValue = "";
-  CustomDatePicker(this.keyValue);
+  CustomDatePicker({
+    Key? key,
+    required this.index,
+    required this.keyValue,
+  }) : super(key: key);
+
+  final int index;
+  final String keyValue;
 
   final textController = TextEditingController();
 
+  final controller = Get.find<CapitalGainsParameter>();
   @override
   Widget build(BuildContext context) {
-    final controller = Get.find<CapitalGainsParameter>();
     return Obx(() {
       // 외부의 Obx와 별개로 내부에서 Obx를 한번 더 호출하는 이유는 드랍다운 값 선택 시 해당 값이 드롭다운에 표기되도록 렌더링하기 위함입니다(setState() 역할)
       return FractionallySizedBox(
-        widthFactor: 0.5,
+        widthFactor: 0.7,
         child: Padding(
           padding: const EdgeInsets.only(top: 30.0),
           child: Column(
@@ -31,10 +37,10 @@ class CustomDatePicker extends StatelessWidget {
                   ),
                 ),
                 controller: TextEditingController(
-                    text: controller.param.value[keyValue] == null
+                    text: controller.param[index][keyValue] == null
                         ? ""
                         : DateFormat('yyyy-MM-dd')
-                            .format(controller.param.value[keyValue])
+                            .format(controller.param[index][keyValue])
                             .toString()),
                 readOnly: true,
                 onTap: () {
@@ -49,7 +55,7 @@ class CustomDatePicker extends StatelessWidget {
 
                   future.then((date) {
                     if (date != null) {
-                      controller.setParam(keyValue, date);
+                      controller.setParam(index, keyValue, date);
                       textController.text =
                           DateFormat('yyyy-MM-dd').format(date).toString();
                     }

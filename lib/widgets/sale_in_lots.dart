@@ -6,17 +6,18 @@ import 'package:get/get.dart';
 class SaleInLots extends StatelessWidget {
   const SaleInLots({
     Key? key,
-    required this.controller,
+    required this.index,
   }) : super(key: key);
 
-  final CapitalGainsParameter controller;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.find<CapitalGainsParameter>();
     return Obx(() {
-      if (controller.param.value["양도시 종류"] == "분양권(2021년 이전 취득)" ||
-          controller.param.value["양도시 종류"] == "분양권(2022년 이후 취득)") {
-        return CustomPrice("분양가액");
+      if (controller.param[index]["양도시 종류"] == "분양권(2021년 이전 취득)" ||
+          controller.param[index]["양도시 종류"] == "분양권(2022년 이후 취득)") {
+        return CustomPrice(index: index, keyValue: "분양가액");
       }
 
       return Container();

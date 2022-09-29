@@ -47,6 +47,13 @@ Future fetchDetailedAddress(String pnu, [String? dong]) async {
 }
 
 class CustomAddress extends StatelessWidget {
+  CustomAddress({
+    Key? key,
+    required this.index,
+  }) : super(key: key);
+
+  final int index;
+
   @override
   Widget build(BuildContext context) {
     String keyword = "";
@@ -59,16 +66,16 @@ class CustomAddress extends StatelessWidget {
           children: [
             TextField(
               onSubmitted: (value) {
-                controller.setParam("addressSearchKeyword", value);
-                controller.setParam("addressDialogStage", 1);
+                controller.setParam(index, "addressSearchKeyword", value);
+                controller.setParam(index, "addressDialogStage", 1);
               },
             ),
-            if (controller.param.value["addressDialogStage"] == null) ...[
+            if (controller.param[index]["addressDialogStage"] == null) ...[
               Text("검색")
-            ] else if (controller.param.value["addressDialogStage"] == 1) ...[
+            ] else if (controller.param[index]["addressDialogStage"] == 1) ...[
               FutureBuilder(
                   future: fetchAddress(
-                      controller.param.value["addressSearchKeyword"]),
+                      controller.param[index]["addressSearchKeyword"]),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return Container();
@@ -88,18 +95,18 @@ class CustomAddress extends StatelessWidget {
                                     subtitle: Text(addressList[idx]["oldAddr"]),
                                     onTap: () {
                                       controller.setParam(
-                                          "addressDialogStage", 2);
-                                      controller.setParam("roadAddr",
+                                          index, "addressDialogStage", 2);
+                                      controller.setParam(index, "roadAddr",
                                           addressList[idx]["roadAddr"]);
-                                      controller.setParam(
-                                          "pnu", addressList[idx]["pnu"]);
+                                      controller.setParam(index, "pnu",
+                                          addressList[idx]["pnu"]);
                                     }),
                               );
                             }));
                   }),
-            ] else if (controller.param.value["addressDialogStage"] == 2) ...[
+            ] else if (controller.param[index]["addressDialogStage"] == 2) ...[
               FutureBuilder(
-                  future: fetchDetailedAddress(controller.param.value["pnu"]),
+                  future: fetchDetailedAddress(controller.param[index]["pnu"]),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return Container();
@@ -122,17 +129,17 @@ class CustomAddress extends StatelessWidget {
                                     title: Text(dongList[idx]),
                                     onTap: () {
                                       controller.setParam(
-                                          "addressDialogStage", 3);
+                                          index, "addressDialogStage", 3);
                                       controller.setParam(
-                                          "dong", dongList[idx]);
+                                          index, "dong", dongList[idx]);
                                     }),
                               );
                             }));
                   }),
-            ] else if (controller.param.value["addressDialogStage"] == 3) ...[
+            ] else if (controller.param[index]["addressDialogStage"] == 3) ...[
               FutureBuilder(
-                  future: fetchDetailedAddress(controller.param.value["pnu"],
-                      controller.param.value["dong"]),
+                  future: fetchDetailedAddress(controller.param[index]["pnu"],
+                      controller.param[index]["dong"]),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
                       return Container();
@@ -154,19 +161,23 @@ class CustomAddress extends StatelessWidget {
                                 child: ListTile(
                                     title: Text(hosuList[idx]),
                                     onTap: () {
-                                      controller.param.value.removeWhere(
+                                      controller.param[index].removeWhere(
                                           (key, value) =>
                                               key == "addressDialogStage");
-                                      if (controller.param.value["dong"] ==
+                                      if (controller.param[index]["dong"] ==
                                           "동 없음") {
-                                        controller.setParam("fullAddress",
-                                            "${controller.param.value["roadAddr"]} ${hosuList[idx]}");
+                                        controller.setParam(
+                                            index,
+                                            "fullAddress",
+                                            "${controller.param[index]["roadAddr"]} ${hosuList[idx]}");
                                       } else {
-                                        controller.setParam("fullAddress",
-                                            "${controller.param.value["roadAddr"]} ${controller.param.value["dong"]} ${hosuList[idx]}");
+                                        controller.setParam(
+                                            index,
+                                            "fullAddress",
+                                            "${controller.param[index]["roadAddr"]} ${controller.param[index]["dong"]} ${hosuList[idx]}");
                                       }
                                       controller.setParam(
-                                          "hosu", hosuList[idx]);
+                                          index, "hosu", hosuList[idx]);
                                       Navigator.pop(context);
                                     }),
                               );
