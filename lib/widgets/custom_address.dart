@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import '../param_controller.dart';
 import 'package:get/get.dart';
-import 'custom_title.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+
+import 'package:flutter/scheduler.dart';
 
 Future fetchAddress(String keyword) async {
   String urlBase =
@@ -25,9 +26,9 @@ Future fetchAddress(String keyword) async {
 Future fetchDetailedAddress(String pnu, [String? dong]) async {
   String urlBase =
       'https://z0hq847m05.execute-api.ap-northeast-2.amazonaws.com/default/detailedAddress?';
-  String urlWithParams = "${urlBase}pnu=${pnu}";
+  String urlWithParams = "${urlBase}pnu=$pnu";
   if (dong != null) {
-    urlWithParams = "${urlWithParams}&dong=${dong}";
+    urlWithParams = "$urlWithParams&dong=$dong";
   }
   final response = await http.get(Uri.parse(urlWithParams));
 
@@ -56,7 +57,6 @@ class CustomAddress extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String keyword = "";
     final controller = Get.find<CapitalGainsParameter>();
 
     return Obx(
@@ -71,7 +71,8 @@ class CustomAddress extends StatelessWidget {
               },
             ),
             if (controller.param[index]["addressDialogStage"] == null) ...[
-              Text("검색")
+              Text(
+                  "\n찾으시려는 도로명 주소 또는 지번 주소를 입력해주세요\n예) 불정로 6 / 정자동 178\n* 단 도로명 또는 동(읍/면/리)만 검색하시는 경우 정확한 검색 결과가 나오지 않을 수 있습니다.")
             ] else if (controller.param[index]["addressDialogStage"] == 1) ...[
               FutureBuilder(
                   future: fetchAddress(
@@ -116,6 +117,12 @@ class CustomAddress extends StatelessWidget {
                     if (dongList.length == 0) {
                       // 개인주택이거나 동이 없는 경우 종료
                       Navigator.pop(context);
+                      SchedulerBinding.instance.addPostFrameCallback((_) {
+                        controller.setParam(index, "fullAddress",
+                            "${controller.param[index]["roadAddr"]} ");
+
+                        controller.setParam(index, "addressDialogStage", null);
+                      });
                     }
                     return SizedBox(
                         width: double.maxFinite,
@@ -178,6 +185,9 @@ class CustomAddress extends StatelessWidget {
                                       }
                                       controller.setParam(
                                           index, "hosu", hosuList[idx]);
+
+                                      controller.setParam(
+                                          index, "addressDialogStage", null);
                                       Navigator.pop(context);
                                     }),
                               );

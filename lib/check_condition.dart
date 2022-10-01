@@ -7,7 +7,6 @@ import 'package:intl/intl.dart';
 import 'package:flutter/scheduler.dart';
 
 void isRegulated(int index, String pnu, String date) {
-  final controller = Get.find<CapitalGainsParameter>();
   final customController = Get.find<MyCustomParameter>();
 
   if (customController.param[index]["$pnu-$date"] == null) {
@@ -15,7 +14,7 @@ void isRegulated(int index, String pnu, String date) {
 
     var apiFuture = Future.wait([
       http.get(Uri.parse(
-        'https://26mlmqw646.execute-api.ap-northeast-2.amazonaws.com/default/check_reg?pnu=${pnu}&date=${date}',
+        'https://26mlmqw646.execute-api.ap-northeast-2.amazonaws.com/default/check_reg?pnu=$pnu&date=$date',
       ))
     ]);
 
@@ -25,7 +24,6 @@ void isRegulated(int index, String pnu, String date) {
           "$pnu-$date",
           jsonDecode(utf8.decode(response[0].bodyBytes))["results"]["field"]
               ["isRegulated"]);
-      print(customController.param);
       customController.update();
     });
   }
@@ -46,7 +44,13 @@ bool checkCondition(int index, int conditionNumber) {
   }
 
   if (additionalData["metadata"].containsKey("취득일계약일계산")) {
-    if (customController.param[index]["param1"] == null) {
+    if (customController.param[index]["param1"] == null &&
+        controller.param[index]
+                [additionalData["metadata"]["취득일계약일계산"]["param1"]] !=
+            null &&
+        controller.param[index]
+                [additionalData["metadata"]["취득일계약일계산"]["param2"]] !=
+            null) {
       SchedulerBinding.instance
           .addPostFrameCallback((_) => calculateDate(index, additionalData));
     } else if (controller.param[index]
@@ -119,6 +123,7 @@ bool checkCondition(int index, int conditionNumber) {
               !customController.param[index]["$pnu-$date2"] ??
           false);
     }
+
     SchedulerBinding.instance
         .addPostFrameCallback((_) => isRegulated(index, pnu, date1));
     SchedulerBinding.instance
@@ -141,6 +146,7 @@ void calculateDate(int index, var additionalData) {
       controller.param[index][additionalData["metadata"]["취득일계약일계산"]["param2"]];
 
   if (day1 != null && day2 != null && day1 != "" && day2 != "") {
+    print(customController.param[index]);
     customController.setParam(index, "param1", day1);
     customController.setParam(index, "param2", day2);
     if (additionalData["metadata"]["취득일계약일계산"]["method"] == "normal") {

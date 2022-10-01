@@ -1,6 +1,3 @@
-import 'package:get/get.dart';
-import 'param_controller.dart';
-
 Map filtermap1 = {
   // 취득원인맵
   "주택(주거용 오피스텔 포함)": ["자가신축", "매매", "증여", "상속"],

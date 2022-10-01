@@ -17,6 +17,7 @@ class RentHouse extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.find<CapitalGainsParameter>();
+    final customController = Get.find<MyCustomParameter>();
     return GetBuilder<MyCustomParameter>(builder: (_) {
       // 임대주택
       if (controller.param[index]["양도시 종류"] != "주택(주거용 오피스텔 포함)") {
@@ -34,29 +35,29 @@ class RentHouse extends StatelessWidget {
       ));
 
       DateTime referenceDate = DateTime(2018, 9, 14);
-      if (Get.find<MyCustomParameter>().param[index]["계약일"].runtimeType ==
-              DateTime &&
-          Get.find<MyCustomParameter>().param[index]["취득일"].runtimeType ==
-              DateTime) {
-        if (Get.find<MyCustomParameter>()
-                    .param[index]["계약일"]
-                    .difference(referenceDate)
-                    .inDays >=
-                0 &&
-            Get.find<MyCustomParameter>()
-                    .param[index]["취득일"]
-                    .difference(referenceDate)
-                    .inDays >=
-                0) {
-          // 계약, 취득일 당시 조정지역
-          if (Get.find<MyCustomParameter>().param[index][
-                  "${controller.param[index]['pnu']}-${DateFormat('yyyyMMdd').format(Get.find<MyCustomParameter>().param[index]['계약일']).toString()}"] &&
-              Get.find<MyCustomParameter>().param[index][
-                  "${controller.param[index]['pnu']}-${DateFormat('yyyyMMdd').format(Get.find<MyCustomParameter>().param[index]['취득일']).toString()}"]) {
-            widgets.add(CustomOXDropdownButton(
-                index: index, keyValue: "계약&취득 당시 무주택 여부"));
+      try {
+        if (customController.param[index]["계약일"].runtimeType == DateTime &&
+            customController.param[index]["취득일"].runtimeType == DateTime) {
+          if (customController.param[index]["계약일"]
+                      .difference(referenceDate)
+                      .inDays >=
+                  0 &&
+              customController.param[index]["취득일"]
+                      .difference(referenceDate)
+                      .inDays >=
+                  0) {
+            // 계약, 취득일 당시 조정지역
+            if (customController.param[index][
+                    "${controller.param[index]['pnu']}-${DateFormat('yyyyMMdd').format(customController.param[index]['계약일']).toString()}"] &&
+                customController.param[index][
+                    "${controller.param[index]['pnu']}-${DateFormat('yyyyMMdd').format(customController.param[index]['취득일']).toString()}"]) {
+              widgets.add(CustomOXDropdownButton(
+                  index: index, keyValue: "계약&취득 당시 무주택 여부"));
+            }
           }
         }
+      } catch (e) {
+        print(e);
       }
 
       widgets.add(CustomDatePicker(index: index, keyValue: "임대주택 등록일"));

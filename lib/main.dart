@@ -16,7 +16,7 @@ import 'widgets/common_additional_info.dart';
 import 'widgets/conditional_date.dart';
 import 'widgets/sale_in_lots.dart';
 import 'widgets/base_info.dart';
-import 'package:intl/intl.dart';
+import 'widgets/rural_house.dart';
 
 void main() {
   runApp(MyApp());
@@ -25,6 +25,8 @@ void main() {
 class MyApp extends StatelessWidget {
   final mainController = Get.put(CapitalGainsParameter());
   final customController = Get.put(MyCustomParameter());
+
+  MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -47,11 +49,13 @@ class MyApp extends StatelessWidget {
             ResponsiveBreakpoint.resize(1000, name: DESKTOP),
           ],
           background: Container(color: Color(0x9B2A9974))),
+      // ignore: prefer_const_literals_to_create_immutables
       localizationsDelegates: [
         // 달력 한글 출력용
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate
       ],
+      // ignore: prefer_const_literals_to_create_immutables
       supportedLocales: [
         // 달력 한글 출력용
         const Locale('ko', 'KR'),
@@ -63,6 +67,8 @@ class MyApp extends StatelessWidget {
 }
 
 class CapitalGainsTaxPage extends StatelessWidget {
+  const CapitalGainsTaxPage({super.key});
+
   @override
   Widget build(BuildContext context) {
     final controller = Get.find<CapitalGainsParameter>();
@@ -81,16 +87,17 @@ class CapitalGainsTaxPage extends StatelessWidget {
               Obx(() {
                 if (controller.param[0]["주택 수"] != null) {
                   if (controller.param[0]["주택 수"] == "1") {
-                    contents.add(Contents(index: 1));
+                    contents = [Contents(index: 1)];
                   }
                   if (controller.param[0]["주택 수"] == "2") {
-                    contents.add(Contents(index: 1));
-                    contents.add(Contents(index: 2));
+                    contents = [Contents(index: 1), Contents(index: 2)];
                   }
                   if (controller.param[0]["주택 수"] == "3") {
-                    contents.add(Contents(index: 1));
-                    contents.add(Contents(index: 2));
-                    contents.add(Contents(index: 3));
+                    contents = [
+                      Contents(index: 1),
+                      Contents(index: 2),
+                      Contents(index: 3)
+                    ];
                   }
                 }
                 return Column(children: contents);
@@ -133,7 +140,7 @@ class Contents extends StatelessWidget {
 
           SaleInLots(index: index), // 20 분양가액
           RentHouse(index: index), // 21 임대주택
-          // 22 농어촌주택 TODO
+          RuralHouse(index: index), // 22 농어촌주택
           SpecialTaxDropdowns(index: index) // 23 조특법
         ],
       );
