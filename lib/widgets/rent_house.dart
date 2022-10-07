@@ -62,9 +62,9 @@ class RentHouse extends StatelessWidget {
 
       widgets.add(CustomDatePicker(index: index, keyValue: "임대주택 등록일"));
       widgets.add(CustomDropdownButton(
-          index: index, keyValue: "임대주택 유형", contents: ["단기", "장기일반"]));
+          index: index, keyValue: "임대주택 유형", contents: const ["단기", "장기일반"]));
       widgets.add(CustomDropdownButton(
-          index: index, keyValue: "전용면적", contents: ["85㎡이하", "85㎡초과"]));
+          index: index, keyValue: "전용면적", contents: const ["85㎡이하", "85㎡초과"]));
 
       return Column(children: widgets);
     });
