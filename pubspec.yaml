@@ -81,6 +81,8 @@ flutter:
     -  assets/animtaed_consult.gif
     -  assets/icons/logo_color.svg
     -  assets/icons/logo_color_row.svg
+    -  assets/computer.json
+    -  assets/money.json
 
   #   - images/a_dot_ham.jpeg
 
