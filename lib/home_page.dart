@@ -153,7 +153,7 @@ class _HomepageState extends State<Homepage> {
             child: FittedBox(
                 child: Row(
               children: [
-                Lottie.asset('computer.json'),
+                Lottie.asset('assets/computer.json'),
                 Text(
                     'TAXAI는 아파트, 주택, 조합원 입주권, 분양권, 오피스텔의\n수백 가지 비과세 유형과 중과 주택 수, 감면주택 등의\n세법 규정을 AI가 자동으로 판단해서 계산할 수 있는\n혁신적인 세금계산기입니다.',
                     style: TextStyle(
@@ -174,7 +174,7 @@ class _HomepageState extends State<Homepage> {
             margin: EdgeInsets.symmetric(horizontal: 60.0, vertical: 30.0),
             child: Column(
               children: [
-                Lottie.asset("computer.json"),
+                Lottie.asset("assets/computer.json"),
                 Text(
                     'TAXAI는 아파트, 주택, 조합원 입주권, 분양권, 오피스텔의 수백 가지 비과세 유형과 중과 주택 수, 감면주택 등의 세법 규정을 AI가 자동으로 판단해서 계산할 수 있는 혁신적인 세금계산기입니다.',
                     style:
@@ -200,7 +200,7 @@ class _HomepageState extends State<Homepage> {
                       fontSize: 50,
                       fontWeight: FontWeight.w700,
                       color: Colors.black)),
-              Lottie.asset("money.json"),
+              Lottie.asset("assets/money.json"),
             ],
           )),
         )
@@ -220,7 +220,7 @@ class _HomepageState extends State<Homepage> {
                       style: TextStyle(
                           fontWeight: FontWeight.w700, color: Colors.black)),
                 ),
-                Lottie.asset("money.json"),
+                Lottie.asset("assets/money.json"),
               ],
             ),
           )
