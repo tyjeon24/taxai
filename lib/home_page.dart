@@ -423,20 +423,11 @@ class _HomepageState extends State<Homepage> {
         ),
       ),
       body: SafeArea(
-        child: WebSmoothScroll(
-          controller: _scrollController,
-          scrollOffset: 85,
-          animationDuration: 50,
-          curve: Curves.decelerate,
-          child: ListView.builder(
-              physics: const NeverScrollableScrollPhysics(),
-              controller: _scrollController,
-              itemCount: homepageWidgets.length,
-              itemBuilder: ((context, index) {
-                print(kIsWeb);
-                return homepageWidgets[index];
-              })),
-        ),
+        child: ListView.builder(
+            itemCount: homepageWidgets.length,
+            itemBuilder: ((context, index) {
+              return homepageWidgets[index];
+            })),
       ),
     );
   }
