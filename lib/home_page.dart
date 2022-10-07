@@ -1,3 +1,4 @@
+import 'package:capgain/controllers/homepage_controller.dart';
 import 'package:capgain/widgets/animated_button.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -5,6 +6,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lottie/lottie.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:web_smooth_scroll/web_smooth_scroll.dart';
+import 'package:flutter/foundation.dart';
 
 class AppBarTitle extends StatelessWidget {
   const AppBarTitle({
@@ -18,7 +20,9 @@ class AppBarTitle extends StatelessWidget {
         Text(
           "TAXAI",
           style: TextStyle(
-              fontSize: 32, color: Colors.black, fontWeight: FontWeight.bold),
+              fontSize: 32,
+              color: Color(0xff3d889b),
+              fontWeight: FontWeight.bold),
         ),
         Spacer(),
         ResponsiveVisibility(
@@ -60,6 +64,7 @@ class Homepage extends StatefulWidget {
 class _HomepageState extends State<Homepage> {
   // Controllers
   late ScrollController _scrollController;
+  // final HomepageController = Get.put(HomepageController());
 
   @override
   Widget build(BuildContext context) {
@@ -68,14 +73,14 @@ class _HomepageState extends State<Homepage> {
     var homepageWidgets = [
       Container(
               margin: EdgeInsets.symmetric(horizontal: 60.0, vertical: 30.0),
-              height: widgetHeight * 0.3,
+              height: widgetHeight * 0.5,
               child: FittedBox(
                   child: Text('T A X A I',
                       style: TextStyle(
                           fontWeight: FontWeight.w900,
                           color: Color(0xff3d889b)))))
           .animate(onPlay: (controller) => controller.repeat())
-          .animate(delay: 500.ms)
+          .animate(delay: 1000.ms)
           .fadeIn(duration: 900.ms, curve: Curves.easeOutQuad)
           .slide(begin: Offset(-0.2, 0), end: Offset.zero),
       Container(
@@ -87,7 +92,7 @@ class _HomepageState extends State<Homepage> {
                           fontWeight: FontWeight.w900,
                           color: Color(0xff3d889b)))))
           .animate(onPlay: (controller) => controller.repeat())
-          .animate(delay: 500.ms)
+          .animate(delay: 1000.ms)
           .fadeIn(duration: 1200.ms, curve: Curves.easeOutQuad)
           .slide(begin: Offset(-0.2, 0), end: Offset.zero),
       if (widgetWidth > 600) ...[
@@ -111,7 +116,7 @@ class _HomepageState extends State<Homepage> {
           ),
         )
             .animate(onPlay: (controller) => controller.repeat())
-            .animate(delay: 500.ms)
+            .animate(delay: 1000.ms)
             .fadeIn(duration: 1200.ms, curve: Curves.easeOutQuad)
             .slide(),
       ] else ...[
@@ -121,24 +126,18 @@ class _HomepageState extends State<Homepage> {
             margin: EdgeInsets.symmetric(horizontal: 60.0, vertical: 30.0),
             child: Column(
               children: [
-                Flexible(
-                  flex: 1,
-                  child: Lottie.network(
-                      "https://assets5.lottiefiles.com/packages/lf20_fUq9u8VGIo.json"),
-                ),
-                Flexible(
-                  flex: 1,
-                  child: Text(
-                      'TAXAI는 아파트, 주택, 조합원 입주권, 분양권, 오피스텔의 수백 가지 비과세 유형과 중과 주택 수, 감면주택 등의 세법 규정을 AI가 자동으로 판단해서 계산할 수 있는 혁신적인 세금계산기입니다.',
-                      style: TextStyle(
-                          fontWeight: FontWeight.w700, color: Colors.white)),
-                ),
+                Lottie.network(
+                    "https://assets5.lottiefiles.com/packages/lf20_fUq9u8VGIo.json"),
+                Text(
+                    'TAXAI는 아파트, 주택, 조합원 입주권, 분양권, 오피스텔의 수백 가지 비과세 유형과 중과 주택 수, 감면주택 등의 세법 규정을 AI가 자동으로 판단해서 계산할 수 있는 혁신적인 세금계산기입니다.',
+                    style: TextStyle(
+                        fontWeight: FontWeight.w700, color: Colors.white)),
               ],
             ),
           ),
         )
             .animate(onPlay: (controller) => controller.repeat())
-            .animate(delay: 500.ms)
+            .animate(delay: 1000.ms)
             .fadeIn(duration: 1200.ms, curve: Curves.easeOutQuad)
             .slide(begin: Offset(0, 0.2), end: Offset.zero),
       ],
@@ -162,7 +161,7 @@ class _HomepageState extends State<Homepage> {
           ),
         )
             .animate(onPlay: (controller) => controller.repeat())
-            .animate(delay: 500.ms)
+            .animate(delay: 1000.ms)
             .fadeIn(duration: 1200.ms, curve: Curves.easeOutQuad)
             .slide(begin: Offset(0, 0.2), end: Offset.zero),
       ] else ...[
@@ -175,9 +174,7 @@ class _HomepageState extends State<Homepage> {
                   child: Text(
                       'TAXAI는 15년 간 재산 관련 세금 컨설팅을 전문적으로 해 온\n현직 세무사가 직접 설계한 프로그램으로서\n최신 법령과 예규, 판례 등을 주기적으로 업데이트하여\n케이스 별로 적용 가능한 수많은 절세 규정을 미리 검토할 수 있으며\n조정대상지역 및 공동주택 가격 등을 자동 조회하는 기능을 갖추고 있어\n세금신고 관련 오류를 획기적으로 줄여줄 수 있습니다.',
                       style: TextStyle(
-                          fontSize: 50,
-                          fontWeight: FontWeight.w700,
-                          color: Colors.black)),
+                          fontWeight: FontWeight.w700, color: Colors.black)),
                 ),
                 Lottie.network(
                     "https://assets7.lottiefiles.com/packages/lf20_rMIWDc0fSB.json")
@@ -188,7 +185,7 @@ class _HomepageState extends State<Homepage> {
             .animate(onPlay: (controller) => controller.repeat())
             .shimmer(
                 duration: 3000.ms, color: Color.fromARGB(218, 187, 209, 218))
-            .animate(delay: 500.ms)
+            .animate(delay: 1000.ms)
             .fadeIn(duration: 1200.ms, curve: Curves.easeOutQuad)
             .slide(begin: Offset(0, 0.2), end: Offset.zero),
       ],
@@ -199,29 +196,28 @@ class _HomepageState extends State<Homepage> {
           child: FittedBox(
               child: Column(
             children: [
-              Text("AI 세금 계산\n",
+              Text("AI 세금 계산",
                   textAlign: TextAlign.right,
-                  style: TextStyle(fontSize: 30, color: Colors.white)),
+                  style: TextStyle(fontSize: 50, color: Colors.white)),
+              SizedBox(height: 30),
               FittedBox(
-                fit: BoxFit.scaleDown,
                 child: Row(children: [
+                  SizedBox(width: 30),
                   AnimatedButton(
-                    color: Colors.white,
-                    textString: '양도세\nAI 판단 계산기',
-                    icon: Image.asset("animated_money.gif", height: 30),
-                  ),
+                      color: Colors.white,
+                      textString: '양도세\nAI 판단 계산기',
+                      icon: Image.asset("animated_money.gif", height: 30)),
                   SizedBox(width: 15),
                   AnimatedButton(
-                    color: Colors.white,
-                    textString: "보유세\nAI 판단 계산기",
-                    icon: Image.asset("animated_document.gif", height: 30),
-                  ),
+                      color: Colors.white,
+                      textString: "보유세\nAI 판단 계산기",
+                      icon: Image.asset("animated_document.gif", height: 30)),
                   SizedBox(width: 15),
                   AnimatedButton(
-                    color: Colors.white,
-                    textString: "상속세\nAI 판단 계산기",
-                    icon: Image.asset("animated_inherit.gif", height: 30),
-                  ),
+                      color: Colors.white,
+                      textString: "상속세\nAI 판단 계산기",
+                      icon: Image.asset("animated_inherit.gif", height: 30)),
+                  SizedBox(width: 30),
                 ]),
               ),
             ],
@@ -229,7 +225,7 @@ class _HomepageState extends State<Homepage> {
         ),
       )
           .animate(onPlay: (controller) => controller.repeat())
-          .animate(delay: 500.ms)
+          .animate(delay: 1000.ms)
           .fadeIn(duration: 1200.ms, curve: Curves.easeOutQuad)
           .slide(begin: Offset(0, 0.2), end: Offset.zero),
       Container(
@@ -238,12 +234,13 @@ class _HomepageState extends State<Homepage> {
           child: FittedBox(
             child: Column(
               children: [
-                Text("TAXAI 세금 컨설팅\n",
+                Text("TAXAI 세금 컨설팅",
                     textAlign: TextAlign.right,
-                    style: TextStyle(fontSize: 30, color: Colors.black)),
+                    style: TextStyle(fontSize: 50, color: Colors.black)),
+                SizedBox(height: 30),
                 FittedBox(
-                  fit: BoxFit.scaleDown,
                   child: Row(children: [
+                    SizedBox(width: 30),
                     AnimatedButton(
                         color: Colors.white,
                         textString: "양도소득세\nAI 컨설팅",
@@ -258,17 +255,18 @@ class _HomepageState extends State<Homepage> {
                         color: Colors.white,
                         textString: "기타 \nAI 컨설팅",
                         icon: Image.asset("animtaed_consult.gif", height: 30)),
+                    SizedBox(width: 30),
                   ]),
                 ),
               ],
             ),
           ),
-        )
-            .animate(onPlay: (controller) => controller.repeat())
-            .animate(delay: 500.ms)
-            .fadeIn(duration: 1200.ms, curve: Curves.easeOutQuad)
-            .slide(begin: Offset(0, 0.2), end: Offset.zero),
-      ),
+        ),
+      )
+          .animate(onPlay: (controller) => controller.repeat())
+          .animate(delay: 1000.ms)
+          .fadeIn(duration: 1200.ms, curve: Curves.easeOutQuad)
+          .slide(begin: Offset(0, 0.2), end: Offset.zero),
     ];
 
     if (MediaQuery.of(context).size.width > 600) {
@@ -278,10 +276,15 @@ class _HomepageState extends State<Homepage> {
           child: AppBar(
             foregroundColor: Colors.black,
             backgroundColor: Colors.white,
-            leading: SvgPicture.asset("logo_color.svg",
-                color: Color(0xff3d889b),
-                semanticsLabel: '로고',
-                fit: BoxFit.contain),
+            leading: kIsWeb
+                ? SvgPicture.asset("logo_color.svg",
+                    color: Color(0xff3d889b),
+                    semanticsLabel: '로고',
+                    fit: BoxFit.contain)
+                : SvgPicture.asset("assets/logo_color.svg",
+                    color: Color(0xff3d889b),
+                    semanticsLabel: '로고',
+                    fit: BoxFit.contain),
             elevation: 0,
 
             title: AppBarTitle(),
@@ -326,9 +329,17 @@ class _HomepageState extends State<Homepage> {
           children: [
             DrawerHeader(
                 decoration: BoxDecoration(
-                  color: Colors.blue,
+                  color: Colors.white,
                 ),
-                child: Text('TAXAI')),
+                child: kIsWeb
+                    ? SvgPicture.asset("logo_color.svg",
+                        color: Color(0xff3d889b),
+                        semanticsLabel: '로고',
+                        fit: BoxFit.contain)
+                    : SvgPicture.asset("assets/logo_color.svg",
+                        color: Color(0xff3d889b),
+                        semanticsLabel: '로고',
+                        fit: BoxFit.contain)),
             ListTile(title: const Text('TAXAI 소개'), onTap: () {}),
             ListTile(title: const Text('공지사항'), onTap: () {}),
             ListTile(title: const Text('기술 문의'), onTap: () {}),
