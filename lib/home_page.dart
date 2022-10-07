@@ -258,17 +258,20 @@ class _HomepageState extends State<Homepage> {
                   AnimatedButton(
                       color: _color2,
                       textString: '양도세\nAI 판단 계산기',
-                      icon: Image.asset("animated_money.gif", height: 30)),
+                      icon:
+                          Image.asset("assets/animated_money.gif", height: 30)),
                   SizedBox(width: 15),
                   AnimatedButton(
                       color: _color2,
                       textString: "보유세\nAI 판단 계산기",
-                      icon: Image.asset("animated_document.gif", height: 30)),
+                      icon: Image.asset("assets/animated_document.gif",
+                          height: 30)),
                   SizedBox(width: 15),
                   AnimatedButton(
                       color: _color2,
                       textString: "상속세\nAI 판단 계산기",
-                      icon: Image.asset("animated_inherit.gif", height: 30)),
+                      icon: Image.asset("assets/animated_inherit.gif",
+                          height: 30)),
                   SizedBox(width: 30),
                 ]),
               ),
@@ -297,17 +300,20 @@ class _HomepageState extends State<Homepage> {
                     AnimatedButton(
                         color: _color2,
                         textString: "양도소득세\nAI 컨설팅",
-                        icon: Image.asset("animtaed_consult.gif", height: 30)),
+                        icon: Image.asset("assets/animtaed_consult.gif",
+                            height: 30)),
                     SizedBox(width: 15),
                     AnimatedButton(
                         color: _color2,
                         textString: "매도 관련\nAI 컨설팅",
-                        icon: Image.asset("animtaed_consult.gif", height: 30)),
+                        icon: Image.asset("assets/animtaed_consult.gif",
+                            height: 30)),
                     SizedBox(width: 15),
                     AnimatedButton(
                         color: _color2,
                         textString: "기타 \nAI 컨설팅",
-                        icon: Image.asset("animtaed_consult.gif", height: 30)),
+                        icon: Image.asset("assets/animtaed_consult.gif",
+                            height: 30)),
                     SizedBox(width: 30),
                   ]),
                 ),
