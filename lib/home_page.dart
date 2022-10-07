@@ -328,11 +328,11 @@ class _HomepageState extends State<Homepage> {
             child: Row(
               children: [
                 kIsWeb
-                    ? SvgPicture.asset("logo_color_row.svg",
+                    ? SvgPicture.asset("assets/icons/logo_color_row.svg",
                         color: _color,
                         semanticsLabel: '하단로고',
                         fit: BoxFit.contain)
-                    : SvgPicture.asset("assets/logo_color_row.svg",
+                    : SvgPicture.asset("assets/icons/logo_color_row.svg",
                         color: _color,
                         semanticsLabel: '하단로고',
                         height: 30,
@@ -364,9 +364,9 @@ class _HomepageState extends State<Homepage> {
             foregroundColor: Colors.black,
             backgroundColor: _color2,
             leading: kIsWeb
-                ? SvgPicture.asset("logo_color.svg",
+                ? SvgPicture.asset("assets/icons/logo_color.svg",
                     color: _color, semanticsLabel: '로고', fit: BoxFit.contain)
-                : SvgPicture.asset("assets/logo_color.svg",
+                : SvgPicture.asset("assets/icons/logo_color.svg",
                     color: _color, semanticsLabel: '로고', fit: BoxFit.contain),
             elevation: 0,
 
@@ -375,19 +375,9 @@ class _HomepageState extends State<Homepage> {
           ),
         ),
         body: SafeArea(
-          child: WebSmoothScroll(
-            controller: _scrollController,
-            scrollOffset: 100,
-            animationDuration: 100,
-            curve: Curves.decelerate,
-            child: ListView.builder(
-                physics: const NeverScrollableScrollPhysics(),
-                controller: _scrollController,
-                itemCount: homepageWidgets.length,
-                itemBuilder: ((context, index) {
-                  return homepageWidgets[index];
-                })),
-          ),
+          child: getSmoothScroll(
+              scrollController: _scrollController,
+              homepageWidgets: homepageWidgets),
         ),
       );
     }
@@ -398,7 +388,7 @@ class _HomepageState extends State<Homepage> {
         child: AppBar(
           foregroundColor: Colors.black,
           backgroundColor: _color2,
-          leading: SvgPicture.asset("logo_color.svg",
+          leading: SvgPicture.asset("assets/icons/logo_color.svg",
               semanticsLabel: '로고', fit: BoxFit.contain),
           elevation: 0,
 
@@ -415,11 +405,11 @@ class _HomepageState extends State<Homepage> {
                   color: _color2,
                 ),
                 child: kIsWeb
-                    ? SvgPicture.asset("logo_color.svg",
+                    ? SvgPicture.asset("assets/icons/logo_color.svg",
                         color: _color,
                         semanticsLabel: '로고',
                         fit: BoxFit.contain)
-                    : SvgPicture.asset("assets/logo_color.svg",
+                    : SvgPicture.asset("assets/icons/logo_color.svg",
                         color: _color,
                         semanticsLabel: '로고',
                         fit: BoxFit.contain)),
@@ -443,7 +433,7 @@ class _HomepageState extends State<Homepage> {
               controller: _scrollController,
               itemCount: homepageWidgets.length,
               itemBuilder: ((context, index) {
-                print(index);
+                print(kIsWeb);
                 return homepageWidgets[index];
               })),
         ),
@@ -455,5 +445,43 @@ class _HomepageState extends State<Homepage> {
   void initState() {
     _scrollController = ScrollController();
     super.initState();
+  }
+}
+
+class getSmoothScroll extends StatelessWidget {
+  const getSmoothScroll({
+    Key? key,
+    required ScrollController scrollController,
+    required this.homepageWidgets,
+  })  : _scrollController = scrollController,
+        super(key: key);
+
+  final ScrollController _scrollController;
+  final List<Widget> homepageWidgets;
+
+  @override
+  Widget build(BuildContext context) {
+    if (!kIsWeb) {
+      print("모바일이야!");
+      return ListView.builder(
+          itemCount: homepageWidgets.length,
+          itemBuilder: ((context, index) {
+            return homepageWidgets[index];
+          }));
+    }
+    print("웹이야!!!");
+    return WebSmoothScroll(
+      controller: _scrollController,
+      scrollOffset: 100,
+      animationDuration: 100,
+      curve: Curves.decelerate,
+      child: ListView.builder(
+          physics: const NeverScrollableScrollPhysics(),
+          controller: _scrollController,
+          itemCount: homepageWidgets.length,
+          itemBuilder: ((context, index) {
+            return homepageWidgets[index];
+          })),
+    );
   }
 }

@@ -79,8 +79,8 @@ flutter:
     -  assets/animated_document.gif
     -  assets/animated_inherit.gif
     -  assets/animtaed_consult.gif
-    -  assets/logo_color.svg
-    -  assets/logo_color_row.svg
+    -  assets/icons/logo_color.svg
+    -  assets/icons/logo_color_row.svg
 
   #   - images/a_dot_ham.jpeg
 
