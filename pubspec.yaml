@@ -46,6 +46,7 @@ dependencies:
   web_smooth_scroll: ^1.0.0 # 웹 스크롤바 부드럽게
   flutter_animate: ^1.0.0
   flutter_svg: ^1.1.5
+  flutter_colorpicker: ^1.0.3
 
 dev_dependencies:
   flutter_test:
