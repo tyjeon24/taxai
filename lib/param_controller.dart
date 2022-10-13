@@ -2,10 +2,12 @@ import 'package:get/get.dart';
 
 class CapitalGainsParameter extends GetxController {
   var param = {}.obs;
-  var firstFilteredList = [];
 
   void setParam(int index, var key, var value) {
-    param[key] = value;
+    if (param[index] == null) {
+      param[index] = {}.obs;
+    }
+    param[index][key] = value;
   }
 
   void initParam(List<String> remainingFilter) {
@@ -26,8 +28,11 @@ class CapitalGainsParameter extends GetxController {
 class MyCustomParameter extends GetxController {
   var param = {}.obs;
 
-  void setParam(int index, key, value) {
-    param[key] = value;
+  void setParam(int index, var key, var value) {
+    if (param[index] == null) {
+      param[index] = {}.obs;
+    }
+    param[index][key] = value;
   }
 
   @override

@@ -6,6 +6,9 @@ import 'package:responsive_framework/responsive_framework.dart';
 import 'capgain_page.dart';
 import 'home_page.dart';
 import 'package:url_strategy/url_strategy.dart';
+import 'capgain_page.dart';
+import 'holding_page.dart';
+import 'callback_page.dart';
 
 void main() {
   setPathUrlStrategy();
@@ -20,7 +23,11 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(fontFamily: 'Base'),
-      getPages: [GetPage(name: '/capgain', page: () => CapitalGainsTaxPage())],
+      getPages: [
+        GetPage(name: '/capgain', page: () => CapitalGainsTaxPage()),
+        GetPage(name: '/holding', page: () => HoldingTaxPage()),
+        GetPage(name: '/callback', page: () => CallbackPage())
+      ],
       builder: (context, child) => ResponsiveWrapper.builder(child,
           maxWidth: 1920,
           minWidth: 400,

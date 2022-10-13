@@ -7,6 +7,7 @@ import 'package:lottie/lottie.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:web_smooth_scroll/web_smooth_scroll.dart';
 import 'package:flutter/foundation.dart';
+import 'package:get/get.dart' hide Condition;
 import 'package:flutter_colorpicker/flutter_colorpicker.dart';
 
 class AppBarTitle extends StatelessWidget {
@@ -77,6 +78,8 @@ class _HomepageState extends State<Homepage> {
     double widgetWidth = MediaQuery.of(context).size.width;
 
     var homepageWidgets = [
+      ElevatedButton(
+          onPressed: () => Get.toNamed("/holding"), child: Text("이동!")),
       Container(
         margin: EdgeInsets.all(20.0),
         child: ColorPicker(
