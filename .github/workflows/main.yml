@@ -1,7 +1,9 @@
 name: 1. Deploy to development server
-
 on:
-  workflow_dispatch:
+ workflow_dispatch:
+ push:
+   branches:
+     - master
   
 jobs:
   build:
