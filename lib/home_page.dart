@@ -78,6 +78,7 @@ class _HomepageState extends State<Homepage> {
     double widgetWidth = MediaQuery.of(context).size.width;
 
     var homepageWidgets = [
+      Text("${Get.parameters}"),
       ElevatedButton(
           onPressed: () => Get.toNamed("/holding"), child: Text("이동!")),
       Container(

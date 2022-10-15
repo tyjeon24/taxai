@@ -37,7 +37,6 @@ class CapitalGainsTaxPage extends StatelessWidget {
           margin: EdgeInsets.all(30.0),
           child: ListView(
             children: [
-              Text("${Get.parameters}"),
               CustomDropdownButton(
                   index: 0, keyValue: "주택 수", contents: const ["1", "2", "3"]),
               // 양도예정일
