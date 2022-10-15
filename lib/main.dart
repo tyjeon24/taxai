@@ -5,13 +5,13 @@ import 'package:flutter_localizations/flutter_localizations.dart'; // 달력 한
 import 'package:responsive_framework/responsive_framework.dart';
 import 'capgain_page.dart';
 import 'home_page.dart';
-import 'package:url_strategy/url_strategy.dart';
+// import 'package:url_strategy/url_strategy.dart';
 import 'capgain_page.dart';
 import 'holding_page.dart';
 import 'callback_page.dart';
 
 void main() {
-  setPathUrlStrategy();
+  // setPathUrlStrategy();
   runApp(MyApp());
 }
 
