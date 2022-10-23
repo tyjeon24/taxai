@@ -1,6 +1,6 @@
+import 'package:capgain/common_widgets/custom_price.dart';
+import 'package:capgain/param_controller.dart';
 import 'package:flutter/material.dart';
-import '../param_controller.dart';
-import 'custom_price.dart';
 import 'package:get/get.dart';
 
 class SaleInLots extends StatelessWidget {

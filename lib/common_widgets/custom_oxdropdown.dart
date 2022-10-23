@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import '../param_controller.dart';
 import 'package:get/get.dart';
+
 import 'custom_title.dart';
 
 class CustomOXDropdownButton extends StatelessWidget {

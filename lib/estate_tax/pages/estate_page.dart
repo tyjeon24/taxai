@@ -1,14 +1,13 @@
-import 'package:capgain/widgets/custom_dropdown.dart';
-import 'package:capgain/widgets/custom_oxdropdown.dart';
-import 'package:capgain/widgets/custom_price.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:capgain/param_controller.dart';
-
-import 'package:flutter/scheduler.dart';
 import 'dart:convert';
 
+import 'package:capgain/common_widgets/custom_dropdown.dart';
+import 'package:capgain/common_widgets/custom_oxdropdown.dart';
+import 'package:capgain/common_widgets/custom_price.dart';
+import 'package:capgain/param_controller.dart';
 import 'package:dio/dio.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:get/get.dart';
 
 class EstatePage extends StatelessWidget {
   final estateController = Get.put(EstateController());

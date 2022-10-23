@@ -1,18 +1,16 @@
-import 'package:capgain/estate_page.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:flutter_localizations/flutter_localizations.dart'; // 달력 한글 출력용
-
-import 'package:responsive_framework/responsive_framework.dart';
-import 'capgain_page.dart';
-import 'home_page.dart';
-import 'package:url_strategy/url_strategy.dart';
-
-import 'holding_page.dart';
 import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
 import 'package:amplify_authenticator/amplify_authenticator.dart';
 import 'package:amplify_flutter/amplify_flutter.dart';
-import 'estate_result_page.dart';
+import 'package:capgain/capital_gain/pages/capgain_page.dart';
+import 'package:capgain/estate_tax/pages/estate_page.dart';
+import 'package:capgain/estate_tax/pages/estate_result_page.dart';
+import 'package:capgain/holding_tax/pages/holding_page.dart';
+import 'package:capgain/homepage/pages/home_page.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_localizations/flutter_localizations.dart'; // 달력 한글 출력용
+import 'package:get/get.dart';
+import 'package:responsive_framework/responsive_framework.dart';
+import 'package:url_strategy/url_strategy.dart';
 
 import 'amplifyconfiguration.dart';
 

@@ -1,11 +1,11 @@
-import 'package:capgain/widgets/animated_button.dart';
+import 'package:capgain/common_widgets/animated_button.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:lottie/lottie.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:web_smooth_scroll/web_smooth_scroll.dart';
-import 'package:flutter/foundation.dart';
 
 class AppBarTitle extends StatelessWidget {
   const AppBarTitle({

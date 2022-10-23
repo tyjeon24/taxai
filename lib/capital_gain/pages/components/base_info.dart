@@ -1,13 +1,11 @@
+import 'package:capgain/capital_gain/constants/first_filter.dart';
+import 'package:capgain/common_widgets/custom_address.dart';
+import 'package:capgain/common_widgets/custom_dropdown.dart';
+import 'package:capgain/common_widgets/custom_oxdropdown.dart';
+import 'package:capgain/common_widgets/custom_title.dart';
+import 'package:capgain/param_controller.dart';
 import 'package:flutter/material.dart';
-import 'custom_address.dart';
-import 'custom_dropdown.dart';
-import 'custom_oxdropdown.dart';
-import 'custom_title.dart';
-
 import 'package:get/get.dart';
-
-import '../first_filter.dart';
-import '../param_controller.dart';
 
 class BaseInfo extends StatelessWidget {
   const BaseInfo({

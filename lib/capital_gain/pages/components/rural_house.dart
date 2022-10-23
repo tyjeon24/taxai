@@ -1,12 +1,12 @@
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import '../param_controller.dart';
-import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'custom_oxdropdown.dart';
-import 'package:intl/intl.dart';
 
+import 'package:capgain/common_widgets/custom_oxdropdown.dart';
+import 'package:capgain/param_controller.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
+import 'package:intl/intl.dart';
 
 Future checkRuralCondition(int index) async {
   final controller = Get.find<CapitalGainsParameter>();

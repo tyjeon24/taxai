@@ -1,10 +1,10 @@
-import 'package:get/get.dart';
-import 'param_controller.dart';
-import 'package:http/http.dart' as http;
-import 'package:capgain/first_filter.dart';
 import 'dart:convert';
-import 'package:intl/intl.dart';
+import 'package:capgain/capital_gain/constants/first_filter.dart';
+import 'package:capgain/param_controller.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
+import 'package:intl/intl.dart';
 
 void isRegulated(int index, String pnu, String date) {
   final customController = Get.find<MyCustomParameter>();

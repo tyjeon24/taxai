@@ -1,10 +1,9 @@
+import 'package:capgain/capital_gain/constants/first_filter.dart';
+import 'package:capgain/capital_gain/functions/check_condition.dart';
+import 'package:capgain/common_widgets/custom_datepicker.dart';
+import 'package:capgain/common_widgets/custom_oxdropdown.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../first_filter.dart';
-import '../check_condition.dart';
-
-import 'custom_datepicker.dart';
-import 'custom_oxdropdown.dart';
 
 class ConditionalDate extends StatelessWidget {
   const ConditionalDate({

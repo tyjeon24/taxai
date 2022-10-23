@@ -1,10 +1,6 @@
+import 'package:capgain/param_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:capgain/param_controller.dart';
-
-import 'dart:convert';
-
-import 'package:dio/dio.dart';
 
 class EstateResultPage extends StatelessWidget {
   final estateController = Get.put(EstateController());

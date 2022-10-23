@@ -1,17 +1,17 @@
-import 'package:capgain/widgets/custom_dropdown.dart';
-import 'package:capgain/widgets/custom_oxdropdown.dart';
+import 'package:capgain/capital_gain/pages/components/base_info.dart';
+import 'package:capgain/capital_gain/pages/components/before_reconstruction.dart';
+import 'package:capgain/capital_gain/pages/components/common_additional_info.dart';
+import 'package:capgain/capital_gain/pages/components/conditional_date.dart';
+import 'package:capgain/capital_gain/pages/components/rent_house.dart';
+import 'package:capgain/capital_gain/pages/components/rural_house.dart';
+import 'package:capgain/capital_gain/pages/components/sale_in_lots.dart';
+import 'package:capgain/capital_gain/pages/components/special_tax_dropdowns.dart';
+import 'package:capgain/common_widgets/custom_datepicker.dart';
+import 'package:capgain/common_widgets/custom_dropdown.dart';
+import 'package:capgain/common_widgets/custom_oxdropdown.dart';
+import 'package:capgain/param_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:capgain/param_controller.dart';
-import 'widgets/base_info.dart';
-import 'widgets/before_reconstruction.dart';
-import 'widgets/common_additional_info.dart';
-import 'widgets/conditional_date.dart';
-import 'package:capgain/widgets/custom_datepicker.dart';
-import 'widgets/rent_house.dart';
-import 'widgets/rural_house.dart';
-import 'widgets/sale_in_lots.dart';
-import 'widgets/special_tax_dropdowns.dart';
 
 class CapitalGainsTaxPage extends StatelessWidget {
   final mainController = Get.put(CapitalGainsParameter());
