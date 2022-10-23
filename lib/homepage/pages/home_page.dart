@@ -7,53 +7,6 @@ import 'package:lottie/lottie.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:web_smooth_scroll/web_smooth_scroll.dart';
 
-class AppBarTitle extends StatelessWidget {
-  const AppBarTitle({
-    Key? key,
-    required this.color,
-  }) : super(key: key);
-
-  final Color? color;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Text(
-          "TAXAI",
-          style: TextStyle(
-              fontSize: 32, color: color, fontWeight: FontWeight.bold),
-        ),
-        Spacer(),
-        ResponsiveVisibility(
-            visible: false,
-            visibleWhen: const [Condition.largerThan(name: TABLET)],
-            child: TextButton(onPressed: () {}, child: Text("TAXAI 소개    "))),
-        ResponsiveVisibility(
-            visible: false,
-            visibleWhen: const [Condition.largerThan(name: TABLET)],
-            child: TextButton(child: Text("공지사항    "), onPressed: () {})),
-        ResponsiveVisibility(
-            visible: false,
-            visibleWhen: const [Condition.largerThan(name: TABLET)],
-            child: TextButton(onPressed: () {}, child: Text("기술 문의    "))),
-        ResponsiveVisibility(
-            visible: false,
-            visibleWhen: const [Condition.largerThan(name: TABLET)],
-            child: TextButton(onPressed: () {}, child: Text("제휴 문의    "))),
-        ResponsiveVisibility(
-            visible: false,
-            visibleWhen: const [Condition.largerThan(name: TABLET)],
-            child: TextButton(onPressed: () {}, child: Text("특허 정보    "))),
-        ResponsiveVisibility(
-            visible: false,
-            visibleWhen: const [Condition.largerThan(name: TABLET)],
-            child: TextButton(onPressed: () {}, child: Text("로그인    "))),
-      ],
-    );
-  }
-}
-
 class Homepage extends StatefulWidget {
   const Homepage({super.key});
 
@@ -62,10 +15,8 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
-  // Controllers
   late ScrollController _scrollController;
-  // final HomepageController = Get.put(HomepageController());
-  Color _color = Color(0xff3d889b);
+  Color _color = Color(0xFF3D889B);
   Color _color2 = Colors.white;
   Color _color3 = Colors.white;
 
@@ -103,19 +54,36 @@ class _HomepageState extends State<Homepage> {
       ),
       if (widgetWidth > 600) ...[
         Container(
-          color: _color,
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+            begin: Alignment.topRight,
+            end: Alignment.bottomLeft,
+            colors: [
+              Colors.white,
+              Color(0xFFE9F4F6),
+            ],
+          )),
           child: Container(
             margin: EdgeInsets.symmetric(horizontal: 60.0, vertical: 30.0),
             child: FittedBox(
                 child: Row(
               children: [
                 Lottie.asset('assets/computer.json'),
-                Text(
-                    'TAXAI는 아파트, 주택, 조합원 입주권, 분양권, 오피스텔의\n수백 가지 비과세 유형과 중과 주택 수, 감면주택 등의\n세법 규정을 AI가 자동으로 판단해서 계산할 수 있는\n혁신적인 세금계산기입니다.',
-                    style: TextStyle(
-                        fontSize: 50,
-                        fontWeight: FontWeight.w700,
-                        color: _color2)),
+                RichText(
+                    text: TextSpan(
+                        text: 'TAXAI는 아파트, 주택, 조합원 입주권, 분양권, 오피스텔의\n'
+                            '수백 가지 비과세 유형과 중과 주택 수, 감면주택 등의\n'
+                            '세법 규정을 ',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            // color: Colors.white,
+                            fontSize: 50),
+                        children: [
+                      TextSpan(
+                          text: 'AI가 자동으로 판단해서 계산할 수 있는\n혁신적인 세금계산기',
+                          style: TextStyle(color: _color)),
+                      TextSpan(text: '입니다.'),
+                    ])),
               ],
             )),
           ),
@@ -131,10 +99,21 @@ class _HomepageState extends State<Homepage> {
             child: Column(
               children: [
                 Lottie.asset("assets/computer.json"),
-                Text(
-                    'TAXAI는 아파트, 주택, 조합원 입주권, 분양권, 오피스텔의 수백 가지 비과세 유형과 중과 주택 수, 감면주택 등의 세법 규정을 AI가 자동으로 판단해서 계산할 수 있는 혁신적인 세금계산기입니다.',
-                    style:
-                        TextStyle(fontWeight: FontWeight.w700, color: _color2)),
+                RichText(
+                    text: TextSpan(
+                        text: 'TAXAI는 아파트, 주택, 조합원 입주권, 분양권, 오피스텔의\n'
+                            '수백 가지 비과세 유형과 중과 주택 수, 감면주택 등의\n'
+                            '세법 규정을 ',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w700,
+                            // color: Colors.white,
+                            fontSize: 50),
+                        children: [
+                      TextSpan(
+                          text: 'AI가 자동으로 판단해서 계산할 수 있는\n혁신적인 세금계산기',
+                          style: TextStyle(color: _color)),
+                      TextSpan(text: '입니다.'),
+                    ])),
               ],
             ),
           ),
@@ -150,12 +129,24 @@ class _HomepageState extends State<Homepage> {
           child: FittedBox(
               child: Row(
             children: [
-              Text(
-                  'TAXAI는 15년 간 재산 관련 세금 컨설팅을 전문적으로 해 온\n현직 세무사가 직접 설계한 프로그램으로서\n최신 법령과 예규, 판례 등을 주기적으로 업데이트하여\n케이스 별로 적용 가능한 수많은 절세 규정을 미리 검토할 수 있으며\n조정대상지역 및 공동주택 가격 등을 자동 조회하는 기능을 갖추고 있어\n세금신고 관련 오류를 획기적으로 줄여줄 수 있습니다.',
-                  style: TextStyle(
-                      fontSize: 50,
-                      fontWeight: FontWeight.w700,
-                      color: Colors.black)),
+              RichText(
+                  text: TextSpan(
+                      text:
+                          'TAXAI는 15년 간 재산 관련 세금 컨설팅을 전문적으로 해 온\n현직 세무사가 직접 설계한 프로그램으로서\n',
+                      style:
+                          TextStyle(fontWeight: FontWeight.w700, fontSize: 50),
+                      children: [
+                    TextSpan(
+                        text:
+                            '최신 법령과 예규, 판례 등을 주기적으로 업데이트하여\n케이스 별로 적용 가능한 수많은 절세 규정을 미리 검토',
+                        style: TextStyle(color: _color)),
+                    TextSpan(
+                        text:
+                            '할 수 있으며\n조정대상지역 및 공동주택 가격 등을 자동 조회하는 기능을 갖추고 있어\n'),
+                    TextSpan(
+                        text: '세금신고 관련 오류를 획기적으로 줄여줄 수 있습니다.',
+                        style: TextStyle(color: _color)),
+                  ])),
               Lottie.asset("assets/money.json"),
             ],
           )),
@@ -184,7 +175,15 @@ class _HomepageState extends State<Homepage> {
         ),
       ],
       Container(
-        color: _color,
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+          begin: Alignment.topRight,
+          end: Alignment.bottomLeft,
+          colors: [
+            Colors.white,
+            Color(0xFFE9F4F6),
+          ],
+        )),
         child: Container(
           margin: EdgeInsets.symmetric(horizontal: 60.0, vertical: 30.0),
           child: FittedBox(
@@ -192,7 +191,7 @@ class _HomepageState extends State<Homepage> {
             children: [
               Text("AI 세금 계산",
                   textAlign: TextAlign.right,
-                  style: TextStyle(fontSize: 50, color: _color2)),
+                  style: TextStyle(fontSize: 50, color: _color)),
               SizedBox(height: 30),
               FittedBox(
                 child: Row(children: [
@@ -238,7 +237,7 @@ class _HomepageState extends State<Homepage> {
               children: [
                 Text("TAXAI 세금 컨설팅",
                     textAlign: TextAlign.right,
-                    style: TextStyle(fontSize: 50, color: Colors.black)),
+                    style: TextStyle(fontSize: 50, color: _color)),
                 SizedBox(height: 30),
                 FittedBox(
                   child: Row(children: [
@@ -310,21 +309,11 @@ class _HomepageState extends State<Homepage> {
     if (MediaQuery.of(context).size.width > 600) {
       return Scaffold(
         appBar: PreferredSize(
-          preferredSize: Size(MediaQuery.of(context).size.width, 80),
-          child: AppBar(
-            foregroundColor: Colors.black,
-            backgroundColor: _color2,
-            leading: kIsWeb
-                ? SvgPicture.asset("assets/icons/logo_color.svg",
-                    color: _color, semanticsLabel: '로고', fit: BoxFit.contain)
-                : SvgPicture.asset("assets/icons/logo_color.svg",
-                    color: _color, semanticsLabel: '로고', fit: BoxFit.contain),
-            elevation: 0,
-
-            title: AppBarTitle(color: _color),
-            // actions: action_contents,
-          ),
-        ),
+            preferredSize: Size(MediaQuery.of(context).size.width, 80),
+            child: getAppBar(
+                color2: _color2,
+                color: _color,
+                width: MediaQuery.of(context).size.width)),
         body: SafeArea(
           child: GetSmoothScroll(
               scrollController: _scrollController,
@@ -335,18 +324,60 @@ class _HomepageState extends State<Homepage> {
 
     return Scaffold(
       appBar: PreferredSize(
-        preferredSize: Size(MediaQuery.of(context).size.width, 80),
-        child: AppBar(
-          foregroundColor: Colors.black,
-          backgroundColor: _color2,
-          leading: SvgPicture.asset("assets/icons/logo_color.svg",
-              semanticsLabel: '로고', fit: BoxFit.contain),
-          elevation: 0,
+          preferredSize: Size(MediaQuery.of(context).size.width, 80),
+          child: getAppBar(
+              color2: _color2,
+              color: _color,
+              width: MediaQuery.of(context).size.width)),
+      // AppBar(
+      //   foregroundColor: Colors.black,
+      //   backgroundColor: _color2,
+      //   leading: SvgPicture.asset("assets/icons/logo_color.svg",
+      //       semanticsLabel: '로고', fit: BoxFit.contain),
+      //   elevation: 0,
 
-          title: AppBarTitle(color: _color),
-          // actions: action_contents,
-        ),
-      ),
+      //   title: Row(
+      //     children: [
+      //       Text(
+      //         "TAXAI",
+      //         style: TextStyle(
+      //             fontSize: 32, color: _color, fontWeight: FontWeight.bold),
+      //       ),
+      //       Spacer(),
+      //       ResponsiveVisibility(
+      //           visible: false,
+      //           visibleWhen: const [Condition.largerThan(name: TABLET)],
+      //           child: TextButton(
+      //               onPressed: () {}, child: Text("TAXAI 소개    "))),
+      //       ResponsiveVisibility(
+      //           visible: false,
+      //           visibleWhen: const [Condition.largerThan(name: TABLET)],
+      //           child: TextButton(child: Text("공지사항    "), onPressed: () {})),
+      //       ResponsiveVisibility(
+      //           visible: false,
+      //           visibleWhen: const [Condition.largerThan(name: TABLET)],
+      //           child:
+      //               TextButton(onPressed: () {}, child: Text("기술 문의    "))),
+      //       ResponsiveVisibility(
+      //           visible: false,
+      //           visibleWhen: const [Condition.largerThan(name: TABLET)],
+      //           child:
+      //               TextButton(onPressed: () {}, child: Text("제휴 문의    "))),
+      //       ResponsiveVisibility(
+      //           visible: false,
+      //           visibleWhen: const [Condition.largerThan(name: TABLET)],
+      //           child:
+      //               TextButton(onPressed: () {}, child: Text("특허 정보    "))),
+      //       ResponsiveVisibility(
+      //           visible: false,
+      //           visibleWhen: const [Condition.largerThan(name: TABLET)],
+      //           child: TextButton(onPressed: () {}, child: Text("로그인    "))),
+      //     ],
+      //   ),
+      //   // actions: action_contents,
+      // ),
+      // ),
+
       endDrawer: Drawer(
         child: ListView(
           padding: EdgeInsets.zero,
@@ -387,6 +418,78 @@ class _HomepageState extends State<Homepage> {
   void initState() {
     _scrollController = ScrollController();
     super.initState();
+  }
+}
+
+class getAppBar extends StatelessWidget {
+  const getAppBar({
+    Key? key,
+    required Color color2,
+    required Color color,
+    required double width,
+  })  : _color2 = color2,
+        _color = color,
+        _width = width,
+        super(key: key);
+
+  final Color _color2;
+  final Color _color;
+  final double _width;
+
+  @override
+  Widget build(BuildContext context) {
+    bool isDesktop = (_width > 600);
+
+    if (isDesktop) {
+      return AppBar(
+        backgroundColor: _color2,
+        leading: SvgPicture.asset("assets/icons/logo_color.svg",
+            color: _color, semanticsLabel: '로고', fit: BoxFit.contain),
+        elevation: 0,
+        title: Text(
+          "TAXAI",
+          style: TextStyle(
+              fontSize: 32, color: _color, fontWeight: FontWeight.bold),
+        ),
+        actions: [
+          ResponsiveVisibility(
+              visible: false,
+              visibleWhen: const [Condition.largerThan(name: TABLET)],
+              child: TextButton(child: Text("TAXAI 소개    "), onPressed: () {})),
+          ResponsiveVisibility(
+              visible: false,
+              visibleWhen: const [Condition.largerThan(name: TABLET)],
+              child: TextButton(child: Text("공지사항    "), onPressed: () {})),
+          ResponsiveVisibility(
+              visible: false,
+              visibleWhen: const [Condition.largerThan(name: TABLET)],
+              child: TextButton(child: Text("기술 문의    "), onPressed: () {})),
+          ResponsiveVisibility(
+              visible: false,
+              visibleWhen: const [Condition.largerThan(name: TABLET)],
+              child: TextButton(child: Text("제휴 문의    "), onPressed: () {})),
+          ResponsiveVisibility(
+              visible: false,
+              visibleWhen: const [Condition.largerThan(name: TABLET)],
+              child: TextButton(child: Text("특허 정보    "), onPressed: () {})),
+          ResponsiveVisibility(
+              visible: false,
+              visibleWhen: const [Condition.largerThan(name: TABLET)],
+              child: TextButton(child: Text("로그인    "), onPressed: () {}))
+        ],
+      );
+    }
+
+    return AppBar(
+      backgroundColor: _color2,
+      leading: SvgPicture.asset("assets/icons/logo_color.svg",
+          color: _color, semanticsLabel: '로고', fit: BoxFit.contain),
+      elevation: 0,
+      title: Text("TAXAI",
+          style: TextStyle(
+              fontSize: 32, color: _color, fontWeight: FontWeight.bold)),
+      iconTheme: IconThemeData(color: _color),
+    );
   }
 }
 

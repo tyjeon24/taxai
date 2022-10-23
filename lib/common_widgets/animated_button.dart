@@ -24,15 +24,12 @@ class _AnimatedButtonState extends State<AnimatedButton> {
 
     return AnimatedContainer(
       decoration: BoxDecoration(
-        border: Border.all(
-          width: width,
-        ),
         borderRadius: BorderRadius.circular(20.0),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(opacity),
-            blurRadius: 4,
-            offset: Offset(2, 4), // changes position of shadow
+            color: Color.fromARGB(60, 0, 0, 0),
+            blurRadius: 5,
+            offset: Offset(3, 3), // changes position of shadow
           ),
         ],
       ),
