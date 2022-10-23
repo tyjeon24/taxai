@@ -52,6 +52,9 @@ class _MyAppState extends State<MyApp> {
         initialRoute: '/',
         routes: {
           '/': (BuildContext context) => Homepage(),
+          '/login': (BuildContext context) {
+            return AuthenticatedView(child: Homepage());
+          },
           '/capgain': (BuildContext context) {
             return AuthenticatedView(child: CapitalGainsTaxPage());
           },

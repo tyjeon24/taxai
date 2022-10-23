@@ -3,6 +3,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart' hide Condition;
 import 'package:lottie/lottie.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:web_smooth_scroll/web_smooth_scroll.dart';
@@ -400,7 +401,8 @@ class _HomepageState extends State<Homepage> {
             ListTile(title: const Text('기술 문의'), onTap: () {}),
             ListTile(title: const Text('제휴 문의'), onTap: () {}),
             ListTile(title: const Text('특허 정보'), onTap: () {}),
-            ListTile(title: const Text('로그인'), onTap: () {}),
+            ListTile(
+                title: const Text('로그인'), onTap: () => Get.toNamed("/login"))
           ],
         ),
       ),
@@ -475,7 +477,9 @@ class getAppBar extends StatelessWidget {
           ResponsiveVisibility(
               visible: false,
               visibleWhen: const [Condition.largerThan(name: TABLET)],
-              child: TextButton(child: Text("로그인    "), onPressed: () {}))
+              child: TextButton(
+                  child: Text("로그인    "),
+                  onPressed: () => Get.toNamed("/login")))
         ],
       );
     }

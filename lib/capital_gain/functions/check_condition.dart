@@ -120,8 +120,7 @@ bool checkCondition(int index, int conditionNumber) {
       // 두 값이 모두 있고 값이 변경되지 않은 경우 API 요청 없이 기존 값 그대로 사용
 
       return (customController.param[index]["$pnu-$date1"] &&
-              !customController.param[index]["$pnu-$date2"] ??
-          false);
+          !customController.param[index]["$pnu-$date2"]);
     }
 
     SchedulerBinding.instance

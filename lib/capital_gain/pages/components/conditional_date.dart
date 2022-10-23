@@ -58,8 +58,8 @@ class ConditionalDate extends StatelessWidget {
       )); //
 
       for (Map widgetItem in additionalInfo) {
-        bool checkedresult = checkCondition(index, widgetItem["condition"]);
-        if (checkedresult ?? false) {
+        bool checkedResult = checkCondition(index, widgetItem["condition"]);
+        if (checkedResult) {
           if (widgetItem["type"] == "date") {
             widgets.add(CustomDatePicker(
                 index: index,
