@@ -27,6 +27,7 @@ class CapitalGainsParameter extends GetxController {
 
   @override
   void onInit() {
+    super.onInit();
     ever(
       param,
       (_) {
@@ -48,6 +49,7 @@ class MyCustomParameter extends GetxController {
 
   @override
   void onInit() {
+    super.onInit();
     ever(
       param,
       (_) {

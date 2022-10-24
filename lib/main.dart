@@ -6,16 +6,15 @@ import 'package:capgain/estate_tax/pages/estate_page.dart';
 import 'package:capgain/estate_tax/pages/estate_result_page.dart';
 import 'package:capgain/holding_tax/pages/holding_page.dart';
 import 'package:capgain/homepage/pages/home_page.dart';
+import 'package:capgain/homepage/pages/intro_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart'; // 달력 한글 출력용
 import 'package:get/get.dart';
 import 'package:responsive_framework/responsive_framework.dart';
-import 'package:url_strategy/url_strategy.dart';
 
 import 'amplifyconfiguration.dart';
 
 void main() {
-  setPathUrlStrategy();
   runApp(MyApp());
 }
 
@@ -52,6 +51,7 @@ class _MyAppState extends State<MyApp> {
         initialRoute: '/',
         routes: {
           '/': (BuildContext context) => Homepage(),
+          '/intro': (BuildContext context) => IntroPage(),
           '/login': (BuildContext context) {
             return AuthenticatedView(child: Homepage());
           },
@@ -83,7 +83,7 @@ class _MyAppState extends State<MyApp> {
                 color: Color.fromARGB(255, 255, 255, 255))), // 0x9B2A9974
         // ignore: prefer_const_literals_to_create_immutables
         // 달력 한글 출력용 부분 시작
-        localizationsDelegates: [
+        localizationsDelegates: const [
           GlobalMaterialLocalizations.delegate,
           GlobalWidgetsLocalizations.delegate
         ],
