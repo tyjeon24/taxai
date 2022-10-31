@@ -29,7 +29,7 @@ class _HomepageState extends State<Homepage> {
         color: color3,
         child: Container(
                 margin: EdgeInsets.symmetric(horizontal: 60.0, vertical: 30.0),
-                height: widgetHeight * 0.5,
+                height: widgetHeight * 0.3,
                 child: FittedBox(
                     child: Text('T A X A I',
                         style: TextStyle(
@@ -100,7 +100,7 @@ class _HomepageState extends State<Homepage> {
             child: FittedBox(
               child: Column(
                 children: [
-                  Lottie.asset("assets/computer.json"),
+                  // Lottie.asset("assets/computer.json"),
                   RichText(
                       text: TextSpan(
                           text: 'TAXAI는 아파트, 주택, 조합원 입주권, 분양권, 오피스텔의\n'
@@ -183,7 +183,7 @@ class _HomepageState extends State<Homepage> {
                             text: '세금신고 관련 오류를 획기적으로 줄여줄 수 있습니다.',
                             style: TextStyle(color: color)),
                       ])),
-                  Lottie.asset("assets/money.json"),
+                  // Lottie.asset("assets/money.json"),
                 ],
               ),
             ),

@@ -1,5 +1,13 @@
+import 'dart:convert';
+
+import 'package:capgain/common_widgets/custom_dropdown.dart';
+import 'package:capgain/common_widgets/custom_oxdropdown.dart';
+import 'package:capgain/common_widgets/custom_price.dart';
+import 'package:capgain/param_controller.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:get/get.dart';
 
 class HoldingTaxPage extends StatelessWidget {
   final Uri loginUrl = Uri.parse(
@@ -8,9 +16,6 @@ class HoldingTaxPage extends StatelessWidget {
   HoldingTaxPage({super.key});
   @override
   Widget build(BuildContext context) {
-    return OutlinedButton(
-        onPressed: () => launchUrl(loginUrl,
-            mode: LaunchMode.platformDefault, webOnlyWindowName: '_self'),
-        child: Text('로그인'));
+    return OutlinedButton(onPressed: () => {}, child: Text('로그인'));
   }
 }
