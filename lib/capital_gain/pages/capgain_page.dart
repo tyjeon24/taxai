@@ -98,7 +98,11 @@ class Contents extends StatelessWidget {
           if (controller.param[index]["취득 원인"] != null &&
               controller.param[index]["취득 원인"] == "상속") ...[
             CustomOXDropdownButton(
-                index: index, keyValue: "선순위 상속주택", controller: controller)
+                index: index, keyValue: "선순위 상속주택", controller: controller),
+            CustomOXDropdownButton(
+                index: index, keyValue: "상속시 동일세대원 여부", controller: controller),
+            CustomOXDropdownButton(
+                index: index, keyValue: "소수지분 상속주택", controller: controller),
           ], // 19 선순위 상속주택
 
           SaleInLots(index: index), // 20 분양가액

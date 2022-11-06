@@ -101,6 +101,7 @@ class _HomepageState extends State<Homepage> {
               child: Column(
                 children: [
                   // Lottie.asset("assets/computer.json"),
+                  Image.asset("assets/lottie1.png"),
                   RichText(
                       text: TextSpan(
                           text: 'TAXAI는 아파트, 주택, 조합원 입주권, 분양권, 오피스텔의\n'
@@ -184,6 +185,8 @@ class _HomepageState extends State<Homepage> {
                             style: TextStyle(color: color)),
                       ])),
                   // Lottie.asset("assets/money.json"),
+
+                  Image.asset("assets/lottie2.png")
                 ],
               ),
             ),

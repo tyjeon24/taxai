@@ -62,6 +62,14 @@ class RentHouse extends StatelessWidget {
         print(e);
       }
 
+      if (customController.param[index]["계약일 당시 무주택 여부 (o,x)"] != null &&
+          customController.param[index]["계약일 당시 무주택 여부 (o,x)"] == true) {
+        widgets.add(CustomDatePicker(
+            index: index, keyValue: "자동말소일", controller: controller));
+        widgets.add(CustomDatePicker(
+            index: index, keyValue: "자진말소일", controller: controller));
+      }
+
       widgets.add(CustomDatePicker(
           index: index, keyValue: "임대주택 등록일", controller: controller));
       widgets.add(CustomDropdownButton(

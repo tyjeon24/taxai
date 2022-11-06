@@ -88,6 +88,8 @@ flutter:
     -  assets/icons/logo_color_row.svg
     -  assets/computer.json
     -  assets/money.json
+    -  assets/lottie1.png
+    -  assets/lottie2.png
 
   #   - images/a_dot_ham.jpeg
 

@@ -1,4 +1,5 @@
 import 'package:capgain/common_widgets/custom_datepicker.dart';
+import 'package:capgain/common_widgets/custom_dropdown.dart';
 import 'package:capgain/common_widgets/custom_price.dart';
 import 'package:capgain/param_controller.dart';
 import 'package:flutter/material.dart';
@@ -32,6 +33,22 @@ class BeforeReconstruction extends StatelessWidget {
               index: index,
               keyValue: "납부한 분담금 또는 지급받은 청산금",
               controller: controller),
+          CustomDropdownButton(
+              index: index,
+              keyValue: "신주택 거주기간",
+              contents: const [
+                "1년미만",
+                "2년미만",
+                "3년이상",
+                "4년이상",
+                "5년이상",
+                "6년이상",
+                "7년이상",
+                "8년이상",
+                "9년이상",
+                "10년이상"
+              ],
+              controller: controller)
         ],
       );
     });
