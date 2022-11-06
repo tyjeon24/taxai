@@ -94,29 +94,29 @@ class IntroBody extends StatelessWidget {
             const SizedBox(
               height: 15,
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                SizedBox(
-                  height: 10,
-                ),
-                Text(
-                    '- 세무사, USA EA\n'
-                    '- (前) LH 토지보상(평택 고덕단지, 부산 명지 등) 세무 자문\n'
-                    '- (前) 부산 수영세무서 국세 심사위원\n'
-                    '- (前) 우리은행 TAX컨설팅팀 (상속, 증여, 양도 컨설팅 전문)\n'
-                    '- (現) AI TAX CONSULTING 대표 세무사',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    )),
-                Text('- 컨설팅 문의 : TECH@TAXAI.CO.KR',
-                    style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ))
-              ],
-            ),
+            // Column(
+            //   crossAxisAlignment: CrossAxisAlignment.start,
+            //   children: const [
+            //     SizedBox(
+            //       height: 10,
+            //     ),
+            //     Text(
+            //         '- 세무사, USA EA\n'
+            //         '- (前) LH 토지보상(평택 고덕단지, 부산 명지 등) 세무 자문\n'
+            //         '- (前) 부산 수영세무서 국세 심사위원\n'
+            //         '- (前) 우리은행 TAX컨설팅팀 (상속, 증여, 양도 컨설팅 전문)\n'
+            //         '- (現) AI TAX CONSULTING 대표 세무사',
+            //         style: TextStyle(
+            //           fontSize: 20,
+            //           fontWeight: FontWeight.bold,
+            //         )),
+            //     Text('- 컨설팅 문의 : TECH@TAXAI.CO.KR',
+            //         style: TextStyle(
+            //           fontSize: 20,
+            //           fontWeight: FontWeight.bold,
+            //         ))
+            //   ],
+            // ),
           ])
         ],
       ),
