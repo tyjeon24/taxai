@@ -51,10 +51,14 @@ class RentHouse extends StatelessWidget {
                     "${controller.param[index]['pnu']}-${DateFormat('yyyyMMdd').format(customController.param[index]['계약일']).toString()}"] &&
                 customController.param[index][
                     "${controller.param[index]['pnu']}-${DateFormat('yyyyMMdd').format(customController.param[index]['취득일']).toString()}"]) {
-              widgets.add(CustomOXDropdownButton(
-                  index: index,
-                  keyValue: "계약&취득 당시 무주택 여부",
-                  controller: controller));
+              widgets.add(Tooltip(
+                message:
+                    "이 주택은 계약일과 취득일에 무주택여부에 따라서 과세유형이 달라집니다. 무주택 여부를 체크해주세요.",
+                child: CustomOXDropdownButton(
+                    index: index,
+                    keyValue: "계약&취득 당시 무주택 여부",
+                    controller: controller),
+              ));
             }
           }
         }
@@ -64,10 +68,16 @@ class RentHouse extends StatelessWidget {
 
       if (customController.param[index]["계약일 당시 무주택 여부 (o,x)"] != null &&
           customController.param[index]["계약일 당시 무주택 여부 (o,x)"] == true) {
-        widgets.add(CustomDatePicker(
-            index: index, keyValue: "자동말소일", controller: controller));
-        widgets.add(CustomDatePicker(
-            index: index, keyValue: "자진말소일", controller: controller));
+        widgets.add(Tooltip(
+          message: "임대의무기간 종료로 자동말소 된 주택",
+          child: CustomDatePicker(
+              index: index, keyValue: "자동말소일", controller: controller),
+        ));
+        widgets.add(Tooltip(
+          message: "임대의무기간의 1/2일 이상을 임대하고 자진말소 한 주택",
+          child: CustomDatePicker(
+              index: index, keyValue: "자진말소일", controller: controller),
+        ));
       }
 
       widgets.add(CustomDatePicker(

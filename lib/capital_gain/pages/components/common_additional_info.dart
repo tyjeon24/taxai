@@ -39,15 +39,22 @@ class CommonAdditionalInfo extends StatelessWidget {
         CustomPrice(index: index, keyValue: "양도가액", controller: controller),
 
         // 9 취득가액 및 필요경비 CustomPrice
-        CustomPrice(
-            index: index, keyValue: "취득가액 및 필요경비", controller: controller),
+        Tooltip(
+          message:
+              "취득가액과 필요경비 합산액을 입력해주세요.\n(필요경비 : 설비비, 계량비, 자본적지출액, 양도비(취득세, 법무사 수수료등))",
+          child: CustomPrice(
+              index: index, keyValue: "취득가액 및 필요경비", controller: controller),
+        ),
 
         // 10 주택 지분
-        CustomDropdownButton(
-          index: index,
-          keyValue: "주택 지분",
-          contents: const ["단독명의", "공동명의"],
-          controller: controller,
+        Tooltip(
+          message: "단독명의인 경우 100%를 입력하고 공동명의인 경우 지분을 입력하세요",
+          child: CustomDropdownButton(
+            index: index,
+            keyValue: "주택 지분",
+            contents: const ["단독명의", "공동명의"],
+            controller: controller,
+          ),
         ),
       ],
     );

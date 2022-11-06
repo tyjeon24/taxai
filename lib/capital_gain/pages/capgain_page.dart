@@ -92,23 +92,48 @@ class Contents extends StatelessWidget {
           ConditionalDate(index: index, controller: controller), // 6 취득일 등
           CommonAdditionalInfo(
               index: index, controller: controller), // 7~10 공통 추가정보
-          // 11~13 자동파악(생략)
-          BeforeReconstruction(index: index), // 14~18 취득시 종류가 재건축전 주택일 때만
+          // 11~14 자동파악(생략)
+          BeforeReconstruction(index: index), // 15~20 취득시 종류가 재건축전 주택일 때만
 
           if (controller.param[index]["취득 원인"] != null &&
               controller.param[index]["취득 원인"] == "상속") ...[
-            CustomOXDropdownButton(
-                index: index, keyValue: "선순위 상속주택", controller: controller),
-            CustomOXDropdownButton(
-                index: index, keyValue: "상속시 동일세대원 여부", controller: controller),
-            CustomOXDropdownButton(
-                index: index, keyValue: "소수지분 상속주택", controller: controller),
-          ], // 19 선순위 상속주택
+            Tooltip(
+              message: """피상속인의 주택이 1주택이라면 o를 입력해주세요
+피상속인이 2주택 이상을 상속하는 경우 피상속인 기준으로 아래의 요건순서에 따라
+선순위에 해당하는 주택인지 확인해주세요
+① 피상속인이 소유한 기간이 가장 긴 1주택
+② 피상속인이 거주한 기간이 가장 긴 1주택
+③ 피상속인이 상속개시 당시 거주한 1주택
+④ 기준시가가 가장 높은 1주택(기준시가가 같은 경우에는 상속인이 선택하는 1주택)""",
+              child: CustomOXDropdownButton(
+                  index: index, keyValue: "선순위 상속주택", controller: controller),
+            ),
+            Tooltip(
+              message: "상속 당시 피상속인과 주택을 소유한 상속인과 동일세대원인지 여부",
+              child: CustomOXDropdownButton(
+                  index: index,
+                  keyValue: "상속시 동일세대원 여부",
+                  controller: controller),
+            ),
+            Tooltip(
+              message: """"공동으로 상속받은 주택 중 지분이 가장 큰 상속인이 아닌경우 o를 입력하고, 
+단독명의나 지분이 가장 큰 상속인 인경우 x를 입력하세요.
 
-          SaleInLots(index: index), // 20 분양가액
-          RentHouse(index: index), // 21 임대주택
-          RuralHouse(index: index), // 22 농어촌주택
-          SpecialTaxDropdowns(index: index) // 23 조특법
+지분이 큰 상속인이 2명이상인 경우 다음 순서에 따라 지분이 가장 큰 상속인으로 봅니다
+1. 당해 주택에 거주하는 자
+2. 최연장자"
+""",
+              child: CustomOXDropdownButton(
+                  index: index, keyValue: "소수지분 상속주택", controller: controller),
+            ),
+          ], // 21~23 선순위 상속주택
+
+          Tooltip(
+              message: "최초 분양가액을 입력해 주세요.",
+              child: SaleInLots(index: index)), // 24 분양가액
+          RentHouse(index: index), // 25 임대주택
+          RuralHouse(index: index), // 26 농어촌주택
+          SpecialTaxDropdowns(index: index) // 27 조특법
         ],
       );
     });
