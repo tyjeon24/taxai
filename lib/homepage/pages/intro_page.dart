@@ -83,17 +83,17 @@ class IntroBody extends StatelessWidget {
             const SizedBox(
               height: 15,
             ),
-            Center(
-              child: Text('김동현 세무사 (기술고문)',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 32,
-                    fontWeight: FontWeight.bold,
-                  )),
-            ),
-            const SizedBox(
-              height: 15,
-            ),
+            // Center(
+            //   child: Text('김동현 세무사 (기술고문)',
+            //       textAlign: TextAlign.center,
+            //       style: TextStyle(
+            //         fontSize: 32,
+            //         fontWeight: FontWeight.bold,
+            //       )),
+            // ),
+            // const SizedBox(
+            //   height: 15,
+            // ),
             // Column(
             //   crossAxisAlignment: CrossAxisAlignment.start,
             //   children: const [
