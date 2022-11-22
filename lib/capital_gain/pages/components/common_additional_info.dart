@@ -1,5 +1,7 @@
 import 'package:capgain/common_widgets/custom_dropdown.dart';
+import 'package:capgain/common_widgets/custom_percent.dart';
 import 'package:capgain/common_widgets/custom_price.dart';
+import 'package:capgain/common_widgets/custom_percent.dart';
 import 'package:capgain/param_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -49,12 +51,8 @@ class CommonAdditionalInfo extends StatelessWidget {
         // 10 주택 지분
         Tooltip(
           message: "단독명의인 경우 100%를 입력하고 공동명의인 경우 지분을 입력하세요",
-          child: CustomDropdownButton(
-            index: index,
-            keyValue: "주택 지분",
-            contents: const ["단독명의", "공동명의"],
-            controller: controller,
-          ),
+          child: CustomPercent(
+              index: index, keyValue: "주택 지분", controller: controller),
         ),
       ],
     );

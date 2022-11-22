@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'custom_title.dart';
 
 Future fetchAddress(String keyword) async {
   String urlBase =
@@ -15,6 +16,28 @@ Future fetchAddress(String keyword) async {
     final jsonResponse = jsonDecode(utf8.decode(
         response.bodyBytes)); //한글 깨짐 방지를 위해 json.decode(response.body) 대신
     final List addressList = jsonResponse['results']['field'];
+
+    return addressList;
+  } else {
+    throw Exception("Fail to fetch address data");
+  }
+}
+
+Future fetchKakaoAddress(String keyword) async {
+  String urlBase = 'https://dapi.kakao.com/v2/local/search/keyword.json?query=';
+
+  Map<String, String> headers = {
+    "Authorization": "KakaoAK 2f0db465d128bff49a344f7a89366da8"
+  };
+
+  final response =
+      await http.get(Uri.parse(urlBase + keyword), headers: headers);
+
+  if (response.statusCode == 200) {
+    final jsonResponse = jsonDecode(utf8.decode(
+        response.bodyBytes)); //한글 깨짐 방지를 위해 json.decode(response.body) 대신
+
+    final List addressList = jsonResponse["documents"];
 
     return addressList;
   } else {
@@ -54,6 +77,50 @@ class CustomAddress extends StatelessWidget {
   final controller;
 
   @override
+  Widget build(context) {
+    return FractionallySizedBox(
+      widthFactor: 0.7,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          CustomTitle("주소"),
+          TextField(
+            maxLines: null,
+            decoration: InputDecoration(
+              hintText: "주소를 입력해주세요.",
+              prefixIcon: Icon(
+                Icons.place,
+              ),
+            ),
+            controller: TextEditingController(
+                text: controller.param[index]["fullAddress"] ?? ""),
+            readOnly: true,
+            onTap: () {
+              showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                      title: Text("주소 검색"),
+                      content:
+                          AddressDialog(index: index, controller: controller),
+                    );
+                  });
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class AddressDialog extends StatelessWidget {
+  AddressDialog({Key? key, required this.index, required this.controller})
+      : super(key: key);
+
+  final int index;
+  final controller;
+
+  @override
   Widget build(BuildContext context) {
     return Obx(
       () => SizedBox(
@@ -79,27 +146,41 @@ class CustomAddress extends StatelessWidget {
                     }
 
                     List addressList = snapshot.data as List;
-                    return SizedBox(
-                        width: double.maxFinite,
-                        child: ListView.builder(
-                            shrinkWrap: true,
-                            physics: const ScrollPhysics(),
-                            itemCount: addressList.length,
-                            itemBuilder: (BuildContext context, int idx) {
-                              return Card(
-                                child: ListTile(
-                                    title: Text(addressList[idx]["roadAddr"]),
-                                    subtitle: Text(addressList[idx]["oldAddr"]),
-                                    onTap: () {
-                                      controller.setParam(
-                                          index, "addressDialogStage", 2);
-                                      controller.setParam(index, "roadAddr",
-                                          addressList[idx]["roadAddr"]);
-                                      controller.setParam(index, "pnu",
-                                          addressList[idx]["pnu"]);
-                                    }),
-                              );
-                            }));
+                    return Column(
+                      children: [
+                        SizedBox(
+                            width: double.maxFinite,
+                            child: TextButton(
+                                child: Text("찾으시는 주소가 없으신가요?"),
+                                onPressed: () {
+                                  controller.setParam(
+                                      index, "addressDialogStage", 4);
+                                })),
+                        SizedBox(
+                            width: double.maxFinite,
+                            child: ListView.builder(
+                                shrinkWrap: true,
+                                physics: const ScrollPhysics(),
+                                itemCount: addressList.length,
+                                itemBuilder: (BuildContext context, int idx) {
+                                  return Card(
+                                    child: ListTile(
+                                        title:
+                                            Text(addressList[idx]["roadAddr"]),
+                                        subtitle:
+                                            Text(addressList[idx]["oldAddr"]),
+                                        onTap: () {
+                                          controller.setParam(
+                                              index, "addressDialogStage", 2);
+                                          controller.setParam(index, "roadAddr",
+                                              addressList[idx]["roadAddr"]);
+                                          controller.setParam(index, "pnu",
+                                              addressList[idx]["pnu"]);
+                                        }),
+                                  );
+                                })),
+                      ],
+                    );
                   }),
             ] else if (controller.param[index]["addressDialogStage"] == 2) ...[
               FutureBuilder(
@@ -188,6 +269,66 @@ class CustomAddress extends StatelessWidget {
                                     }),
                               );
                             }));
+                  }),
+            ] else if (controller.param[index]["addressDialogStage"] == 4) ...[
+              FutureBuilder(
+                  future: fetchKakaoAddress(
+                      controller.param[index]["addressSearchKeyword"]),
+                  builder: (context, snapshot) {
+                    if (snapshot.connectionState == ConnectionState.waiting) {
+                      return Container();
+                    }
+
+                    List addressList = snapshot.data as List;
+                    return Column(
+                      children: [
+                        SizedBox(
+                            width: double.maxFinite,
+                            child: TextButton(
+                                child: Text("여전히 찾으시는 주소가 없으신가요?"),
+                                onPressed: () {
+                                  controller.setParam(
+                                      index, "addressDialogStage", null);
+                                  Navigator.pop(context); // TODO 나중에 뭐 할지 정하기.
+                                })),
+                        SizedBox(
+                            width: double.maxFinite,
+                            child: ListView.builder(
+                                shrinkWrap: true,
+                                physics: const ScrollPhysics(),
+                                itemCount: addressList.length,
+                                itemBuilder: (BuildContext context, int idx) {
+                                  return Card(
+                                    child: ListTile(
+                                        title: Text(
+                                            addressList[idx]["address_name"]),
+                                        subtitle: Text(
+                                            addressList[idx]["place_name"]),
+                                        onTap: () {
+                                          Navigator.pop(context);
+                                          SchedulerBinding.instance
+                                              .addPostFrameCallback((_) {
+                                            controller.setParam(
+                                                index,
+                                                "fullAddress",
+                                                "${addressList[idx]["address_name"]} ${addressList[idx]["place_name"]}");
+                                            controller.setParam(
+                                                index,
+                                                "roadAddr",
+                                                addressList[idx]
+                                                    ["address_name"]);
+                                            controller.setParam(index,
+                                                "addressDialogStage", null);
+                                            controller.setParam(
+                                                index, "pnu", "");
+                                          });
+
+                                          ;
+                                        }),
+                                  );
+                                })),
+                      ],
+                    );
                   }),
             ]
           ],
