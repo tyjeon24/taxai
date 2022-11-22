@@ -1,5 +1,16 @@
 import 'package:get/get.dart';
 
+class HoldingController extends GetxController {
+  var param = {}.obs;
+
+  void setParam(int index, var key, var value) {
+    if (param[index] == null) {
+      param[index] = {}.obs;
+    }
+    param[index][key] = value;
+  }
+}
+
 class EstateController extends GetxController {
   var param = {}.obs;
 

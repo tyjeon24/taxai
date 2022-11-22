@@ -33,38 +33,7 @@ class BaseInfo extends StatelessWidget {
         ),
       )); // 제목
 
-      widgets.add(FractionallySizedBox(
-        widthFactor: 0.7,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CustomTitle("주소"),
-            TextField(
-              maxLines: null,
-              decoration: InputDecoration(
-                hintText: "주소를 입력해주세요.",
-                prefixIcon: Icon(
-                  Icons.place,
-                ),
-              ),
-              controller: TextEditingController(
-                  text: controller.param[index]["fullAddress"] ?? ""),
-              readOnly: true,
-              onTap: () {
-                showDialog(
-                    context: context,
-                    builder: (context) {
-                      return AlertDialog(
-                        title: Text("주소 검색"),
-                        content:
-                            CustomAddress(index: index, controller: controller),
-                      );
-                    });
-              },
-            ),
-          ],
-        ),
-      )); // 1. 주소
+      widgets.add(CustomAddress(index: index, controller: controller)); // 1. 주소
 
       widgets.add(CustomDropdownButton(
           index: index,
