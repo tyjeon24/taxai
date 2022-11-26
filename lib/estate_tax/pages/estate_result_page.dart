@@ -57,37 +57,52 @@ class ResultTable extends StatelessWidget {
       width: width,
       child: FittedBox(
         child: DataTable(
-          headingRowColor: MaterialStateProperty.all<Color>(color),
+          headingRowColor:
+              MaterialStateProperty.all<Color>(resultTableHeaderColor),
+          border: TableBorder.all(width: 1, color: Colors.black),
           columns: [
             DataColumn(
               label: SizedBox(
-                  width: 0.25 * width,
+                  width: 0.05 * width,
+                  child: Center(
+                      child: FittedBox(
+                          fit: BoxFit.fill,
+                          child: Text('순서',
+                              textAlign: TextAlign.center,
+                              style: TextStyle(color: Colors.black))))),
+            ),
+            DataColumn(
+              label: SizedBox(
+                  width: 0.23 * width,
                   child: Center(
                       child: FittedBox(
                           fit: BoxFit.fill,
                           child: Text('항목',
                               textAlign: TextAlign.center,
-                              style: TextStyle(color: Colors.white))))),
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black))))),
             ),
             DataColumn(
               label: SizedBox(
-                  width: 0.25 * width,
+                  width: 0.2 * width,
                   child: Center(
                       child: Text('금액',
                           textAlign: TextAlign.center,
-                          style: TextStyle(color: Colors.white)))),
+                          style: TextStyle(color: Colors.black)))),
             ),
             DataColumn(
                 label: SizedBox(
-                    width: 0.5 * width,
+                    width: 0.52 * width,
                     child: Center(
                         child: Text('비고',
                             textAlign: TextAlign.center,
-                            style: TextStyle(color: Colors.white))))),
+                            style: TextStyle(color: Colors.black))))),
           ],
           rows: <DataRow>[
             DataRow(
               cells: [
+                DataCell(Center(child: Text('1'))),
                 DataCell(Center(child: Text('총 상속재산가액'))),
                 DataCell(Align(
                     alignment: Alignment.centerRight,
@@ -98,8 +113,8 @@ class ResultTable extends StatelessWidget {
               ],
             ),
             DataRow(
-              color: MaterialStateProperty.all<Color>(lightGradient),
               cells: <DataCell>[
+                DataCell(Center(child: Text('2'))),
                 DataCell(Center(child: Text('가산하는 증여재산'))),
                 DataCell(Align(
                     alignment: Alignment.centerRight,
@@ -111,6 +126,7 @@ class ResultTable extends StatelessWidget {
             ),
             DataRow(
               cells: <DataCell>[
+                DataCell(Center(child: Text('3'))),
                 DataCell(Center(child: Text('공과금 및 장례비용 등'))),
                 DataCell(Align(
                     alignment: Alignment.centerRight,
@@ -121,8 +137,8 @@ class ResultTable extends StatelessWidget {
               ],
             ),
             DataRow(
-              color: MaterialStateProperty.all<Color>(lightGradient),
               cells: <DataCell>[
+                DataCell(Center(child: Text('4'))),
                 DataCell(Center(child: Text('상속세 과세가액'))),
                 DataCell(Align(
                     alignment: Alignment.centerRight,
@@ -134,6 +150,7 @@ class ResultTable extends StatelessWidget {
             ),
             DataRow(
               cells: <DataCell>[
+                DataCell(Center(child: Text('5'))),
                 DataCell(Center(child: Text('일괄공제'))),
                 DataCell(Align(
                     alignment: Alignment.centerRight,
@@ -144,8 +161,8 @@ class ResultTable extends StatelessWidget {
               ],
             ),
             DataRow(
-              color: MaterialStateProperty.all<Color>(lightGradient),
               cells: <DataCell>[
+                DataCell(Center(child: Text('6'))),
                 DataCell(Center(child: Text('금융재산 상속공제'))),
                 DataCell(Align(
                     alignment: Alignment.centerRight,
@@ -157,6 +174,7 @@ class ResultTable extends StatelessWidget {
             ),
             DataRow(
               cells: <DataCell>[
+                DataCell(Center(child: Text('7'))),
                 DataCell(Center(child: Text('배우자 공제'))),
                 DataCell(Align(
                     alignment: Alignment.centerRight,
@@ -167,8 +185,8 @@ class ResultTable extends StatelessWidget {
               ],
             ),
             DataRow(
-              color: MaterialStateProperty.all<Color>(lightGradient),
               cells: <DataCell>[
+                DataCell(Center(child: Text('8'))),
                 DataCell(Center(child: Text('기타 공제'))),
                 DataCell(Align(
                     alignment: Alignment.centerRight,
@@ -180,6 +198,7 @@ class ResultTable extends StatelessWidget {
             ),
             DataRow(
               cells: <DataCell>[
+                DataCell(Center(child: Text('9'))),
                 DataCell(Center(child: Text('상속세 과세표준'))),
                 DataCell(Align(
                     alignment: Alignment.centerRight,
@@ -190,8 +209,8 @@ class ResultTable extends StatelessWidget {
               ],
             ),
             DataRow(
-              color: MaterialStateProperty.all<Color>(lightGradient),
               cells: <DataCell>[
+                DataCell(Center(child: Text('10'))),
                 DataCell(Center(child: Text('최고세율'))),
                 DataCell(Align(
                     alignment: Alignment.centerRight,
@@ -203,6 +222,7 @@ class ResultTable extends StatelessWidget {
             ),
             DataRow(
               cells: <DataCell>[
+                DataCell(Center(child: Text('11'))),
                 DataCell(Center(child: Text('상속세 산출세액'))),
                 DataCell(Align(
                     alignment: Alignment.centerRight,
@@ -213,8 +233,8 @@ class ResultTable extends StatelessWidget {
               ],
             ),
             DataRow(
-              color: MaterialStateProperty.all<Color>(lightGradient),
               cells: <DataCell>[
+                DataCell(Center(child: Text('12'))),
                 DataCell(Center(child: Text('증여세액공제'))),
                 DataCell(Align(
                     alignment: Alignment.centerRight,
@@ -226,6 +246,7 @@ class ResultTable extends StatelessWidget {
             ),
             DataRow(
               cells: <DataCell>[
+                DataCell(Center(child: Text('13'))),
                 DataCell(Center(child: Text('신고세액공제'))),
                 DataCell(Align(
                     alignment: Alignment.centerRight,
@@ -236,8 +257,8 @@ class ResultTable extends StatelessWidget {
               ],
             ),
             DataRow(
-              color: MaterialStateProperty.all<Color>(lightGradient),
               cells: <DataCell>[
+                DataCell(Center(child: Text('14'))),
                 DataCell(Center(child: Text('납부할 세액'))),
                 DataCell(Align(
                     alignment: Alignment.centerRight,
@@ -295,7 +316,6 @@ class ResultTable extends StatelessWidget {
               ],
             ),
             DataRow(
-              color: MaterialStateProperty.all<Color>(lightGradient),
               cells: <DataCell>[
                 DataCell(Center(child: Text('가산하는 증여재산'))),
                 DataCell(Align(
@@ -320,7 +340,6 @@ class ResultTable extends StatelessWidget {
               ],
             ),
             DataRow(
-              color: MaterialStateProperty.all<Color>(lightGradient),
               cells: <DataCell>[
                 DataCell(Center(child: Text('상속세 과세가액'))),
                 DataCell(Align(
@@ -345,7 +364,6 @@ class ResultTable extends StatelessWidget {
               ],
             ),
             DataRow(
-              color: MaterialStateProperty.all<Color>(lightGradient),
               cells: <DataCell>[
                 DataCell(Center(child: Text('금융재산 상속공제'))),
                 DataCell(Align(
@@ -370,7 +388,6 @@ class ResultTable extends StatelessWidget {
               ],
             ),
             DataRow(
-              color: MaterialStateProperty.all<Color>(lightGradient),
               cells: <DataCell>[
                 DataCell(Center(child: Text('기타 공제'))),
                 DataCell(Align(
@@ -395,7 +412,6 @@ class ResultTable extends StatelessWidget {
               ],
             ),
             DataRow(
-              color: MaterialStateProperty.all<Color>(lightGradient),
               cells: <DataCell>[
                 DataCell(Center(child: Text('최고세율'))),
                 DataCell(Align(
@@ -420,7 +436,6 @@ class ResultTable extends StatelessWidget {
               ],
             ),
             DataRow(
-              color: MaterialStateProperty.all<Color>(lightGradient),
               cells: <DataCell>[
                 DataCell(Center(child: Text('증여세액공제'))),
                 DataCell(Align(
@@ -445,7 +460,6 @@ class ResultTable extends StatelessWidget {
               ],
             ),
             DataRow(
-              color: MaterialStateProperty.all<Color>(lightGradient),
               cells: <DataCell>[
                 DataCell(Center(child: Text('납부할 세액'))),
                 DataCell(Align(
