@@ -71,13 +71,14 @@ class _MyAppState extends State<MyApp> {
         debugShowCheckedModeBanner: false,
         theme: ThemeData(fontFamily: 'Base'),
         builder: (context, child) => ResponsiveWrapper.builder(child,
-            maxWidth: 1920,
-            minWidth: 400,
             defaultScale: true,
-            breakpoints: const [
-              ResponsiveBreakpoint.resize(400, name: MOBILE),
-              ResponsiveBreakpoint.autoScale(600, name: TABLET),
-              ResponsiveBreakpoint.resize(800, name: DESKTOP),
+            minWidth: 480,
+            defaultName: MOBILE,
+            breakpoints: [
+              const ResponsiveBreakpoint.autoScale(480, name: MOBILE),
+              const ResponsiveBreakpoint.resize(600, name: MOBILE),
+              const ResponsiveBreakpoint.resize(850, name: TABLET),
+              const ResponsiveBreakpoint.resize(1080, name: DESKTOP),
             ],
             background: Container(
                 color: Color.fromARGB(255, 255, 255, 255))), // 0x9B2A9974
