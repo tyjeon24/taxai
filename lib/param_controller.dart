@@ -42,6 +42,7 @@ class CapitalGainsParameter extends GetxController {
     ever(
       param,
       (_) {
+        // ignore: avoid_print
         print('$_');
       },
     );
@@ -64,6 +65,7 @@ class MyCustomParameter extends GetxController {
     ever(
       param,
       (_) {
+        // ignore: avoid_print
         print('$_');
       },
     );

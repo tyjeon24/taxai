@@ -33,14 +33,15 @@ bool checkCondition(int index, int conditionNumber) {
   final controller = Get.find<CapitalGainsParameter>();
   final customController = Get.find<MyCustomParameter>();
 
-  var additionalData;
+  Map additionalData;
   if (controller.param[index]["분양권"] == null) {
-    additionalData = filterMap[controller.param[index]["양도시 종류"]]
-        [controller.param[index]["취득 원인"]][controller.param[index]["취득시 종류"]];
+    additionalData = filterMap[controller.param[index]["sell_type"]]
+            [controller.param[index]["buy_cause"]]
+        [controller.param[index]["buy_type"]];
   } else {
-    additionalData = filterMap[controller.param[index]["양도시 종류"]]
-            [controller.param[index]["취득 원인"]]
-        [controller.param[index]["취득시 종류"]][controller.param[index]["분양권"]];
+    additionalData = filterMap[controller.param[index]["sell_type"]]
+            [controller.param[index]["buy_cause"]]
+        [controller.param[index]["buy_type"]][controller.param[index]["분양권"]];
   }
 
   if (additionalData["metadata"].containsKey("취득일계약일계산")) {
@@ -145,7 +146,7 @@ void calculateDate(int index, var additionalData) {
       controller.param[index][additionalData["metadata"]["취득일계약일계산"]["param2"]];
 
   if (day1 != null && day2 != null && day1 != "" && day2 != "") {
-    print(customController.param[index]);
+    customController.param[index];
     customController.setParam(index, "param1", day1);
     customController.setParam(index, "param2", day2);
     if (additionalData["metadata"]["취득일계약일계산"]["method"] == "normal") {

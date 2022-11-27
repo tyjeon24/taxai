@@ -19,13 +19,14 @@ class _AnimatedButtonState extends State<AnimatedButton> {
   double opacity = 0.3;
   double scale = 1.0;
 
+  @override
   Widget build(BuildContext context) {
     widget.routes ??= "/capgain";
 
     return AnimatedContainer(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20.0),
-        boxShadow: [
+        boxShadow: const [
           BoxShadow(
             color: Color.fromARGB(60, 0, 0, 0),
             blurRadius: 5,

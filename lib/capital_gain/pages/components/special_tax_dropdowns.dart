@@ -1,8 +1,8 @@
 import 'package:capgain/common_widgets/custom_oxdropdown.dart';
-import 'package:capgain/common_widgets/custom_title.dart';
 import 'package:capgain/param_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:capgain/common_widgets/custom_sidetitle.dart';
 
 class SpecialTaxChildern extends StatelessWidget {
   const SpecialTaxChildern({
@@ -15,7 +15,7 @@ class SpecialTaxChildern extends StatelessWidget {
   Widget build(context) {
     final controller = Get.find<CapitalGainsParameter>();
     // 조특법 감면주택
-    if (controller.param[index]["양도시 종류"] != "주택(주거용 오피스텔 포함)" ||
+    if (controller.param[index]["sell_type"] != "주택(주거용 오피스텔 포함)" ||
         Get.find<MyCustomParameter>().param[index]['계약일'] == null) {
       return Container();
     }
@@ -204,13 +204,13 @@ class SpecialTaxDropdowns extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetBuilder<MyCustomParameter>(builder: (_) {
-      return FractionallySizedBox(
-        widthFactor: 0.7,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CustomTitle("조특법 감면주택"),
-            ElevatedButton(
+      return Row(
+        children: [
+          Expanded(flex: 7, child: CustomSideTitle("감면주택 여부")),
+          Flexible(flex: 1, child: Container()),
+          Expanded(
+            flex: 20,
+            child: ElevatedButton(
                 onPressed: () {
                   showDialog(
                       context: context,
@@ -222,8 +222,8 @@ class SpecialTaxDropdowns extends StatelessWidget {
                       });
                 },
                 child: Text("검사")),
-          ],
-        ),
+          ),
+        ],
       );
     });
   }

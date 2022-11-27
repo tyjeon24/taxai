@@ -3,19 +3,18 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 import 'custom_sidetitle.dart';
+import 'package:capgain/widgetsize.dart';
 
-class CustomDatePicker extends StatelessWidget {
-  CustomDatePicker(
+class CustomDatePickerWithSidetitle extends StatelessWidget {
+  CustomDatePickerWithSidetitle(
       {Key? key,
       required this.index,
       required this.keyValue,
-      required this.title,
       required this.controller})
       : super(key: key);
 
   final int index;
   final String keyValue;
-  final String title;
   final controller;
 
   final textController = TextEditingController();
@@ -26,10 +25,10 @@ class CustomDatePicker extends StatelessWidget {
       // 외부의 Obx와 별개로 내부에서 Obx를 한번 더 호출하는 이유는 드랍다운 값 선택 시 해당 값이 드롭다운에 표기되도록 렌더링하기 위함입니다(setState() 역할)
       return Row(
         children: [
-          Expanded(flex: 7, child: CustomSideTitle(title)),
+          Flexible(flex: 7, child: CustomSideTitle(keyValue)),
           Flexible(flex: 1, child: Container()),
-          Expanded(
-            flex: 20,
+          Flexible(
+            flex: 7,
             child: TextField(
               decoration: InputDecoration(
                 hintText: "날짜 입력",

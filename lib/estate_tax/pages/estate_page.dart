@@ -40,25 +40,55 @@ class Contents extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Obx(() {
-      print(controller.param.value);
+      controller.param;
       return Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          CustomPrice(index: 0, keyValue: "상속시 금융자산", controller: controller),
-          CustomPrice(index: 0, keyValue: "상속시 부동산자산", controller: controller),
-          CustomPrice(index: 0, keyValue: "상속시 기타 자산", controller: controller),
-          CustomPrice(index: 0, keyValue: "상속시 금융부채", controller: controller),
-          CustomPrice(index: 0, keyValue: "상속시 기타부채", controller: controller),
-          CustomPrice(index: 0, keyValue: "사전증여재산", controller: controller),
+          CustomPrice(
+              index: 0,
+              keyValue: "상속시 금융자산",
+              title: "상속시 금융자산",
+              controller: controller),
+          CustomPrice(
+              index: 0,
+              keyValue: "상속시 부동산자산",
+              title: "상속시 부동산자산",
+              controller: controller),
+          CustomPrice(
+              index: 0,
+              keyValue: "상속시 기타 자산",
+              title: "상속시 기타 자산",
+              controller: controller),
+          CustomPrice(
+              index: 0,
+              keyValue: "상속시 금융부채",
+              title: "상속시 금융부채",
+              controller: controller),
+          CustomPrice(
+              index: 0,
+              keyValue: "상속시 기타부채",
+              title: "상속시 기타부채",
+              controller: controller),
+          CustomPrice(
+              index: 0,
+              keyValue: "사전증여재산",
+              title: "사전증여재산",
+              controller: controller),
           Obx(() {
-            print(controller.param.value);
+            controller.param;
             if (controller.param[0]["사전증여재산"] != null) {
               return Column(children: [
                 CustomPrice(
-                    index: 0, keyValue: "기 증여세액", controller: controller),
+                    index: 0,
+                    keyValue: "기 증여세액",
+                    title: "기 증여세액",
+                    controller: controller),
                 CustomPrice(
-                    index: 0, keyValue: "배우자 사전증여 과세표준", controller: controller)
+                    index: 0,
+                    keyValue: "배우자 사전증여 과세표준",
+                    title: "배우자 사전증여 과세표준",
+                    controller: controller)
               ]);
             }
             return Container();
@@ -67,7 +97,8 @@ class Contents extends StatelessWidget {
               index: 0, keyValue: "배우자 여부", controller: controller),
           CustomDropdownButton(
               index: 0,
-              keyValue: "상속인중 직계비속",
+              keyValue: "상속인중 직계비속", // TODO 나중에 keyValue 변경
+              title: "상속인중 직계비속",
               contents: const [
                 "0",
                 "1",
@@ -81,9 +112,16 @@ class Contents extends StatelessWidget {
                 "9"
               ],
               controller: controller),
-          CustomPrice(index: 0, keyValue: "기타 공제", controller: controller),
           CustomPrice(
-              index: 0, keyValue: "공과금 및 장례비용 등", controller: controller),
+              index: 0,
+              keyValue: "기타 공제",
+              title: "기타 공제",
+              controller: controller),
+          CustomPrice(
+              index: 0,
+              keyValue: "공과금 및 장례비용 등",
+              title: "공과금 및 장례비용 등",
+              controller: controller),
           ElevatedButton(
               onPressed: () {
                 showDialog(

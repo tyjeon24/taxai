@@ -13,32 +13,33 @@ class ConditionalDate extends StatelessWidget {
   }) : super(key: key);
 
   final int index;
+  // ignore: prefer_typing_uninitialized_variables
   final controller;
 
   @override
   Widget build(BuildContext context) {
     return Obx(() {
-      if (controller.param[index]["취득시 종류"] == null) {
+      if (controller.param[index]["buy_type"] == null) {
         return Container();
       }
 
       if (controller.param[index]["분양권"] == null &&
-          !filterMap[controller.param[index]["양도시 종류"]]
-                      [controller.param[index]["취득 원인"]]
-                  [controller.param[index]["취득시 종류"]]
+          !filterMap[controller.param[index]["sell_type"]]
+                      [controller.param[index]["buy_cause"]]
+                  [controller.param[index]["buy_type"]]
               .containsKey("data")) {
         return Container(); // 분양권 추가 정보를 받을 때까지 기다림
       }
 
       var additionalInfo = [];
       if (controller.param[index]["분양권"] == null) {
-        additionalInfo = filterMap[controller.param[index]["양도시 종류"]]
-                [controller.param[index]["취득 원인"]]
-            [controller.param[index]["취득시 종류"]]["data"];
+        additionalInfo = filterMap[controller.param[index]["sell_type"]]
+                [controller.param[index]["buy_cause"]]
+            [controller.param[index]["buy_type"]]["data"];
       } else {
-        additionalInfo = filterMap[controller.param[index]["양도시 종류"]]
-                    [controller.param[index]["취득 원인"]]
-                [controller.param[index]["취득시 종류"]]
+        additionalInfo = filterMap[controller.param[index]["sell_type"]]
+                    [controller.param[index]["buy_cause"]]
+                [controller.param[index]["buy_type"]]
             [controller.param[index]["분양권"]]["data"];
       }
 
@@ -63,7 +64,8 @@ class ConditionalDate extends StatelessWidget {
           if (widgetItem["type"] == "date") {
             widgets.add(CustomDatePicker(
                 index: index,
-                keyValue: widgetItem["keyValue"],
+                keyValue: widgetItem["keyValue"], // TODO 나중에 변경
+                title: widgetItem["keyValue"],
                 controller: controller));
           } else {
             widgets.add(CustomOXDropdownButton(

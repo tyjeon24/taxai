@@ -17,30 +17,41 @@ class BeforeReconstruction extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.find<CapitalGainsParameter>();
     return Obx(() {
-      if (controller.param[index]["취득시 종류"] != "재건축전 주택") {
+      if (controller.param[index]["buy_type"] != "재건축전 주택") {
         return Container();
       }
 
       return Column(
         children: [
           CustomDatePicker(
-              index: index, keyValue: "관리처분계획인가일", controller: controller),
+              index: index,
+              keyValue: "disp_date",
+              title: "관리처분계획인가일",
+              controller: controller),
           CustomDatePicker(
-              index: index, keyValue: "사업시행인가일", controller: controller),
+              index: index,
+              keyValue: "busi_date",
+              title: "사업시행인가일",
+              controller: controller),
           CustomPrice(
-              index: index, keyValue: "종전 주택의 평가액", controller: controller),
+              index: index,
+              keyValue: "occupy_cost",
+              title: "종전 주택의 평가액",
+              controller: controller),
           Tooltip(
             message: "납부한 분담금과 지급받은 청산금 중 하나만 입력해 주세요.",
             child: CustomPrice(
                 index: index,
-                keyValue: "납부한 분담금 또는 지급받은 청산금",
+                keyValue: "contri_cost",
+                title: "납부한 분담금 또는 지급받은 청산금",
                 controller: controller),
           ),
           Tooltip(
             message: "신주택에서 거주한 기간만 입력하세요 (입주권은 1년미만 선택)",
             child: CustomDropdownButton(
                 index: index,
-                keyValue: "신주택 거주기간",
+                keyValue: "new_live_day",
+                title: "신주택 거주기간",
                 contents: const [
                   "1년미만",
                   "2년미만",

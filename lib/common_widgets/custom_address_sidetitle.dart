@@ -70,8 +70,9 @@ Future fetchDetailedAddress(String pnu, [String? dong]) async {
   }
 }
 
-class CustomAddress extends StatelessWidget {
-  CustomAddress({Key? key, required this.index, required this.controller})
+class CustomAddressWithSidetitle extends StatelessWidget {
+  const CustomAddressWithSidetitle(
+      {Key? key, required this.index, required this.controller})
       : super(key: key);
 
   final int index;

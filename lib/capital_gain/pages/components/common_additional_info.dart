@@ -1,7 +1,6 @@
 import 'package:capgain/common_widgets/custom_dropdown.dart';
 import 'package:capgain/common_widgets/custom_percent.dart';
 import 'package:capgain/common_widgets/custom_price.dart';
-import 'package:capgain/common_widgets/custom_percent.dart';
 import 'package:capgain/param_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -18,12 +17,14 @@ class CommonAdditionalInfo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.find<CapitalGainsParameter>();
+    controller.param[index];
     return Column(
       children: [
         // 7 취득후 거주기간
         CustomDropdownButton(
             index: index,
-            keyValue: "취득후 거주기간",
+            keyValue: "live_day",
+            title: "취득 후 거주기간",
             contents: const [
               "1년미만",
               "2년미만",
@@ -38,15 +39,20 @@ class CommonAdditionalInfo extends StatelessWidget {
             ],
             controller: controller),
         // 8 양도가액 CustomPrice
-        CustomPrice(index: index, keyValue: "양도가액", controller: controller),
+        CustomPrice(
+            index: index,
+            keyValue: "sell_cost",
+            title: "양도가액",
+            controller: controller),
 
         // 9 취득가액 및 필요경비 CustomPrice
-        Tooltip(
-          message:
-              "취득가액과 필요경비 합산액을 입력해주세요.\n(필요경비 : 설비비, 계량비, 자본적지출액, 양도비(취득세, 법무사 수수료등))",
-          child: CustomPrice(
-              index: index, keyValue: "취득가액 및 필요경비", controller: controller),
-        ),
+        CustomPrice(
+            index: index,
+            keyValue: "buy_cost",
+            title: "취득가액 및 필요경비",
+            tooltip:
+                "취득가액과 필요경비의 합산액 입력 : 설비비, 계량비, 자본적지출액, 양도비(취득세, 법무사 수수료 등)",
+            controller: controller),
 
         // 10 주택 지분
         Tooltip(

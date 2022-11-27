@@ -5,6 +5,8 @@ import 'package:capgain/param_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:capgain/typography.dart';
+import 'package:capgain/colorbase.dart';
 
 class RentHouse extends StatelessWidget {
   const RentHouse({
@@ -20,7 +22,12 @@ class RentHouse extends StatelessWidget {
     final customController = Get.find<MyCustomParameter>();
     return GetBuilder<MyCustomParameter>(builder: (_) {
       // 임대주택
-      if (controller.param[index]["양도시 종류"] != "주택(주거용 오피스텔 포함)") {
+      if (controller.param[index]["sell_type"] != "주택(주거용 오피스텔 포함)") {
+        return Container();
+      }
+
+      if (controller.param[index]["임대주택 여부"] == null ||
+          controller.param[index]["임대주택 여부"] == false) {
         return Container();
       }
 
@@ -28,10 +35,17 @@ class RentHouse extends StatelessWidget {
       List<Widget> widgets = [];
       widgets.add(Divider());
       widgets.add(Padding(
-        padding: const EdgeInsets.only(top: 30.0),
-        child: Text("임대주택",
-            textAlign: TextAlign.center,
-            style: Theme.of(context).textTheme.headline4),
+        padding: const EdgeInsets.only(top: 30.0, bottom: 30.0),
+        child: Container(
+          alignment: Alignment.center,
+          decoration:
+              BoxDecoration(border: Border.all(width: 1, color: borderColor)),
+          child: Text(
+            "임대주택",
+            textAlign: TextAlign.left,
+            style: headlineTextStyle,
+          ),
+        ),
       ));
 
       DateTime referenceDate = DateTime(2018, 9, 14);
@@ -63,6 +77,7 @@ class RentHouse extends StatelessWidget {
           }
         }
       } catch (e) {
+        // ignore: avoid_print
         print(e);
       }
 
@@ -71,25 +86,36 @@ class RentHouse extends StatelessWidget {
         widgets.add(Tooltip(
           message: "임대의무기간 종료로 자동말소 된 주택",
           child: CustomDatePicker(
-              index: index, keyValue: "자동말소일", controller: controller),
+              index: index,
+              keyValue: "auto_end",
+              title: "자동말소일",
+              controller: controller),
         ));
         widgets.add(Tooltip(
           message: "임대의무기간의 1/2일 이상을 임대하고 자진말소 한 주택",
           child: CustomDatePicker(
-              index: index, keyValue: "자진말소일", controller: controller),
+              index: index,
+              keyValue: "self_end",
+              title: "자진말소일",
+              controller: controller),
         ));
       }
 
       widgets.add(CustomDatePicker(
-          index: index, keyValue: "임대주택 등록일", controller: controller));
+          index: index,
+          keyValue: "resi_date",
+          title: "임대주택 등록일",
+          controller: controller));
       widgets.add(CustomDropdownButton(
           index: index,
-          keyValue: "임대주택 유형",
+          keyValue: "rent_type",
+          title: "임대주택 유형",
           contents: const ["단기", "장기일반"],
           controller: controller));
       widgets.add(CustomDropdownButton(
           index: index,
-          keyValue: "전용면적",
+          keyValue: "rent_area",
+          title: "전용면적",
           contents: const ["85㎡이하", "85㎡초과"],
           controller: controller));
 

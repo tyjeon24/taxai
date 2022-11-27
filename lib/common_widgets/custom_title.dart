@@ -5,6 +5,7 @@ class CustomTitle extends StatelessWidget {
   CustomTitle(this.keyValue, {super.key});
   @override
   Widget build(BuildContext context) {
-    return Text(keyValue, style: Theme.of(context).textTheme.headline6);
+    return FittedBox(
+        child: Text(keyValue, style: Theme.of(context).textTheme.headline6));
   }
 }
