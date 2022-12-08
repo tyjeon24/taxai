@@ -18,6 +18,15 @@ class BeforeReconstruction extends StatelessWidget {
     final controller = Get.find<CapitalGainsParameter>();
     return Obx(() {
       if (controller.param[index]["buy_type"] != "재건축전 주택") {
+        controller.param[index].removeWhere((key, value) => key == "disp_date");
+        controller.param[index].removeWhere((key, value) => key == "busi_date");
+        controller.param[index]
+            .removeWhere((key, value) => key == "occupy_cost");
+        controller.param[index]
+            .removeWhere((key, value) => key == "contri_cost");
+        controller.param[index]
+            .removeWhere((key, value) => key == "new_live_day");
+
         return Container();
       }
 

@@ -22,12 +22,16 @@ class RentHouse extends StatelessWidget {
     final customController = Get.find<MyCustomParameter>();
     return GetBuilder<MyCustomParameter>(builder: (_) {
       // 임대주택
-      if (controller.param[index]["sell_type"] != "주택(주거용 오피스텔 포함)") {
-        return Container();
-      }
 
       if (controller.param[index]["임대주택 여부"] == null ||
           controller.param[index]["임대주택 여부"] == false) {
+        controller.param[index]
+            .removeWhere((key, value) => key == "계약&취득 당시 무주택 여부");
+        controller.param[index].removeWhere((key, value) => key == "auto_end");
+        controller.param[index].removeWhere((key, value) => key == "self_end");
+        controller.param[index].removeWhere((key, value) => key == "resi_date");
+        controller.param[index].removeWhere((key, value) => key == "rent_type");
+        controller.param[index].removeWhere((key, value) => key == "rent_area");
         return Container();
       }
 

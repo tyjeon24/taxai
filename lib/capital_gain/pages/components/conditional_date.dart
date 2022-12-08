@@ -20,6 +20,13 @@ class ConditionalDate extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       if (controller.param[index]["buy_type"] == null) {
+        controller.param[index].removeWhere((key, value) => key == "buy_date1");
+        controller.param[index].removeWhere((key, value) => key == "buy_date2");
+        controller.param[index].removeWhere((key, value) => key == "buy_date3");
+        controller.param[index].removeWhere((key, value) => key == "buy_date4");
+        controller.param[index].removeWhere((key, value) => key == "buy_date5");
+        controller.param[index]
+            .removeWhere((key, value) => key == "rent_no_house");
         return Container();
       }
 
@@ -28,6 +35,13 @@ class ConditionalDate extends StatelessWidget {
                       [controller.param[index]["buy_cause"]]
                   [controller.param[index]["buy_type"]]
               .containsKey("data")) {
+        controller.param[index].removeWhere((key, value) => key == "buy_date1");
+        controller.param[index].removeWhere((key, value) => key == "buy_date2");
+        controller.param[index].removeWhere((key, value) => key == "buy_date3");
+        controller.param[index].removeWhere((key, value) => key == "buy_date4");
+        controller.param[index].removeWhere((key, value) => key == "buy_date5");
+        controller.param[index]
+            .removeWhere((key, value) => key == "rent_no_house");
         return Container(); // 분양권 추가 정보를 받을 때까지 기다림
       }
 
@@ -59,13 +73,14 @@ class ConditionalDate extends StatelessWidget {
       )); //
 
       for (Map widgetItem in additionalInfo) {
+        print("추가요소 $widgetItem");
         bool checkedResult = checkCondition(index, widgetItem["condition"]);
         if (checkedResult) {
           if (widgetItem["type"] == "date") {
             widgets.add(CustomDatePicker(
                 index: index,
                 keyValue: widgetItem["keyValue"], // TODO 나중에 변경
-                title: widgetItem["keyValue"],
+                title: widgetItem["title"],
                 controller: controller));
           } else {
             widgets.add(CustomOXDropdownButton(

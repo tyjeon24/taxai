@@ -67,15 +67,15 @@ class CustomDropdownButton extends StatelessWidget {
                   controller.param[index]
                       .removeWhere((key, value) => key == "분양권");
                   controller.param[index]
-                      .removeWhere((key, value) => key == "취득시 종류");
+                      .removeWhere((key, value) => key == "buy_type");
                   controller.param[index]
-                      .removeWhere((key, value) => key == "취득 원인");
+                      .removeWhere((key, value) => key == "buy_cause");
                 } else if (keyValue == "buy_cause") {
                   // 취득 원인이 변경되었을 때 세부 카테고리 값들 제거
                   controller.param[index]
                       .removeWhere((key, value) => key == "분양권");
                   controller.param[index]
-                      .removeWhere((key, value) => key == "취득시 종류");
+                      .removeWhere((key, value) => key == "buy_type");
                 } else if (keyValue == "buy_type") {
                   // 취득시 종류가 변경되었을 때 세부 카테고리 값들 제거
                   controller.param[index]

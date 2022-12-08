@@ -87,14 +87,13 @@ List<Map> baseInfo = [
     "smallTitle": "취득시 종류",
     "type": "dropdown",
     "contents": [
-      "주택sabc포함)",
+      "주택(주거용 오피스텔 포함)",
       "조합원 입주권",
       "분양권(2021년 이전 취득)",
       "분양권(2022년 이후 취득)"
     ],
   }
 ];
-
 Map filterMap = {
   "주택(주거용 오피스텔 포함)": {
     "매매": {
@@ -107,10 +106,21 @@ Map filterMap = {
           }
         },
         "data": [
-          {"keyValue": "잔금청산일과 등기접수일중 빠른날", "type": "date", "condition": 0},
-          {"keyValue": "주택 계약일", "type": "date", "condition": 0},
           {
-            "keyValue": "계약일 당시 무주택 여부 (o,x)",
+            "title": "잔금청산일과 등기접수일중 빠른날",
+            "keyValue": "buy_date1",
+            "type": "date",
+            "condition": 0
+          },
+          {
+            "title": "주택 계약일",
+            "keyValue": "buy_date2",
+            "type": "date",
+            "condition": 0
+          },
+          {
+            "title": "계약일 당시 무주택 여부 (o,x)",
+            "keyValue": "no_house",
             "type": "oxdropdown",
             "condition": 4
           }
@@ -126,14 +136,26 @@ Map filterMap = {
         },
         "data": [
           {
-            "keyValue": "재건축전 주택 잔금청산일과 등기접수일중 빠른날",
+            "title": "재건축전 주택 잔금청산일과 등기접수일중 빠른날",
+            "keyValue": "buy_date1",
             "type": "date",
             "condition": 0
           },
-          {"keyValue": "재건축전 주택 계약일", "type": "date", "condition": 0},
-          {"keyValue": "신주택 사용 승인일", "type": "date", "condition": 0},
           {
-            "keyValue": "계약일 당시 무주택 여부 (o,x)",
+            "title": "재건축전 주택 계약일",
+            "keyValue": "buy_date2",
+            "type": "date",
+            "condition": 0
+          },
+          {
+            "title": "신주택 사용 승인일",
+            "keyValue": "buy_date3",
+            "type": "date",
+            "condition": 0
+          },
+          {
+            "title": "계약일 당시 무주택 여부 (o,x)",
+            "keyValue": "no_house",
             "type": "oxdropdown",
             "condition": 4
           }
@@ -148,9 +170,24 @@ Map filterMap = {
           }
         },
         "data": [
-          {"keyValue": "잔금청산일과 등기접수일중 빠른날", "type": "date", "condition": 0},
-          {"keyValue": "주거용 사용 시작일", "type": "date", "condition": 0},
-          {"keyValue": "주거용 사용 종료일", "type": "date", "condition": 0}
+          {
+            "title": "잔금청산일과 등기접수일중 빠른날",
+            "keyValue": "buy_date1",
+            "type": "date",
+            "condition": 0
+          },
+          {
+            "title": "주거용 사용 시작일",
+            "keyValue": "buy_date2",
+            "type": "date",
+            "condition": 0
+          },
+          {
+            "title": "주거용 사용 종료일",
+            "keyValue": "buy_date3",
+            "type": "date",
+            "condition": 0
+          }
         ]
       },
       "조합원 입주권": {
@@ -162,11 +199,27 @@ Map filterMap = {
           }
         },
         "data": [
-          {"keyValue": "주택 사용 승인일", "type": "date", "condition": 0},
-          {"keyValue": "조합원 입주권 잔금청산일", "type": "date", "condition": 0},
-          {"keyValue": "조합원 입주권 계약일", "type": "date", "condition": 0},
           {
-            "keyValue": "계약일 당시 무주택 여부 (o,x)",
+            "title": "주택 사용 승인일",
+            "keyValue": "buy_date1",
+            "type": "date",
+            "condition": 0
+          },
+          {
+            "title": "조합원 입주권 잔금청산일",
+            "keyValue": "buy_date2",
+            "type": "date",
+            "condition": 0
+          },
+          {
+            "title": "조합원 입주권 계약일",
+            "keyValue": "buy_date3",
+            "type": "date",
+            "condition": 0
+          },
+          {
+            "title": "계약일 당시 무주택 여부 (o,x)",
+            "keyValue": "no_house",
             "type": "oxdropdown",
             "condition": 4
           }
@@ -182,10 +235,21 @@ Map filterMap = {
             }
           },
           "data": [
-            {"keyValue": "주택 잔금청산일", "type": "date", "condition": 0},
-            {"keyValue": "분양권 계약일", "type": "date", "condition": 0},
             {
-              "keyValue": "계약일 당시 무주택 여부 (o,x)",
+              "title": "주택 잔금청산일",
+              "keyValue": "buy_date1",
+              "type": "date",
+              "condition": 0
+            },
+            {
+              "title": "분양권 계약일",
+              "keyValue": "buy_date2",
+              "type": "date",
+              "condition": 0
+            },
+            {
+              "title": "계약일 당시 무주택 여부 (o,x)",
+              "keyValue": "no_house",
               "type": "oxdropdown",
               "condition": 4
             }
@@ -200,10 +264,21 @@ Map filterMap = {
             }
           },
           "data": [
-            {"keyValue": "주택 잔금청산일", "type": "date", "condition": 0},
-            {"keyValue": "당첨일", "type": "date", "condition": 0},
             {
-              "keyValue": "계약일 당시 무주택 여부 (o,x)",
+              "title": "주택 잔금청산일",
+              "keyValue": "buy_date1",
+              "type": "date",
+              "condition": 0
+            },
+            {
+              "title": "당첨일",
+              "keyValue": "buy_date2",
+              "type": "date",
+              "condition": 0
+            },
+            {
+              "title": "계약일 당시 무주택 여부 (o,x)",
+              "keyValue": "no_house",
               "type": "oxdropdown",
               "condition": 4
             }
@@ -220,11 +295,27 @@ Map filterMap = {
             }
           },
           "data": [
-            {"keyValue": "주택 잔금청산일", "type": "date", "condition": 0},
-            {"keyValue": "분양권 잔금청산일", "type": "date", "condition": 0},
-            {"keyValue": "분양권 계약일", "type": "date", "condition": 0},
             {
-              "keyValue": "계약일 당시 무주택 여부 (o,x)",
+              "title": "주택 잔금청산일",
+              "keyValue": "buy_date1",
+              "type": "date",
+              "condition": 0
+            },
+            {
+              "title": "분양권 잔금청산일",
+              "keyValue": "buy_date2",
+              "type": "date",
+              "condition": 0
+            },
+            {
+              "title": "분양권 계약일",
+              "keyValue": "buy_date3",
+              "type": "date",
+              "condition": 0
+            },
+            {
+              "title": "계약일 당시 무주택 여부 (o,x)",
+              "keyValue": "no_house",
               "type": "oxdropdown",
               "condition": 4
             }
@@ -239,10 +330,21 @@ Map filterMap = {
             }
           },
           "data": [
-            {"keyValue": "주택 잔금청산일", "type": "date", "condition": 0},
-            {"keyValue": "분양권 당첨일", "type": "date", "condition": 0},
             {
-              "keyValue": "계약일 당시 무주택 여부 (o,x)",
+              "title": "주택 잔금청산일",
+              "keyValue": "buy_date1",
+              "type": "date",
+              "condition": 0
+            },
+            {
+              "title": "분양권 당첨일",
+              "keyValue": "buy_date2",
+              "type": "date",
+              "condition": 0
+            },
+            {
+              "title": "계약일 당시 무주택 여부 (o,x)",
+              "keyValue": "no_house",
               "type": "oxdropdown",
               "condition": 4
             }
@@ -260,7 +362,12 @@ Map filterMap = {
           }
         },
         "data": [
-          {"keyValue": "등기 접수일", "type": "date", "condition": 0}
+          {
+            "title": "등기 접수일",
+            "keyValue": "buy_date1",
+            "type": "date",
+            "condition": 0
+          }
         ]
       },
       "재건축전 주택": {
@@ -272,8 +379,18 @@ Map filterMap = {
           }
         },
         "data": [
-          {"keyValue": "재건축전 주택 등기접수일", "type": "date", "condition": 0},
-          {"keyValue": "신주택 사용 승인일", "type": "date", "condition": 0}
+          {
+            "title": "재건축전 주택 등기접수일",
+            "keyValue": "buy_date1",
+            "type": "date",
+            "condition": 0
+          },
+          {
+            "title": "신주택 사용 승인일",
+            "keyValue": "buy_date2",
+            "type": "date",
+            "condition": 0
+          }
         ]
       },
       "주거용 오피스텔": {
@@ -285,29 +402,69 @@ Map filterMap = {
           }
         },
         "data": [
-          {"keyValue": "등기접수일", "type": "date", "condition": 0},
-          {"keyValue": "주거용 사용 시작일", "type": "date", "condition": 0},
-          {"keyValue": "주거용 사용 종료일", "type": "date", "condition": 0}
+          {
+            "title": "등기접수일",
+            "keyValue": "buy_date1",
+            "type": "date",
+            "condition": 0
+          },
+          {
+            "title": "주거용 사용 시작일",
+            "keyValue": "buy_date2",
+            "type": "date",
+            "condition": 0
+          },
+          {
+            "title": "주거용 사용 종료일",
+            "keyValue": "buy_date3",
+            "type": "date",
+            "condition": 0
+          }
         ]
       },
       "조합원 입주권": {
         "metadata": {},
         "data": [
-          {"keyValue": "주택 사용 승인일", "type": "date", "condition": 0},
-          {"keyValue": "조합원 입주권 명의변경 신고일", "type": "date", "condition": 0}
+          {
+            "title": "주택 사용 승인일",
+            "keyValue": "buy_date1",
+            "type": "date",
+            "condition": 0
+          },
+          {
+            "title": "조합원 입주권 명의변경 신고일",
+            "keyValue": "buy_date2",
+            "type": "date",
+            "condition": 0
+          }
         ]
       },
       "분양권(2021년 이전 취득)": {
         "metadata": {},
         "data": [
-          {"keyValue": "주택 잔금청산일", "type": "date", "condition": 0}
+          {
+            "title": "주택 잔금청산일",
+            "keyValue": "buy_date1",
+            "type": "date",
+            "condition": 0
+          }
         ]
       },
       "분양권(2022년 이후 취득)": {
         "metadata": {},
         "data": [
-          {"keyValue": "주택 잔금청산일", "type": "date", "condition": 0},
-          {"keyValue": "분양권 명의변경 신고일", "type": "date", "condition": 0}
+          {
+            "title": "주택 잔금청산일",
+            "keyValue": "buy_date1",
+            "type": "date",
+            "condition": 0
+          },
+          {
+            "title": "분양권 명의변경 신고일",
+            "keyValue": "buy_date2",
+            "type": "date",
+            "condition": 0
+          }
         ]
       }
     },
@@ -317,9 +474,24 @@ Map filterMap = {
           "취득일계약일계산": {"method": "normal", "param1": "상속개시일", "param2": "상속개시일"}
         },
         "data": [
-          {"keyValue": "상속개시일", "type": "date", "condition": 0},
-          {"keyValue": "피상속인 주택 취득일", "type": "date", "condition": 1},
-          {"keyValue": "피상속인과 상속인의 동일거주 시작일", "type": "date", "condition": 3}
+          {
+            "title": "상속개시일",
+            "keyValue": "buy_date1",
+            "type": "date",
+            "condition": 0
+          },
+          {
+            "title": "피상속인 주택 취득일",
+            "keyValue": "buy_date2",
+            "type": "date",
+            "condition": 1
+          },
+          {
+            "title": "피상속인과 상속인의 동일거주 시작일",
+            "keyValue": "buy_date3",
+            "type": "date",
+            "condition": 3
+          }
         ]
       },
       "재건축전 주택": {
@@ -331,10 +503,21 @@ Map filterMap = {
           }
         },
         "data": [
-          {"keyValue": "이전주택 상속개시일", "type": "date", "condition": 0},
-          {"keyValue": "신주택 사용 승인일", "type": "date", "condition": 0},
           {
-            "keyValue": "피상속인과 상속인의 재건축전 주택 동일거주 시작일",
+            "title": "이전주택 상속개시일",
+            "keyValue": "buy_date1",
+            "type": "date",
+            "condition": 0
+          },
+          {
+            "title": "신주택 사용 승인일",
+            "keyValue": "buy_date2",
+            "type": "date",
+            "condition": 0
+          },
+          {
+            "title": "피상속인과 상속인의 재건축전 주택 동일거주 시작일",
+            "keyValue": "buy_date3",
             "type": "date",
             "condition": 3
           }
@@ -349,11 +532,36 @@ Map filterMap = {
           }
         },
         "data": [
-          {"keyValue": "상속개시일", "type": "date", "condition": 0},
-          {"keyValue": "주거용 사용 시작일", "type": "date", "condition": 0},
-          {"keyValue": "주거용 사용 종료일", "type": "date", "condition": 0},
-          {"keyValue": "피상속인 오피스텔 취득일", "type": "date", "condition": 1},
-          {"keyValue": "피상속인과 상속인의 동일거주 시작일", "type": "date", "condition": 3}
+          {
+            "title": "상속개시일",
+            "keyValue": "buy_date1",
+            "type": "date",
+            "condition": 0
+          },
+          {
+            "title": "주거용 사용 시작일",
+            "keyValue": "buy_date2",
+            "type": "date",
+            "condition": 0
+          },
+          {
+            "title": "주거용 사용 종료일",
+            "keyValue": "buy_date3",
+            "type": "date",
+            "condition": 0
+          },
+          {
+            "title": "피상속인 오피스텔 취득일",
+            "keyValue": "buy_date4",
+            "type": "date",
+            "condition": 1
+          },
+          {
+            "title": "피상속인과 상속인의 동일거주 시작일",
+            "keyValue": "buy_date5",
+            "type": "date",
+            "condition": 3
+          }
         ]
       },
       "조합원 입주권": {
@@ -365,8 +573,18 @@ Map filterMap = {
           }
         },
         "data": [
-          {"keyValue": "주택 사용 승인일", "type": "date", "condition": 0},
-          {"keyValue": "상속 개시일", "type": "date", "condition": 0}
+          {
+            "title": "주택 사용 승인일",
+            "keyValue": "buy_date1",
+            "type": "date",
+            "condition": 0
+          },
+          {
+            "title": "상속 개시일",
+            "keyValue": "buy_date2",
+            "type": "date",
+            "condition": 0
+          }
         ]
       },
       "분양권(2021년 이전 취득)": {
@@ -378,7 +596,12 @@ Map filterMap = {
           }
         },
         "data": [
-          {"keyValue": "주택 잔금청산일", "type": "date", "condition": 0}
+          {
+            "title": "주택 잔금청산일",
+            "keyValue": "buy_date1",
+            "type": "date",
+            "condition": 0
+          }
         ]
       },
       "분양권(2022년 이후 취득)": {
@@ -390,8 +613,18 @@ Map filterMap = {
           }
         },
         "data": [
-          {"keyValue": "주택 잔금청산일", "type": "date", "condition": 0},
-          {"keyValue": "상속 개시일", "type": "date", "condition": 0}
+          {
+            "title": "주택 잔금청산일",
+            "keyValue": "buy_date1",
+            "type": "date",
+            "condition": 0
+          },
+          {
+            "title": "상속 개시일",
+            "keyValue": "buy_date2",
+            "type": "date",
+            "condition": 0
+          }
         ]
       }
     },
@@ -406,7 +639,8 @@ Map filterMap = {
         },
         "data": [
           {
-            "keyValue": "사용승인서 교부일, 임시사용일, 사실상 사용일중 빠른날",
+            "title": "사용승인서 교부일, 임시사용일, 사실상 사용일중 빠른날",
+            "keyValue": "buy_date1",
             "type": "date",
             "condition": 0
           }
@@ -422,11 +656,17 @@ Map filterMap = {
         },
         "data": [
           {
-            "keyValue": "이전주택 사용승인서 교부일, 임시사용일, 사실상 사용일중 빠른날",
+            "title": "이전주택 사용승인서 교부일, 임시사용일, 사실상 사용일중 빠른날",
+            "keyValue": "buy_date1",
             "type": "date",
             "condition": 0
           },
-          {"keyValue": "신주택 사용 승인일", "type": "date", "condition": 0}
+          {
+            "title": "신주택 사용 승인일",
+            "keyValue": "buy_date2",
+            "type": "date",
+            "condition": 0
+          }
         ]
       },
       "주거용 오피스텔": {
@@ -439,7 +679,8 @@ Map filterMap = {
         },
         "data": [
           {
-            "keyValue": "사용승인서 교부일, 임시사용일, 사실상 사용일중 빠른날",
+            "title": "사용승인서 교부일, 임시사용일, 사실상 사용일중 빠른날",
+            "keyValue": "buy_date1",
             "type": "date",
             "condition": 0
           }
@@ -459,13 +700,20 @@ Map filterMap = {
         },
         "data": [
           {
-            "keyValue": "재건축전 주택 잔금청산일과 등기접수일중 빠른날",
+            "title": "재건축전 주택 잔금청산일과 등기접수일중 빠른날",
+            "keyValue": "buy_date1",
             "type": "date",
             "condition": 0
           },
-          {"keyValue": "재건축전 주택 계약일", "type": "date", "condition": 0},
           {
-            "keyValue": "계약일 당시 무주택 여부 (o,x)",
+            "title": "재건축전 주택 계약일",
+            "keyValue": "buy_date2",
+            "type": "date",
+            "condition": 0
+          },
+          {
+            "title": "계약일 당시 무주택 여부 (o,x)",
+            "keyValue": "no_house",
             "type": "oxdropdown",
             "condition": 4
           }
@@ -474,19 +722,34 @@ Map filterMap = {
       "조합원 입주권": {
         "metadata": {},
         "data": [
-          {"keyValue": "조합원 입주권 잔금 청산일", "type": "date", "condition": 0}
+          {
+            "title": "조합원 입주권 잔금 청산일",
+            "keyValue": "buy_date1",
+            "type": "date",
+            "condition": 0
+          }
         ]
       },
       "분양권(2021년 이전 취득)": {
         "metadata": {},
         "data": [
-          {"keyValue": "주택 잔금청산일", "type": "date", "condition": 0}
+          {
+            "title": "주택 잔금청산일",
+            "keyValue": "buy_date1",
+            "type": "date",
+            "condition": 0
+          }
         ]
       },
       "분양권(2022년 이후 취득)": {
         "metadata": {},
         "data": [
-          {"keyValue": "주택 잔금청산일", "type": "date", "condition": 0}
+          {
+            "title": "주택 잔금청산일",
+            "keyValue": "buy_date1",
+            "type": "date",
+            "condition": 0
+          }
         ]
       }
     },
@@ -494,25 +757,45 @@ Map filterMap = {
       "재건축전 주택": {
         "metadata": {},
         "data": [
-          {"keyValue": "재건축전 주택 등기접수일", "type": "date", "condition": 0}
+          {
+            "title": "재건축전 주택 등기접수일",
+            "keyValue": "buy_date1",
+            "type": "date",
+            "condition": 0
+          }
         ]
       },
       "조합원 입주권": {
         "metadata": {},
         "data": [
-          {"keyValue": "조합원 입주권 명의변경 신고일", "type": "date", "condition": 0}
+          {
+            "title": "조합원 입주권 명의변경 신고일",
+            "keyValue": "buy_date1",
+            "type": "date",
+            "condition": 0
+          }
         ]
       },
       "분양권(2021년 이전 취득)": {
         "metadata": {},
         "data": [
-          {"keyValue": "주택 잔금청산일", "type": "date", "condition": 0}
+          {
+            "title": "주택 잔금청산일",
+            "keyValue": "buy_date1",
+            "type": "date",
+            "condition": 0
+          }
         ]
       },
       "분양권(2022년 이후 취득)": {
         "metadata": {},
         "data": [
-          {"keyValue": "주택 잔금청산일", "type": "date", "condition": 0}
+          {
+            "title": "주택 잔금청산일",
+            "keyValue": "buy_date1",
+            "type": "date",
+            "condition": 0
+          }
         ]
       }
     },
@@ -520,10 +803,21 @@ Map filterMap = {
       "재건축전 주택": {
         "metadata": {},
         "data": [
-          {"keyValue": "재건축전 주택 상속개시일", "type": "date", "condition": 0},
-          {"keyValue": "피상속인 주택 취득일", "type": "date", "condition": 2},
           {
-            "keyValue": "피상속인과 상속인의 재건축전 주택 동일거주 시작일",
+            "title": "재건축전 주택 상속개시일",
+            "keyValue": "buy_date1",
+            "type": "date",
+            "condition": 0
+          },
+          {
+            "title": "피상속인 주택 취득일",
+            "keyValue": "buy_date2",
+            "type": "date",
+            "condition": 2
+          },
+          {
+            "title": "피상속인과 상속인의 재건축전 주택 동일거주 시작일",
+            "keyValue": "buy_date3",
             "type": "date",
             "condition": 3
           }
@@ -532,20 +826,40 @@ Map filterMap = {
       "조합원 입주권": {
         "metadata": {},
         "data": [
-          {"keyValue": "상속개시일", "type": "date", "condition": 0},
-          {"keyValue": "피상속인 조합원 입주권 취득일", "type": "date", "condition": 1}
+          {
+            "title": "상속개시일",
+            "keyValue": "buy_date1",
+            "type": "date",
+            "condition": 0
+          },
+          {
+            "title": "피상속인 조합원 입주권 취득일",
+            "keyValue": "buy_date2",
+            "type": "date",
+            "condition": 1
+          }
         ]
       },
       "분양권(2021년 이전 취득)": {
         "metadata": {},
         "data": [
-          {"keyValue": "주택 잔금청산일", "type": "date", "condition": 0}
+          {
+            "title": "주택 잔금청산일",
+            "keyValue": "buy_date1",
+            "type": "date",
+            "condition": 0
+          }
         ]
       },
       "분양권(2022년 이후 취득)": {
         "metadata": {},
         "data": [
-          {"keyValue": "주택 잔금청산일", "type": "date", "condition": 0}
+          {
+            "title": "주택 잔금청산일",
+            "keyValue": "buy_date1",
+            "type": "date",
+            "condition": 0
+          }
         ]
       }
     },
@@ -554,7 +868,8 @@ Map filterMap = {
         "metadata": {},
         "data": [
           {
-            "keyValue": "이전주택 사용승인서 교부일, 임시사용일, 사실상 사용일중 빠른날",
+            "title": "이전주택 사용승인서 교부일, 임시사용일, 사실상 사용일중 빠른날",
+            "keyValue": "buy_date1",
             "type": "date",
             "condition": 0
           }
@@ -568,13 +883,23 @@ Map filterMap = {
         "승계 분양권": {
           "metadata": {},
           "data": [
-            {"keyValue": "분양권 잔금청산일", "type": "date", "condition": 0}
+            {
+              "title": "분양권 잔금청산일",
+              "keyValue": "buy_date1",
+              "type": "date",
+              "condition": 0
+            }
           ]
         },
         "최초당첨 분양권": {
           "metadata": {},
           "data": [
-            {"keyValue": "분양권 당첨일", "type": "date", "condition": 0}
+            {
+              "title": "분양권 당첨일",
+              "keyValue": "buy_date1",
+              "type": "date",
+              "condition": 0
+            }
           ]
         }
       }
@@ -583,7 +908,12 @@ Map filterMap = {
       "분양권(2021년 이전 취득)": {
         "metadata": {},
         "data": [
-          {"keyValue": "분양권 권리의무 승계일(명의변경일)", "type": "date", "condition": 0}
+          {
+            "title": "분양권 권리의무 승계일(명의변경일)",
+            "keyValue": "buy_date1",
+            "type": "date",
+            "condition": 0
+          }
         ]
       }
     },
@@ -592,15 +922,35 @@ Map filterMap = {
         "승계 분양권": {
           "metadata": {},
           "data": [
-            {"keyValue": "상속개시일", "type": "date", "condition": 0},
-            {"keyValue": "분양권 잔금청산일", "type": "date", "condition": 1}
+            {
+              "title": "상속개시일",
+              "keyValue": "buy_date1",
+              "type": "date",
+              "condition": 0
+            },
+            {
+              "title": "분양권 잔금청산일",
+              "keyValue": "buy_date2",
+              "type": "date",
+              "condition": 1
+            }
           ]
         },
         "최초당첨 분양권": {
           "metadata": {},
           "data": [
-            {"keyValue": "상속개시일", "type": "date", "condition": 0},
-            {"keyValue": "분양권 당첨일", "type": "date", "condition": 1}
+            {
+              "title": "상속개시일",
+              "keyValue": "buy_date1",
+              "type": "date",
+              "condition": 0
+            },
+            {
+              "title": "분양권 당첨일",
+              "keyValue": "buy_date2",
+              "type": "date",
+              "condition": 1
+            }
           ]
         }
       }
@@ -612,13 +962,23 @@ Map filterMap = {
         "승계 분양권": {
           "metadata": {},
           "data": [
-            {"keyValue": "분양권 잔금청산일", "type": "date", "condition": 0}
+            {
+              "title": "분양권 잔금청산일",
+              "keyValue": "buy_date1",
+              "type": "date",
+              "condition": 0
+            }
           ]
         },
         "최초당첨 분양권": {
           "metadata": {},
           "data": [
-            {"keyValue": "분양권 당첨일", "type": "date", "condition": 0}
+            {
+              "title": "분양권 당첨일",
+              "keyValue": "buy_date1",
+              "type": "date",
+              "condition": 0
+            }
           ]
         }
       }
@@ -627,7 +987,12 @@ Map filterMap = {
       "분양권(2022년 이후 취득)": {
         "metadata": {},
         "data": [
-          {"keyValue": "분양권 권리의무 승계일(명의변경일)", "type": "date", "condition": 0}
+          {
+            "title": "분양권 권리의무 승계일(명의변경일)",
+            "keyValue": "buy_date1",
+            "type": "date",
+            "condition": 0
+          }
         ]
       }
     },
@@ -636,15 +1001,35 @@ Map filterMap = {
         "승계 분양권": {
           "metadata": {},
           "data": [
-            {"keyValue": "상속개시일", "type": "date", "condition": 0},
-            {"keyValue": "분양권 잔금청산일", "type": "date", "condition": 1}
+            {
+              "title": "상속개시일",
+              "keyValue": "buy_date1",
+              "type": "date",
+              "condition": 0
+            },
+            {
+              "title": "분양권 잔금청산일",
+              "keyValue": "buy_date2",
+              "type": "date",
+              "condition": 1
+            }
           ]
         },
         "최초당첨 분양권": {
           "metadata": {},
           "data": [
-            {"keyValue": "상속개시일", "type": "date", "condition": 0},
-            {"keyValue": "분양권 당첨일", "type": "date", "condition": 1}
+            {
+              "title": "상속개시일",
+              "keyValue": "buy_date1",
+              "type": "date",
+              "condition": 0
+            },
+            {
+              "title": "분양권 당첨일",
+              "keyValue": "buy_date2",
+              "type": "date",
+              "condition": 1
+            }
           ]
         }
       }

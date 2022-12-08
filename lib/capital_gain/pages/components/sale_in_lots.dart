@@ -23,6 +23,8 @@ class SaleInLots extends StatelessWidget {
           title: "분양가액",
           controller: controller,
         );
+      } else {
+        controller.param[index].removeWhere((key, value) => key == "sale_cost");
       }
 
       return Container();

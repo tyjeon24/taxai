@@ -43,11 +43,16 @@ class BaseInfo extends StatelessWidget {
             title: "취득 원인 (매수 종류)",
             contents: filtermap1[controller.param[index]["sell_type"]],
             controller: controller)); // 3. 취득 원인
+      } else {
+        controller.param[index].removeWhere((key, value) => key == "buy_cause");
       }
       if (controller.param[index]["buy_cause"] == "상속") {
         // 19.5 상속시 동일세대원 여부(20220913 추가)
         widgets.add(CustomOXDropdownButton(
             index: index, keyValue: "상속시 동일세대원 여부", controller: controller));
+      } else {
+        controller.param[index]
+            .removeWhere((key, value) => key == "상속시 동일세대원 여부");
       }
       if (controller.param[index]["buy_cause"] != null) {
         // 취득시 종류
@@ -58,6 +63,8 @@ class BaseInfo extends StatelessWidget {
             contents: filtermap2[controller.param[index]["sell_type"]]
                 [controller.param[index]["buy_cause"]],
             controller: controller)); // // 4. 취득시 종류
+      } else {
+        controller.param[index].removeWhere((key, value) => key == "buy_type");
       }
       if (controller.param[index]["buy_type"] != null &&
           filterMap[controller.param[index]["sell_type"]]
@@ -80,6 +87,8 @@ class BaseInfo extends StatelessWidget {
                 .keys
                 .toList(),
             controller: controller));
+      } else {
+        controller.param[index].removeWhere((key, value) => key == "분양권");
       }
 
       return Column(
