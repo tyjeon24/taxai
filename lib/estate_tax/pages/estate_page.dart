@@ -8,6 +8,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:get/get.dart';
+import 'package:capgain/api_endpoints.dart';
 
 class EstatePage extends StatelessWidget {
   final estateController = Get.put(EstateController());
@@ -164,15 +165,12 @@ class Contents extends StatelessWidget {
 }
 
 Future calculateEstate() async {
-  String urlBase =
-      'https://8vltu9ycj5.execute-api.ap-northeast-2.amazonaws.com/default/calculateEstate';
-
   var dio = Dio();
 
   final controller = Get.find<EstateController>();
 
   final response = await dio.request(
-    urlBase,
+    estateEndpoint,
     options: Options(method: 'GET'),
     queryParameters: {"0": json.encode(controller.param[0])},
   );

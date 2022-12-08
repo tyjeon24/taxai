@@ -8,16 +8,14 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
 import 'package:capgain/common_widgets/custom_sidetitle.dart';
+import 'package:capgain/api_endpoints.dart';
 
 Future checkRuralCondition(int index) async {
   final controller = Get.find<CapitalGainsParameter>();
   final customController = Get.find<MyCustomParameter>();
 
-  String urlBase =
-      'https://u4yy7kau6c.execute-api.ap-northeast-2.amazonaws.com/default/rural?';
-
   String url =
-      '${urlBase}pnu=${controller.param[index]["pnu"]}&address=${controller.param[index]["fullAddress"]}&acquisition_date=${DateFormat('yyyyMMdd').format(customController.param[index]["취득일"]).toString()}';
+      '$ruralEndpoint?pnu=${controller.param[index]["pnu"]}&address=${controller.param[index]["fullAddress"]}&acquisition_date=${DateFormat('yyyyMMdd').format(customController.param[index]["취득일"]).toString()}';
 
   if (controller.param[index]["hosu"] != null) {
     url =

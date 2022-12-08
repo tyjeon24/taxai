@@ -6,12 +6,11 @@ import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:capgain/typography.dart';
 import 'custom_sidetitle.dart';
+import 'package:capgain/api_endpoints.dart';
 
 Future fetchAddress(String keyword) async {
-  String urlBase =
-      'https://96qqvevx72.execute-api.ap-northeast-2.amazonaws.com/default/searchAddress?keyword=';
-
-  final response = await http.get(Uri.parse(urlBase + keyword));
+  final response =
+      await http.get(Uri.parse("$addressEndpoint?keyword=$keyword"));
 
   if (response.statusCode == 200) {
     final jsonResponse = jsonDecode(utf8.decode(
@@ -25,14 +24,12 @@ Future fetchAddress(String keyword) async {
 }
 
 Future fetchKakaoAddress(String keyword) async {
-  String urlBase = 'https://dapi.kakao.com/v2/local/search/keyword.json?query=';
-
   Map<String, String> headers = {
     "Authorization": "KakaoAK 2f0db465d128bff49a344f7a89366da8"
   };
 
-  final response =
-      await http.get(Uri.parse(urlBase + keyword), headers: headers);
+  final response = await http
+      .get(Uri.parse("$kakaoAddressEndpoint?query=$keyword"), headers: headers);
 
   if (response.statusCode == 200) {
     final jsonResponse = jsonDecode(utf8.decode(
@@ -47,9 +44,7 @@ Future fetchKakaoAddress(String keyword) async {
 }
 
 Future fetchDetailedAddress(String pnu, [String? dong]) async {
-  String urlBase =
-      'https://z0hq847m05.execute-api.ap-northeast-2.amazonaws.com/default/detailedAddress?';
-  String urlWithParams = "${urlBase}pnu=$pnu";
+  String urlWithParams = "$detailedAddressEndpoint?pnu=$pnu";
   if (dong != null) {
     urlWithParams = "$urlWithParams&dong=$dong";
   }

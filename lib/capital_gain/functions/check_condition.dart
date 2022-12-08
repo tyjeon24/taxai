@@ -5,6 +5,7 @@ import 'package:flutter/scheduler.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
+import 'package:capgain/api_endpoints.dart';
 
 void isRegulated(int index, String pnu, String date) {
   final customController = Get.find<MyCustomParameter>();
@@ -14,7 +15,7 @@ void isRegulated(int index, String pnu, String date) {
 
     var apiFuture = Future.wait([
       http.get(Uri.parse(
-        'https://26mlmqw646.execute-api.ap-northeast-2.amazonaws.com/default/check_reg?pnu=$pnu&date=$date',
+        '$regulationEndpoint?pnu=$pnu&date=$date',
       ))
     ]);
 
