@@ -1,17 +1,17 @@
 String estateEndpoint =
-    'https://8vltu9ycj5.execute-api.ap-northeast-2.amazonaws.com/default/calculateEstate';
+    'https://ahoa51iat9.execute-api.ap-northeast-2.amazonaws.com/default/calculateEstate';
 
 String addressEndpoint =
-    'https://96qqvevx72.execute-api.ap-northeast-2.amazonaws.com/default/searchAddress';
+    'https://ej8sqbr5od.execute-api.ap-northeast-2.amazonaws.com/default/searchAddress';
 
 String kakaoAddressEndpoint =
     'https://dapi.kakao.com/v2/local/search/keyword.json';
 
 String detailedAddressEndpoint =
-    'https://z0hq847m05.execute-api.ap-northeast-2.amazonaws.com/default/detailedAddress';
+    'https://mexz3xg9w3.execute-api.ap-northeast-2.amazonaws.com/default/detailedAddress';
 
 String regulationEndpoint =
-    "https://26mlmqw646.execute-api.ap-northeast-2.amazonaws.com/default/check_reg";
+    "https://26mlmqw646.execute-api.ap-northeast-2.amazonaws.com/default/check_reg"; // TODO 추후 변경
 
 String ruralEndpoint =
-    "https://u4yy7kau6c.execute-api.ap-northeast-2.amazonaws.com/default/rural";
+    "https://u4yy7kau6c.execute-api.ap-northeast-2.amazonaws.com/default/rural"; // TODO 추후 변경
