@@ -2501,6 +2501,7 @@ THE SOFTWARE.
 async
 collection
 http2
+mime
 typed_data
 
 Copyright 2015, the Dart project authors. 
