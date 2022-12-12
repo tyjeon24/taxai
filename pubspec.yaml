@@ -92,6 +92,13 @@ flutter:
     -  assets/money.json
     -  assets/lottie1.png
     -  assets/lottie2.png
+    -  assets/background.png
+    -  assets/backgroundtext.png
+    -  assets/background2.png
+    -  assets/background2text.png
+    -  assets/background3_1.png
+    -  assets/background3_2.png
+    -  assets/compare.png
 
   #   - images/a_dot_ham.jpeg
 
