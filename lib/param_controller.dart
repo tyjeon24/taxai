@@ -9,6 +9,18 @@ class HoldingController extends GetxController {
     }
     param[index][key] = value;
   }
+
+  @override
+  void onInit() {
+    super.onInit();
+    ever(
+      param,
+      (_) {
+        // ignore: avoid_print
+        print('$_');
+      },
+    );
+  }
 }
 
 class EstateController extends GetxController {

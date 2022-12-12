@@ -14,6 +14,7 @@ class HoldingTaxPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.find<HoldingController>();
     holdingController.setParam(0, "init", "init");
     holdingController.setParam(1, "init", "init");
     holdingController.setParam(2, "init", "init");
@@ -21,14 +22,19 @@ class HoldingTaxPage extends StatelessWidget {
     holdingController.setParam(4, "init", "init");
     return Scaffold(
       body: SafeArea(
-        child: Container(
-          color: Color(0xFFF6F6F8),
-          margin: EdgeInsets.all(30.0),
-          child: ListView(
-            children: [
-              Column(children: [Contents()])
-            ],
-          ),
+        child: Obx(
+          () {
+            print(controller.param);
+            return Container(
+              color: Color(0xFFF6F6F8),
+              margin: EdgeInsets.all(30.0),
+              child: ListView(
+                children: [
+                  Column(children: [Contents()])
+                ],
+              ),
+            );
+          },
         ),
       ),
     );
@@ -37,7 +43,6 @@ class HoldingTaxPage extends StatelessWidget {
 
 class Contents extends StatelessWidget {
   final controller = Get.find<HoldingController>();
-
   Contents({super.key});
   @override
   Widget build(BuildContext context) {
@@ -68,14 +73,14 @@ class Contents extends StatelessWidget {
               controller: controller),
           Obx(() {
             controller.param;
-            if (controller.param[0]["주택수 선택"] != null &&
-                controller.param[0]["주택수 선택"] == "1세대 1주택") {
+            if (controller.param[0]["num_house"] != null &&
+                controller.param[0]["num_house"] == "1세대 1주택") {
               return Column(children: [
                 CustomAddress(index: 0, controller: controller),
                 CustomDropdownButton(
                     index: 0,
-                    keyValue: "own_name",
-                    title: "소유쥬",
+                    keyValue: "own_name1",
+                    title: "소유주",
                     contents: owners,
                     controller: controller)
               ]);
@@ -84,20 +89,20 @@ class Contents extends StatelessWidget {
           }),
           Obx(() {
             controller.param;
-            if (controller.param[0]["주택수 선택"] != null &&
-                controller.param[0]["주택수 선택"] == "1세대 2주택") {
+            if (controller.param[0]["num_house"] != null &&
+                controller.param[0]["num_house"] == "1세대 2주택") {
               return Column(children: [
                 CustomAddress(index: 0, controller: controller),
                 CustomDropdownButton(
                     index: 0,
-                    keyValue: "own_name",
+                    keyValue: "own_name1",
                     title: "소유주",
                     contents: owners,
                     controller: controller),
                 CustomAddress(index: 1, controller: controller),
                 CustomDropdownButton(
                     index: 1,
-                    keyValue: "own_name",
+                    keyValue: "own_name2",
                     title: "소유주",
                     contents: owners,
                     controller: controller),
@@ -107,27 +112,27 @@ class Contents extends StatelessWidget {
           }),
           Obx(() {
             controller.param;
-            if (controller.param[0]["주택수 선택"] != null &&
-                controller.param[0]["주택수 선택"] == "1세대 3주택") {
+            if (controller.param[0]["num_house"] != null &&
+                controller.param[0]["num_house"] == "1세대 3주택") {
               return Column(children: [
                 CustomAddress(index: 0, controller: controller),
                 CustomDropdownButton(
                     index: 0,
-                    keyValue: "own_name",
+                    keyValue: "own_name1",
                     title: "소유주",
                     contents: owners,
                     controller: controller),
                 CustomAddress(index: 1, controller: controller),
                 CustomDropdownButton(
                     index: 1,
-                    keyValue: "own_name",
+                    keyValue: "own_name2",
                     title: "소유주",
                     contents: owners,
                     controller: controller),
                 CustomAddress(index: 2, controller: controller),
                 CustomDropdownButton(
                     index: 2,
-                    keyValue: "own_name",
+                    keyValue: "own_name3",
                     title: "소유주",
                     contents: owners,
                     controller: controller),
@@ -137,34 +142,34 @@ class Contents extends StatelessWidget {
           }),
           Obx(() {
             controller.param;
-            if (controller.param[0]["주택수 선택"] != null &&
-                controller.param[0]["주택수 선택"] == "1세대 4주택") {
+            if (controller.param[0]["num_house"] != null &&
+                controller.param[0]["num_house"] == "1세대 4주택") {
               return Column(children: [
                 CustomAddress(index: 0, controller: controller),
                 CustomDropdownButton(
                     index: 0,
-                    keyValue: "own_name",
+                    keyValue: "own_name1",
                     title: "소유주",
                     contents: owners,
                     controller: controller),
                 CustomAddress(index: 1, controller: controller),
                 CustomDropdownButton(
                     index: 1,
-                    keyValue: "own_name",
+                    keyValue: "own_name2",
                     title: "소유주",
                     contents: owners,
                     controller: controller),
                 CustomAddress(index: 2, controller: controller),
                 CustomDropdownButton(
                     index: 2,
-                    keyValue: "own_name",
+                    keyValue: "own_name3",
                     title: "소유주",
                     contents: owners,
                     controller: controller),
                 CustomAddress(index: 3, controller: controller),
                 CustomDropdownButton(
                     index: 3,
-                    keyValue: "own_name",
+                    keyValue: "own_name4",
                     title: "소유주",
                     contents: owners,
                     controller: controller),
@@ -174,41 +179,41 @@ class Contents extends StatelessWidget {
           }),
           Obx(() {
             controller.param;
-            if (controller.param[0]["주택수 선택"] != null &&
-                controller.param[0]["주택수 선택"] == "1세대 5주택") {
+            if (controller.param[0]["num_house"] != null &&
+                controller.param[0]["num_house"] == "1세대 5주택") {
               return Column(children: [
                 CustomAddress(index: 0, controller: controller),
                 CustomDropdownButton(
                     index: 0,
-                    keyValue: "own_name",
+                    keyValue: "own_name1",
                     title: "소유주",
                     contents: owners,
                     controller: controller),
                 CustomAddress(index: 1, controller: controller),
                 CustomDropdownButton(
                     index: 1,
-                    keyValue: "own_name",
+                    keyValue: "own_name2",
                     title: "소유주",
                     contents: owners,
                     controller: controller),
                 CustomAddress(index: 2, controller: controller),
                 CustomDropdownButton(
                     index: 2,
-                    keyValue: "own_name",
+                    keyValue: "own_name3",
                     title: "소유주",
                     contents: owners,
                     controller: controller),
                 CustomAddress(index: 3, controller: controller),
                 CustomDropdownButton(
                     index: 3,
-                    keyValue: "own_name",
+                    keyValue: "own_name4",
                     title: "소유주",
                     contents: owners,
                     controller: controller),
                 CustomAddress(index: 4, controller: controller),
                 CustomDropdownButton(
                     index: 4,
-                    keyValue: "own_name",
+                    keyValue: "own_name5",
                     title: "소유주",
                     contents: owners,
                     controller: controller),
@@ -217,13 +222,13 @@ class Contents extends StatelessWidget {
             return Container();
           }),
           CustomPercent(index: 0, keyValue: "주택지분", controller: controller),
-          if (controller.param[0]["주택수 선택"] != null &&
-              controller.param[0]["주택수 선택"] != "1세대 1주택") ...[
+          if (controller.param[0]["num_house"] != null &&
+              controller.param[0]["num_house"] != "1세대 1주택") ...[
             CustomOXDropdownButton(
                 index: 0, keyValue: "1세대 1주택으로 보는경우", controller: controller)
           ],
-          if (controller.param[0]["주택수 선택"] != null &&
-              controller.param[0]["주택수 선택"] == "1세대 1주택") ...[
+          if (controller.param[0]["num_house"] != null &&
+              controller.param[0]["num_house"] == "1세대 1주택") ...[
             CustomDropdownButton(
                 index: 0,
                 keyValue: "own_date",
