@@ -41,7 +41,7 @@ class Contents extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Obx(() {
-      controller.param;
+      print(controller.param);
       return Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.stretch,
