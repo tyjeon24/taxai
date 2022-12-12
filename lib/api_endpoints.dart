@@ -11,7 +11,7 @@ String detailedAddressEndpoint =
     'https://mexz3xg9w3.execute-api.ap-northeast-2.amazonaws.com/default/detailedAddress';
 
 String regulationEndpoint =
-    "https://26mlmqw646.execute-api.ap-northeast-2.amazonaws.com/default/check_reg"; // TODO 추후 변경
+    "https://9ibwu4zi21.execute-api.ap-northeast-2.amazonaws.com/default/check_reg";
 
 String ruralEndpoint =
-    "https://u4yy7kau6c.execute-api.ap-northeast-2.amazonaws.com/default/rural"; // TODO 추후 변경
+    "https://5ww08jg4ck.execute-api.ap-northeast-2.amazonaws.com/default/rural";
