@@ -14951,23 +14951,21 @@ _.vw$=e
 _.ro$=f
 _.vx$=g},
 aOH:function aOH(){},
-beh(){var s=0,r=A.G(t.z),q,p,o,n,m,l,k
+beh(){var s=0,r=A.G(t.z),q,p,o,n,m
 var $async$beh=A.B(function(a,b){if(a===1)return A.D(b,r)
-while(true)switch(s){case 0:l=new A.aET($,new A.a89(A.a([],t.lC),new A.ON(),new A.ON(),new A.ON()),$,new A.aEH(),!1)
-k=A.bAn()
-l.a2U$=k
-l.a2V$=new A.aAA(A.bs(t.Gf))
+while(true)switch(s){case 0:n=new A.aET($,new A.a89(A.a([],t.lC),new A.ON(),new A.ON(),new A.ON()),$,new A.aEH(),!1)
+m=A.bAn()
+n.a2U$=m
+n.a2V$=new A.aAA(A.bs(t.Gf))
 $.ce()
-k=$.b_
-if(k==null)k=$.b_=B.H
-p=k.cq(0,null,t.T1)
-k=A.bEW("GET")
-o=p.ax
-n=t.z
+m=$.b_
+if(m==null)m=$.b_=B.H
+p=m.cq(0,null,t.T1)
+m=t.z
 s=3
-return A.p(l.Qr(0,"https://ahoa51iat9.execute-api.ap-northeast-2.amazonaws.com/default/calculateEstate",k,A.r(["0",B.N.ky(J.f(o.gl(o),o.$ti.c.a(0)))],t.N,n),n),$async$beh)
-case 3:m=b
-if(m.d===200){q=m.a
+return A.p(n.Qr(0,"https://ahoa51iat9.execute-api.ap-northeast-2.amazonaws.com/default/calculateEstate",A.bEW("GET"),A.r(["input",B.N.ky(p.ax)],t.N,m),m),$async$beh)
+case 3:o=b
+if(o.d===200){q=o.a
 s=1
 break}else throw A.c(A.dR("\uc694\uccad \uc911 \uc624\ub958\uac00 \ubc1c\uc0dd\ud588\uc2b5\ub2c8\ub2e4."))
 case 1:return A.E(q,r)}})
