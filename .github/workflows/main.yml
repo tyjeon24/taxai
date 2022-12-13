@@ -18,7 +18,7 @@ jobs:
           channel: 'stable'
     
     - run: flutter pub get
-    - run: flutter build web --release --base-href "/taxai/"
+    - run: flutter build web --release
 
     - name: Upload production-ready build files
       uses: actions/upload-artifact@v2
