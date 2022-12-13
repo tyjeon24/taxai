@@ -99,8 +99,10 @@ class _HomepageState extends State<Homepage> {
         child: FittedBox(
             fit: BoxFit.fitWidth,
             child: Stack(alignment: Alignment.centerLeft, children: [
-              Image.asset('background.png', height: widgetHeight * 0.8),
-              Image.asset('backgroundtext.png', height: widgetHeight * 0.4),
+              Image.asset('assets/homepage/background.png',
+                  height: widgetHeight * 0.8),
+              Image.asset('assets/homepage/backgroundtext.png',
+                  height: widgetHeight * 0.4),
             ])),
       ),
       Container(
@@ -108,10 +110,11 @@ class _HomepageState extends State<Homepage> {
         child: FittedBox(
             fit: BoxFit.fitWidth,
             child: Stack(alignment: Alignment.centerLeft, children: [
-              Image.asset('background2.png', height: widgetHeight * 0.8),
+              Image.asset('assets/homepage/background2.png',
+                  height: widgetHeight * 0.8),
               Container(
                       padding: EdgeInsets.only(left: 30),
-                      child: Image.asset('background2text.png',
+                      child: Image.asset('assets/homepage/background2text.png',
                           height: widgetHeight * 0.4))
                   .animate(delay: 1000.ms)
                   .fadeIn(duration: 1000.ms, curve: Curves.easeOutQuad)
@@ -123,8 +126,9 @@ class _HomepageState extends State<Homepage> {
           width: widgetWidth * 0.7,
           height: widgetHeight * 0.8,
           child: Stack(alignment: Alignment.center, children: [
-            Image.asset('background3_1.png', height: widgetHeight * 0.8),
-            Image.asset('background3_2.png',
+            Image.asset('assets/homepage/background3_1.png',
+                height: widgetHeight * 0.8),
+            Image.asset('assets/homepage/background3_2.png',
                     width: widgetWidth * 0.5, height: widgetHeight * 0.4)
                 .animate(delay: 1000.ms)
                 .fadeIn(duration: 1000.ms, curve: Curves.easeOutQuad)
@@ -132,7 +136,7 @@ class _HomepageState extends State<Homepage> {
           ])),
       Container(
               padding: EdgeInsets.all(30),
-              child: Image.asset('compare.png',
+              child: Image.asset('assets/homepage/compare.png',
                   width: widgetWidth * 0.5, height: widgetHeight * 0.5))
           .animate(delay: 1000.ms)
           .fadeIn(duration: 1000.ms, curve: Curves.easeOutQuad)
@@ -142,8 +146,9 @@ class _HomepageState extends State<Homepage> {
           child: FittedBox(
             fit: BoxFit.fitWidth,
             child: Stack(alignment: Alignment.centerLeft, children: [
-              Image.asset('background4_1.png', height: widgetHeight * 0.8),
-              Image.asset('background4_2.png',
+              Image.asset('assets/homepage/background4_1.png',
+                  height: widgetHeight * 0.8),
+              Image.asset('assets/homepage/background4_2.png',
                       width: widgetWidth * 0.5, height: widgetHeight * 0.4)
                   .animate(delay: 1000.ms)
                   .fadeIn(duration: 1000.ms, curve: Curves.easeOutQuad)

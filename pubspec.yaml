@@ -88,17 +88,17 @@ flutter:
     -  assets/animtaed_consult.gif
     -  assets/icons/logo_color.svg
     -  assets/icons/logo_color_row.svg
-    -  assets/computer.json
-    -  assets/money.json
-    -  assets/lottie1.png
-    -  assets/lottie2.png
-    -  assets/background.png
-    -  assets/backgroundtext.png
-    -  assets/background2.png
-    -  assets/background2text.png
-    -  assets/background3_1.png
-    -  assets/background3_2.png
-    -  assets/compare.png
+    # -  assets/computer.json
+    # -  assets/money.json
+    # -  assets/lottie1.png
+    # -  assets/lottie2.png
+    -  assets/homepage/background.png
+    -  assets/homepage/backgroundtext.png
+    -  assets/homepage/background2.png
+    -  assets/homepage/background2text.png
+    -  assets/homepage/background3_1.png
+    -  assets/homepage/background3_2.png
+    -  assets/homepage/compare.png
 
   #   - images/a_dot_ham.jpeg
 
