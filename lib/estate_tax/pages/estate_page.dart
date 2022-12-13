@@ -14,11 +14,10 @@ Future calculateEstate() async {
   var dio = Dio();
 
   final controller = Get.find<EstateController>();
-
   final response = await dio.request(
     estateEndpoint,
     options: Options(method: 'GET'),
-    queryParameters: {"0": json.encode(controller.param[0])},
+    queryParameters: {"input": json.encode(controller.param)},
   );
 
   if (response.statusCode == 200) {
