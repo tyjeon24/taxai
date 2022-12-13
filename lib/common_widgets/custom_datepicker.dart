@@ -5,6 +5,13 @@ import 'package:intl/intl.dart';
 import 'custom_sidetitle.dart';
 
 class CustomDatePicker extends StatelessWidget {
+  final int index;
+
+  final String keyValue;
+  final String title;
+  final controller;
+  final textController = TextEditingController();
+
   CustomDatePicker(
       {Key? key,
       required this.index,
@@ -12,13 +19,6 @@ class CustomDatePicker extends StatelessWidget {
       required this.title,
       required this.controller})
       : super(key: key);
-
-  final int index;
-  final String keyValue;
-  final String title;
-  final controller;
-
-  final textController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {

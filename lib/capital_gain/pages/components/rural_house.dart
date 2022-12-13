@@ -1,14 +1,14 @@
 import 'dart:convert';
 
 import 'package:capgain/common_widgets/custom_oxdropdown.dart';
-import 'package:capgain/param_controller.dart';
+import 'package:capgain/common_widgets/custom_sidetitle.dart';
+import 'package:capgain/components/api_endpoints.dart';
+import 'package:capgain/components/param_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
-import 'package:capgain/common_widgets/custom_sidetitle.dart';
-import 'package:capgain/api_endpoints.dart';
 
 Future checkRuralCondition(int index) async {
   final controller = Get.find<CapitalGainsParameter>();
@@ -34,13 +34,49 @@ Future checkRuralCondition(int index) async {
   }
 }
 
-class RuralHouseChildern extends StatelessWidget {
-  const RuralHouseChildern({
+class RuralHouse extends StatelessWidget {
+  final int index;
+
+  const RuralHouse({
     Key? key,
     required this.index,
   }) : super(key: key);
 
+  @override
+  Widget build(BuildContext context) {
+    return GetBuilder<MyCustomParameter>(builder: (_) {
+      return Row(
+        children: [
+          Expanded(flex: 7, child: CustomSideTitle("농어촌주택 여부")),
+          Flexible(flex: 1, child: Container()),
+          Expanded(
+            flex: 20,
+            child: ElevatedButton(
+                onPressed: () {
+                  showDialog(
+                      context: context,
+                      builder: (context) {
+                        return AlertDialog(
+                          title: Text("농어촌 주택"),
+                          content: RuralHouseChildern(index: index),
+                        );
+                      });
+                },
+                child: Text("검사")),
+          ),
+        ],
+      );
+    });
+  }
+}
+
+class RuralHouseChildern extends StatelessWidget {
   final int index;
+
+  const RuralHouseChildern({
+    Key? key,
+    required this.index,
+  }) : super(key: key);
   @override
   Widget build(context) {
     List addressList = [];
@@ -143,42 +179,6 @@ class RuralHouseChildern extends StatelessWidget {
       }
 
       return Container();
-    });
-  }
-}
-
-class RuralHouse extends StatelessWidget {
-  const RuralHouse({
-    Key? key,
-    required this.index,
-  }) : super(key: key);
-
-  final int index;
-
-  @override
-  Widget build(BuildContext context) {
-    return GetBuilder<MyCustomParameter>(builder: (_) {
-      return Row(
-        children: [
-          Expanded(flex: 7, child: CustomSideTitle("농어촌주택 여부")),
-          Flexible(flex: 1, child: Container()),
-          Expanded(
-            flex: 20,
-            child: ElevatedButton(
-                onPressed: () {
-                  showDialog(
-                      context: context,
-                      builder: (context) {
-                        return AlertDialog(
-                          title: Text("농어촌 주택"),
-                          content: RuralHouseChildern(index: index),
-                        );
-                      });
-                },
-                child: Text("검사")),
-          ),
-        ],
-      );
     });
   }
 }

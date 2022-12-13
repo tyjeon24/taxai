@@ -4,6 +4,11 @@ import 'package:get/get.dart';
 import 'custom_sidetitle.dart';
 
 class CustomDropdownButtonWithSidetitle extends StatelessWidget {
+  final int index;
+
+  final String keyValue;
+  final List? contents;
+  final controller;
   CustomDropdownButtonWithSidetitle(
       {Key? key,
       required this.index,
@@ -11,11 +16,6 @@ class CustomDropdownButtonWithSidetitle extends StatelessWidget {
       required this.contents,
       required this.controller})
       : super(key: key);
-
-  final int index;
-  final String keyValue;
-  final List? contents;
-  final controller;
   @override
   Widget build(BuildContext context) {
     if (contents == null) {

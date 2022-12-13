@@ -1,45 +1,11 @@
+import 'package:capgain/common_widgets/custom_address.dart';
 import 'package:capgain/common_widgets/custom_dropdown.dart';
 import 'package:capgain/common_widgets/custom_oxdropdown.dart';
+import 'package:capgain/common_widgets/custom_percent.dart';
 import 'package:capgain/common_widgets/custom_price.dart';
-import 'package:capgain/param_controller.dart';
+import 'package:capgain/components/param_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:capgain/common_widgets/custom_percent.dart';
-import 'package:capgain/common_widgets/custom_address.dart';
-
-class HoldingTaxPage extends StatelessWidget {
-  final holdingController = Get.put(HoldingController());
-
-  HoldingTaxPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final controller = Get.find<HoldingController>();
-    holdingController.setParam(0, "init", "init");
-    holdingController.setParam(1, "init", "init");
-    holdingController.setParam(2, "init", "init");
-    holdingController.setParam(3, "init", "init");
-    holdingController.setParam(4, "init", "init");
-    return Scaffold(
-      body: SafeArea(
-        child: Obx(
-          () {
-            print(controller.param);
-            return Container(
-              color: Color(0xFFF6F6F8),
-              margin: EdgeInsets.all(30.0),
-              child: ListView(
-                children: [
-                  Column(children: [Contents()])
-                ],
-              ),
-            );
-          },
-        ),
-      ),
-    );
-  }
-}
 
 class Contents extends StatelessWidget {
   final controller = Get.find<HoldingController>();
@@ -255,5 +221,39 @@ class Contents extends StatelessWidget {
         ],
       );
     });
+  }
+}
+
+class HoldingTaxPage extends StatelessWidget {
+  final holdingController = Get.put(HoldingController());
+
+  HoldingTaxPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final controller = Get.find<HoldingController>();
+    holdingController.setParam(0, "init", "init");
+    holdingController.setParam(1, "init", "init");
+    holdingController.setParam(2, "init", "init");
+    holdingController.setParam(3, "init", "init");
+    holdingController.setParam(4, "init", "init");
+    return Scaffold(
+      body: SafeArea(
+        child: Obx(
+          () {
+            print(controller.param);
+            return Container(
+              color: Color(0xFFF6F6F8),
+              margin: EdgeInsets.all(30.0),
+              child: ListView(
+                children: [
+                  Column(children: [Contents()])
+                ],
+              ),
+            );
+          },
+        ),
+      ),
+    );
   }
 }

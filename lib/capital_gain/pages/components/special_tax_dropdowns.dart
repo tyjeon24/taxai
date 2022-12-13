@@ -1,16 +1,16 @@
 import 'package:capgain/common_widgets/custom_oxdropdown.dart';
-import 'package:capgain/param_controller.dart';
+import 'package:capgain/common_widgets/custom_sidetitle.dart';
+import 'package:capgain/components/param_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:capgain/common_widgets/custom_sidetitle.dart';
 
 class SpecialTaxChildern extends StatelessWidget {
+  final int index;
+
   const SpecialTaxChildern({
     Key? key,
     required this.index,
   }) : super(key: key);
-
-  final int index;
   @override
   Widget build(context) {
     final controller = Get.find<CapitalGainsParameter>();
@@ -194,12 +194,12 @@ class SpecialTaxChildern extends StatelessWidget {
 }
 
 class SpecialTaxDropdowns extends StatelessWidget {
+  final int index;
+
   const SpecialTaxDropdowns({
     Key? key,
     required this.index,
   }) : super(key: key);
-
-  final int index;
 
   @override
   Widget build(BuildContext context) {

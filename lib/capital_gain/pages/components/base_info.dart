@@ -2,19 +2,19 @@ import 'package:capgain/capital_gain/constants/first_filter.dart';
 import 'package:capgain/common_widgets/custom_address_sidetitle.dart';
 import 'package:capgain/common_widgets/custom_dropdown.dart';
 import 'package:capgain/common_widgets/custom_oxdropdown.dart';
-import 'package:capgain/param_controller.dart';
-import 'package:capgain/spacing.dart';
+import 'package:capgain/components/param_controller.dart';
+import 'package:capgain/components/spacing.dart';
+import 'package:capgain/components/widgetsize.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:capgain/widgetsize.dart';
 
 class BaseInfo extends StatelessWidget {
+  final int index;
+
   const BaseInfo({
     Key? key,
     required this.index,
   }) : super(key: key);
-
-  final int index;
 
   @override
   Widget build(BuildContext context) {

@@ -1,5 +1,5 @@
+import 'package:capgain/components/colorbase.dart';
 import 'package:flutter/material.dart';
-import 'package:capgain/colorbase.dart';
 
 class CustomSideTitle extends StatelessWidget {
   String keyValue = "";

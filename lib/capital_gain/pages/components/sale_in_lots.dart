@@ -1,15 +1,15 @@
 import 'package:capgain/common_widgets/custom_price.dart';
-import 'package:capgain/param_controller.dart';
+import 'package:capgain/components/param_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class SaleInLots extends StatelessWidget {
+  final int index;
+
   const SaleInLots({
     Key? key,
     required this.index,
   }) : super(key: key);
-
-  final int index;
 
   @override
   Widget build(BuildContext context) {

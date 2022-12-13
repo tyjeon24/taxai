@@ -3,34 +3,30 @@ import 'dart:convert';
 import 'package:capgain/common_widgets/custom_dropdown.dart';
 import 'package:capgain/common_widgets/custom_oxdropdown.dart';
 import 'package:capgain/common_widgets/custom_price.dart';
-import 'package:capgain/param_controller.dart';
+import 'package:capgain/components/api_endpoints.dart';
+import 'package:capgain/components/param_controller.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:get/get.dart';
-import 'package:capgain/api_endpoints.dart';
 
-class EstatePage extends StatelessWidget {
-  final estateController = Get.put(EstateController());
+Future calculateEstate() async {
+  var dio = Dio();
 
-  EstatePage({super.key});
+  final controller = Get.find<EstateController>();
 
-  @override
-  Widget build(BuildContext context) {
-    estateController.setParam(0, "init", "init");
-    return Scaffold(
-      body: SafeArea(
-        child: Container(
-          color: Color(0xFFF6F6F8),
-          margin: EdgeInsets.all(30.0),
-          child: ListView(
-            children: [
-              Column(children: [Contents()])
-            ],
-          ),
-        ),
-      ),
-    );
+  final response = await dio.request(
+    estateEndpoint,
+    options: Options(method: 'GET'),
+    queryParameters: {"0": json.encode(controller.param[0])},
+  );
+
+  if (response.statusCode == 200) {
+    final result = response.data; // json으로 변경
+
+    return result;
+  } else {
+    throw Exception("요청 중 오류가 발생했습니다.");
   }
 }
 
@@ -164,22 +160,26 @@ class Contents extends StatelessWidget {
   }
 }
 
-Future calculateEstate() async {
-  var dio = Dio();
+class EstatePage extends StatelessWidget {
+  final estateController = Get.put(EstateController());
 
-  final controller = Get.find<EstateController>();
+  EstatePage({super.key});
 
-  final response = await dio.request(
-    estateEndpoint,
-    options: Options(method: 'GET'),
-    queryParameters: {"0": json.encode(controller.param[0])},
-  );
-
-  if (response.statusCode == 200) {
-    final result = response.data; // json으로 변경
-
-    return result;
-  } else {
-    throw Exception("요청 중 오류가 발생했습니다.");
+  @override
+  Widget build(BuildContext context) {
+    estateController.setParam(0, "init", "init");
+    return Scaffold(
+      body: SafeArea(
+        child: Container(
+          color: Color(0xFFF6F6F8),
+          margin: EdgeInsets.all(30.0),
+          child: ListView(
+            children: [
+              Column(children: [Contents()])
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }

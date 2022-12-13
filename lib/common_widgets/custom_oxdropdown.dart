@@ -1,4 +1,4 @@
-import 'package:capgain/colorbase.dart';
+import 'package:capgain/components/colorbase.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -10,17 +10,17 @@ class CustomOXDropdownButton extends StatelessWidget {
     {"displayed": "X", "value": false}
   ];
 
+  final int index;
+
+  final String keyValue;
+  // ignore: prefer_typing_uninitialized_variables
+  final controller;
   CustomOXDropdownButton(
       {Key? key,
       required this.index,
       required this.keyValue,
       required this.controller})
       : super(key: key);
-
-  final int index;
-  final String keyValue;
-  // ignore: prefer_typing_uninitialized_variables
-  final controller;
 
   @override
   Widget build(BuildContext context) {

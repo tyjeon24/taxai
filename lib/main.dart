@@ -27,24 +27,6 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   @override
-  void initState() {
-    super.initState();
-    _configureAmplify();
-  }
-
-  void _configureAmplify() async {
-    try {
-      await Amplify.addPlugin(AmplifyAuthCognito());
-      await Amplify.configure(amplifyconfig);
-      // ignore: avoid_print
-      print('Successfully configured');
-    } on Exception catch (e) {
-      // ignore: avoid_print
-      print('Error configuring Amplify: $e');
-    }
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Authenticator(
       child: GetMaterialApp(
@@ -95,5 +77,23 @@ class _MyAppState extends State<MyApp> {
         // 달력 한글 출력용 부분 끝
       ),
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _configureAmplify();
+  }
+
+  void _configureAmplify() async {
+    try {
+      await Amplify.addPlugin(AmplifyAuthCognito());
+      await Amplify.configure(amplifyconfig);
+      // ignore: avoid_print
+      print('Successfully configured');
+    } on Exception catch (e) {
+      // ignore: avoid_print
+      print('Error configuring Amplify: $e');
+    }
   }
 }

@@ -1,32 +1,45 @@
 import 'dart:convert';
+
 import 'package:capgain/capital_gain/constants/first_filter.dart';
-import 'package:capgain/param_controller.dart';
+import 'package:capgain/components/api_endpoints.dart';
+import 'package:capgain/components/param_controller.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 import 'package:intl/intl.dart';
-import 'package:capgain/api_endpoints.dart';
 
-void isRegulated(int index, String pnu, String date) {
+void calculateDate(int index, var additionalData) {
   final customController = Get.find<MyCustomParameter>();
+  // 1. 취득일, 계약일 계산
+  final controller = Get.find<CapitalGainsParameter>();
+  var day1 =
+      controller.param[index][additionalData["metadata"]["취득일계약일계산"]["param1"]];
+  var day2 =
+      controller.param[index][additionalData["metadata"]["취득일계약일계산"]["param2"]];
 
-  if (customController.param[index]["$pnu-$date"] == null) {
-    customController.setParam(index, "$pnu-$date", "");
+  if (day1 != null && day2 != null && day1 != "" && day2 != "") {
+    customController.param[index];
+    customController.setParam(index, "param1", day1);
+    customController.setParam(index, "param2", day2);
+    if (additionalData["metadata"]["취득일계약일계산"]["method"] == "normal") {
+      customController.setParam(index, "취득일", day1);
+      customController.setParam(index, "계약일", day2);
+    } else {
+      // 1,2중 늦은날이 취득일&계약일
+      // param1, 2중 늦은 날이 '취득일이자 계약일'이 된다.
+      customController.setParam(index, "param1", day1);
+      customController.setParam(index, "param2", day2);
 
-    var apiFuture = Future.wait([
-      http.get(Uri.parse(
-        '$regulationEndpoint?pnu=$pnu&date=$date',
-      ))
-    ]);
-
-    apiFuture.then((response) {
-      customController.setParam(
-          index,
-          "$pnu-$date",
-          jsonDecode(utf8.decode(response[0].bodyBytes))["results"]["field"]
-              ["isRegulated"]);
-      customController.update();
-    });
+      if (day1.difference(day2).inDays >= 0) {
+        // day1이 더 '늦은' 경우
+        customController.setParam(index, "취득일", day1);
+        customController.setParam(index, "계약일", day1);
+      } else {
+        // day2가 더 '늦은' 경우
+        customController.setParam(index, "취득일", day2);
+        customController.setParam(index, "계약일", day2);
+      }
+    }
   }
 }
 
@@ -137,37 +150,25 @@ bool checkCondition(int index, int conditionNumber) {
   return false;
 }
 
-void calculateDate(int index, var additionalData) {
+void isRegulated(int index, String pnu, String date) {
   final customController = Get.find<MyCustomParameter>();
-  // 1. 취득일, 계약일 계산
-  final controller = Get.find<CapitalGainsParameter>();
-  var day1 =
-      controller.param[index][additionalData["metadata"]["취득일계약일계산"]["param1"]];
-  var day2 =
-      controller.param[index][additionalData["metadata"]["취득일계약일계산"]["param2"]];
 
-  if (day1 != null && day2 != null && day1 != "" && day2 != "") {
-    customController.param[index];
-    customController.setParam(index, "param1", day1);
-    customController.setParam(index, "param2", day2);
-    if (additionalData["metadata"]["취득일계약일계산"]["method"] == "normal") {
-      customController.setParam(index, "취득일", day1);
-      customController.setParam(index, "계약일", day2);
-    } else {
-      // 1,2중 늦은날이 취득일&계약일
-      // param1, 2중 늦은 날이 '취득일이자 계약일'이 된다.
-      customController.setParam(index, "param1", day1);
-      customController.setParam(index, "param2", day2);
+  if (customController.param[index]["$pnu-$date"] == null) {
+    customController.setParam(index, "$pnu-$date", "");
 
-      if (day1.difference(day2).inDays >= 0) {
-        // day1이 더 '늦은' 경우
-        customController.setParam(index, "취득일", day1);
-        customController.setParam(index, "계약일", day1);
-      } else {
-        // day2가 더 '늦은' 경우
-        customController.setParam(index, "취득일", day2);
-        customController.setParam(index, "계약일", day2);
-      }
-    }
+    var apiFuture = Future.wait([
+      http.get(Uri.parse(
+        '$regulationEndpoint?pnu=$pnu&date=$date',
+      ))
+    ]);
+
+    apiFuture.then((response) {
+      customController.setParam(
+          index,
+          "$pnu-$date",
+          jsonDecode(utf8.decode(response[0].bodyBytes))["results"]["field"]
+              ["isRegulated"]);
+      customController.update();
+    });
   }
 }

@@ -1,14 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:capgain/common_widgets/page_with_appbar.dart';
-
-class IntroPage extends StatelessWidget {
-  const IntroPage({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return PageWithAppbar(body: IntroBody());
-  }
-}
+import 'package:flutter/material.dart';
 
 class IntroBody extends StatelessWidget {
   const IntroBody({
@@ -121,5 +112,14 @@ class IntroBody extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+class IntroPage extends StatelessWidget {
+  const IntroPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return PageWithAppbar(body: IntroBody());
   }
 }

@@ -1,48 +1,7 @@
 import 'package:get/get.dart';
 
-class HoldingController extends GetxController {
-  var param = {}.obs;
-
-  void setParam(int index, var key, var value) {
-    if (param[index] == null) {
-      param[index] = {}.obs;
-    }
-    param[index][key] = value;
-  }
-
-  @override
-  void onInit() {
-    super.onInit();
-    ever(
-      param,
-      (_) {
-        // ignore: avoid_print
-        print('$_');
-      },
-    );
-  }
-}
-
-class EstateController extends GetxController {
-  var param = {}.obs;
-
-  void setParam(int index, var key, var value) {
-    if (param[index] == null) {
-      param[index] = {}.obs;
-    }
-    param[index][key] = value;
-  }
-}
-
 class CapitalGainsParameter extends GetxController {
   var param = {}.obs;
-
-  void setParam(int index, var key, var value) {
-    if (param[index] == null) {
-      param[index] = {}.obs;
-    }
-    param[index][key] = value;
-  }
 
   void initParam(List<String> remainingFilter) {
     param.removeWhere((var key, var value) => !remainingFilter.contains(key));
@@ -59,9 +18,16 @@ class CapitalGainsParameter extends GetxController {
       },
     );
   }
+
+  void setParam(int index, var key, var value) {
+    if (param[index] == null) {
+      param[index] = {}.obs;
+    }
+    param[index][key] = value;
+  }
 }
 
-class MyCustomParameter extends GetxController {
+class EstateController extends GetxController {
   var param = {}.obs;
 
   void setParam(int index, var key, var value) {
@@ -70,6 +36,10 @@ class MyCustomParameter extends GetxController {
     }
     param[index][key] = value;
   }
+}
+
+class HoldingController extends GetxController {
+  var param = {}.obs;
 
   @override
   void onInit() {
@@ -81,5 +51,35 @@ class MyCustomParameter extends GetxController {
         print('$_');
       },
     );
+  }
+
+  void setParam(int index, var key, var value) {
+    if (param[index] == null) {
+      param[index] = {}.obs;
+    }
+    param[index][key] = value;
+  }
+}
+
+class MyCustomParameter extends GetxController {
+  var param = {}.obs;
+
+  @override
+  void onInit() {
+    super.onInit();
+    ever(
+      param,
+      (_) {
+        // ignore: avoid_print
+        print('$_');
+      },
+    );
+  }
+
+  void setParam(int index, var key, var value) {
+    if (param[index] == null) {
+      param[index] = {}.obs;
+    }
+    param[index][key] = value;
   }
 }

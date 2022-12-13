@@ -1,18 +1,18 @@
 import 'package:capgain/common_widgets/custom_dropdown.dart';
 import 'package:capgain/common_widgets/custom_percent.dart';
 import 'package:capgain/common_widgets/custom_price.dart';
-import 'package:capgain/param_controller.dart';
+import 'package:capgain/components/param_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class CommonAdditionalInfo extends StatelessWidget {
+  final int index;
+
   const CommonAdditionalInfo(
       {Key? key,
       required this.index,
       required CapitalGainsParameter controller})
       : super(key: key);
-
-  final int index;
 
   @override
   Widget build(BuildContext context) {

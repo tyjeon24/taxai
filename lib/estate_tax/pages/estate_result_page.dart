@@ -1,8 +1,16 @@
-import 'package:capgain/param_controller.dart';
+import 'package:capgain/common_widgets/page_with_appbar.dart';
+import 'package:capgain/components/colorbase.dart';
+import 'package:capgain/components/param_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:capgain/common_widgets/page_with_appbar.dart';
-import 'package:capgain/colorbase.dart';
+
+class EstateResultBody extends StatelessWidget {
+  const EstateResultBody({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return ResultTable();
+  }
+}
 
 class EstateResultPage extends StatelessWidget {
   final estateController = Get.put(EstateController());
@@ -12,14 +20,6 @@ class EstateResultPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return PageWithAppbar(body: EstateResultBody());
-  }
-}
-
-class EstateResultBody extends StatelessWidget {
-  const EstateResultBody({super.key});
-  @override
-  Widget build(BuildContext context) {
-    return ResultTable();
   }
 }
 

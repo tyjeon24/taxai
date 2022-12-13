@@ -1,12 +1,13 @@
 import 'dart:convert';
 
+import 'package:capgain/components/api_endpoints.dart';
+import 'package:capgain/components/typography.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
-import 'package:capgain/typography.dart';
+
 import 'custom_sidetitle.dart';
-import 'package:capgain/api_endpoints.dart';
 
 Future fetchAddress(String keyword) async {
   final response =
@@ -16,26 +17,6 @@ Future fetchAddress(String keyword) async {
     final jsonResponse = jsonDecode(utf8.decode(
         response.bodyBytes)); //한글 깨짐 방지를 위해 json.decode(response.body) 대신
     final List addressList = jsonResponse['results']['field'];
-
-    return addressList;
-  } else {
-    throw Exception("Fail to fetch address data");
-  }
-}
-
-Future fetchKakaoAddress(String keyword) async {
-  Map<String, String> headers = {
-    "Authorization": "KakaoAK 2f0db465d128bff49a344f7a89366da8"
-  };
-
-  final response = await http
-      .get(Uri.parse("$kakaoAddressEndpoint?query=$keyword"), headers: headers);
-
-  if (response.statusCode == 200) {
-    final jsonResponse = jsonDecode(utf8.decode(
-        response.bodyBytes)); //한글 깨짐 방지를 위해 json.decode(response.body) 대신
-
-    final List addressList = jsonResponse["documents"];
 
     return addressList;
   } else {
@@ -65,60 +46,33 @@ Future fetchDetailedAddress(String pnu, [String? dong]) async {
   }
 }
 
-class CustomAddressWithSidetitle extends StatelessWidget {
-  const CustomAddressWithSidetitle(
-      {Key? key, required this.index, required this.controller})
-      : super(key: key);
+Future fetchKakaoAddress(String keyword) async {
+  Map<String, String> headers = {
+    "Authorization": "KakaoAK 2f0db465d128bff49a344f7a89366da8"
+  };
 
-  final int index;
-  // ignore: prefer_typing_uninitialized_variables
-  final controller;
+  final response = await http
+      .get(Uri.parse("$kakaoAddressEndpoint?query=$keyword"), headers: headers);
 
-  @override
-  Widget build(context) {
-    return Row(
-      children: [
-        Expanded(flex: 7, child: CustomSideTitle("주소")),
-        Flexible(flex: 1, child: Container()),
-        Expanded(
-          flex: 20,
-          child: TextField(
-            maxLines: null,
-            decoration: InputDecoration(
-              hintText: "주소를 입력해주세요.",
-              hintStyle: bodyTextStyle,
-              prefixIcon: Icon(
-                Icons.place,
-              ),
-            ),
-            controller: TextEditingController(
-                text: controller.param[index]["fullAddress"] ?? ""),
-            readOnly: true,
-            onTap: () {
-              showDialog(
-                  context: context,
-                  builder: (context) {
-                    return AlertDialog(
-                      title: Text("주소 검색"),
-                      content:
-                          AddressDialog(index: index, controller: controller),
-                    );
-                  });
-            },
-          ),
-        ),
-      ],
-    );
+  if (response.statusCode == 200) {
+    final jsonResponse = jsonDecode(utf8.decode(
+        response.bodyBytes)); //한글 깨짐 방지를 위해 json.decode(response.body) 대신
+
+    final List addressList = jsonResponse["documents"];
+
+    return addressList;
+  } else {
+    throw Exception("Fail to fetch address data");
   }
 }
 
 class AddressDialog extends StatelessWidget {
-  const AddressDialog({Key? key, required this.index, required this.controller})
-      : super(key: key);
-
   final int index;
+
   // ignore: prefer_typing_uninitialized_variables
   final controller;
+  const AddressDialog({Key? key, required this.index, required this.controller})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -332,6 +286,53 @@ class AddressDialog extends StatelessWidget {
           ],
         ),
       ),
+    );
+  }
+}
+
+class CustomAddressWithSidetitle extends StatelessWidget {
+  final int index;
+
+  // ignore: prefer_typing_uninitialized_variables
+  final controller;
+  const CustomAddressWithSidetitle(
+      {Key? key, required this.index, required this.controller})
+      : super(key: key);
+
+  @override
+  Widget build(context) {
+    return Row(
+      children: [
+        Expanded(flex: 7, child: CustomSideTitle("주소")),
+        Flexible(flex: 1, child: Container()),
+        Expanded(
+          flex: 20,
+          child: TextField(
+            maxLines: null,
+            decoration: InputDecoration(
+              hintText: "주소를 입력해주세요.",
+              hintStyle: bodyTextStyle,
+              prefixIcon: Icon(
+                Icons.place,
+              ),
+            ),
+            controller: TextEditingController(
+                text: controller.param[index]["fullAddress"] ?? ""),
+            readOnly: true,
+            onTap: () {
+              showDialog(
+                  context: context,
+                  builder: (context) {
+                    return AlertDialog(
+                      title: Text("주소 검색"),
+                      content:
+                          AddressDialog(index: index, controller: controller),
+                    );
+                  });
+            },
+          ),
+        ),
+      ],
     );
   }
 }

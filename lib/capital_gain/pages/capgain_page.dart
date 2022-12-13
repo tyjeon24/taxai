@@ -9,14 +9,14 @@ import 'package:capgain/capital_gain/pages/components/special_tax_dropdowns.dart
 import 'package:capgain/common_widgets/custom_datepicker.dart';
 import 'package:capgain/common_widgets/custom_dropdown.dart';
 import 'package:capgain/common_widgets/custom_oxdropdown.dart';
-import 'package:capgain/param_controller.dart';
+import 'package:capgain/components/colorbase.dart';
+import 'package:capgain/components/param_controller.dart';
+import 'package:capgain/components/spacing.dart';
+import 'package:capgain/typography.dart';
 import 'package:capgain/widgetsize.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:responsive_framework/responsive_framework.dart';
-import 'package:capgain/colorbase.dart';
-import 'package:capgain/typography.dart';
-import 'package:capgain/spacing.dart';
 
 class CapitalGainsTaxPage extends StatelessWidget {
   final mainController = Get.put(CapitalGainsParameter());
@@ -169,14 +169,14 @@ class CapitalGainsTaxPage extends StatelessWidget {
 }
 
 class Contents extends StatelessWidget {
+  final int index;
+
+  final controller = Get.find<CapitalGainsParameter>();
+
   Contents({
     Key? key,
     required this.index,
   }) : super(key: key);
-
-  final int index;
-
-  final controller = Get.find<CapitalGainsParameter>();
   @override
   Widget build(BuildContext context) {
     return Obx(() {

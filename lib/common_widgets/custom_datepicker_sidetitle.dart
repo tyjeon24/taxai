@@ -3,21 +3,20 @@ import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 
 import 'custom_sidetitle.dart';
-import 'package:capgain/widgetsize.dart';
 
 class CustomDatePickerWithSidetitle extends StatelessWidget {
+  final int index;
+
+  final String keyValue;
+  final controller;
+  final textController = TextEditingController();
+
   CustomDatePickerWithSidetitle(
       {Key? key,
       required this.index,
       required this.keyValue,
       required this.controller})
       : super(key: key);
-
-  final int index;
-  final String keyValue;
-  final controller;
-
-  final textController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {

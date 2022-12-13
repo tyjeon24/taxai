@@ -1,11 +1,18 @@
 import 'package:badges/badges.dart';
+import 'package:capgain/components/colorbase.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'custom_sidetitle.dart';
-import 'package:capgain/colorbase.dart';
 
 class CustomDropdownButton extends StatelessWidget {
+  final int index;
+
+  final String keyValue;
+  final String title;
+  final String tooltip;
+  final List? contents;
+  final controller;
   const CustomDropdownButton(
       {Key? key,
       required this.index,
@@ -15,13 +22,6 @@ class CustomDropdownButton extends StatelessWidget {
       required this.controller,
       this.tooltip = ""})
       : super(key: key);
-
-  final int index;
-  final String keyValue;
-  final String title;
-  final String tooltip;
-  final List? contents;
-  final controller;
   @override
   Widget build(BuildContext context) {
     if (contents == null) {

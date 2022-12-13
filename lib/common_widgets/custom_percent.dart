@@ -18,17 +18,17 @@ String formatPercent(String? percentString) {
 }
 
 class CustomPercent extends StatelessWidget {
+  final int index;
+
+  final String keyValue;
+  // ignore: prefer_typing_uninitialized_variables
+  final controller;
   CustomPercent({
     Key? key,
     required this.index,
     required this.keyValue,
     required this.controller,
   }) : super(key: key);
-
-  final int index;
-  final String keyValue;
-  // ignore: prefer_typing_uninitialized_variables
-  final controller;
 
   @override
   Widget build(BuildContext context) {
