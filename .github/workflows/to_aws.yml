@@ -1,0 +1,34 @@
+name: 2. Deploy to EC2
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      with:
+        repository: tyjeon24/taxai
+    
+    - name: Install Flutter
+      uses: subosito/flutter-action@v2
+      with:
+          flutter-version: '3.0.5'
+          channel: 'stable'
+    
+    - run: flutter pub get
+    - run: flutter build web
+    - run: ls -al
+
+    - name: Push to EC2 Instance - Deploy to my EC2 instance
+      uses: easingthemes/ssh-deploy@main
+      env:
+        SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_KEY }}
+        SOURCE: "./"
+        REMOTE_HOST: "43.200.219.215"
+        REMOTE_USER: "ubuntu"
+        TARGET: "/home/ubuntu/taxai"
