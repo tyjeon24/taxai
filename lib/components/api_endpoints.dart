@@ -8,7 +8,7 @@ String estateEndpoint =
     'https://ahoa51iat9.execute-api.ap-northeast-2.amazonaws.com/default/calculateEstate';
 
 String kakaoAddressEndpoint =
-    'https://dapi.kakao.com/v2/local/search/keyword.json';
+    'https://dapi.kakao.com/v2/local/search/address.json';
 
 String regulationEndpoint =
     "https://9ibwu4zi21.execute-api.ap-northeast-2.amazonaws.com/default/check_reg";

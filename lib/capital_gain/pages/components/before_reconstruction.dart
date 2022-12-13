@@ -1,7 +1,7 @@
 import 'package:capgain/common_widgets/custom_datepicker.dart';
 import 'package:capgain/common_widgets/custom_dropdown.dart';
 import 'package:capgain/common_widgets/custom_price.dart';
-import 'package:capgain/param_controller.dart';
+import 'package:capgain/components/param_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

@@ -79,7 +79,7 @@ class ConditionalDate extends StatelessWidget {
           if (widgetItem["type"] == "date") {
             widgets.add(CustomDatePicker(
                 index: index,
-                keyValue: widgetItem["keyValue"], // TODO 나중에 변경
+                keyValue: widgetItem["keyValue"],
                 title: widgetItem["title"],
                 controller: controller));
           } else {

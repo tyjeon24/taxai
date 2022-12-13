@@ -243,7 +243,7 @@ class AddressDialog extends StatelessWidget {
                                 onPressed: () {
                                   controller.setParam(
                                       index, "addressDialogStage", null);
-                                  Navigator.pop(context); // TODO 나중에 뭐 할지 정하기.
+                                  Navigator.pop(context);
                                 })),
                         SizedBox(
                             width: double.maxFinite,
@@ -254,10 +254,10 @@ class AddressDialog extends StatelessWidget {
                                 itemBuilder: (BuildContext context, int idx) {
                                   return Card(
                                     child: ListTile(
-                                        title: Text(
-                                            addressList[idx]["address_name"]),
+                                        title: Text(addressList[idx]["address"]
+                                            ["address_name"]),
                                         subtitle: Text(
-                                            addressList[idx]["place_name"]),
+                                            "${addressList[idx]["address"]["b_code"]}1${addressList[idx]["address"]["main_address_no"].padLeft(4, '0')}${addressList[idx]["address"]["sub_address_no"].padLeft(4, '0')}"),
                                         onTap: () {
                                           Navigator.pop(context);
                                           SchedulerBinding.instance
@@ -265,16 +265,17 @@ class AddressDialog extends StatelessWidget {
                                             controller.setParam(
                                                 index,
                                                 "fullAddress",
-                                                "${addressList[idx]["address_name"]} ${addressList[idx]["place_name"]}");
+                                                addressList[idx]["address"]
+                                                    ["address_name"]);
                                             controller.setParam(
                                                 index,
                                                 "roadAddr",
-                                                addressList[idx]
+                                                addressList[idx]["address"]
                                                     ["address_name"]);
                                             controller.setParam(index,
                                                 "addressDialogStage", null);
-                                            controller.setParam(
-                                                index, "pnu", "");
+                                            controller.setParam(index, "pnu",
+                                                "${addressList[idx]["address"]["b_code"]}1${addressList[idx]["address"]["main_address_no"].padLeft(4, '0')}${addressList[idx]["address"]["sub_address_no"].padLeft(4, '0')}");
                                           });
                                         }),
                                   );
