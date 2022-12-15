@@ -73,14 +73,20 @@ flutter:
     -  assets/animtaed_consult.gif
     -  assets/icons/logo_color.svg
     -  assets/icons/logo_color_row.svg
-    -  assets/homepage/background.png
-    -  assets/homepage/backgroundtext.png
-    -  assets/homepage/background2.png
-    -  assets/homepage/background2text.png
-    -  assets/homepage/background3_1.png
-    -  assets/homepage/background3_2.png
-    -  assets/homepage/background4_1.png
-    -  assets/homepage/background4_2.png
+    -  assets/homepage/desktop1.png
+    -  assets/homepage/desktop1_text.png
+    -  assets/homepage/desktop2.png
+    -  assets/homepage/desktop2_text.png
+    -  assets/homepage/desktop3_1.png
+    -  assets/homepage/desktop3_2.png
+    -  assets/homepage/desktop4.png
+    -  assets/homepage/desktop5_1.png
+    -  assets/homepage/desktop5_2.png
+    -  assets/homepage/desktop6.png
+    -  assets/homepage/desktop6_1.png
+    -  assets/homepage/desktop6_2.png
+    -  assets/homepage/desktop6_3.png
+    -  assets/homepage/desktop7.png
     -  assets/homepage/mobile1.png
     -  assets/homepage/mobile2.png
     -  assets/homepage/mobile3.png

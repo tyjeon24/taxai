@@ -273,26 +273,30 @@ class _HomepageState extends State<Homepage> {
 
     var desktopWidgets = [
       Container(
-        padding: EdgeInsets.all(30.0),
+        width: widgetWidth,
+        height: widgetHeight,
+        margin: EdgeInsets.only(top: widgetHeight * 0.1),
         child: FittedBox(
             fit: BoxFit.fitWidth,
             child: Stack(alignment: Alignment.centerLeft, children: [
-              Image.asset('assets/homepage/background.png',
+              Image.asset('assets/homepage/desktop1.png',
                   height: widgetHeight * 0.8),
-              Image.asset('assets/homepage/backgroundtext.png',
+              Image.asset('assets/homepage/desktop1_text.png',
                   height: widgetHeight * 0.4),
             ])),
       ),
       Container(
-        padding: EdgeInsets.all(30.0),
+        width: widgetWidth,
+        height: widgetHeight,
+        margin: EdgeInsets.only(top: widgetHeight * 0.1),
         child: FittedBox(
             fit: BoxFit.fitWidth,
             child: Stack(alignment: Alignment.centerLeft, children: [
-              Image.asset('assets/homepage/background2.png',
+              Image.asset('assets/homepage/desktop2.png',
                   height: widgetHeight * 0.8),
               Container(
                       padding: EdgeInsets.only(left: 30),
-                      child: Image.asset('assets/homepage/background2text.png',
+                      child: Image.asset('assets/homepage/desktop2_text.png',
                           height: widgetHeight * 0.4))
                   .animate(delay: 1000.ms)
                   .fadeIn(duration: 1000.ms, curve: Curves.easeOutQuad)
@@ -304,38 +308,42 @@ class _HomepageState extends State<Homepage> {
           width: widgetWidth * 0.7,
           height: widgetHeight * 0.8,
           child: Stack(alignment: Alignment.center, children: [
-            Image.asset('assets/homepage/background3_1.png',
+            Image.asset('assets/homepage/desktop3_1.png',
                 height: widgetHeight * 0.8),
-            Image.asset('assets/homepage/background3_2.png',
+            Image.asset('assets/homepage/desktop3_2.png',
                     width: widgetWidth * 0.5, height: widgetHeight * 0.4)
                 .animate(delay: 1000.ms)
                 .fadeIn(duration: 1000.ms, curve: Curves.easeOutQuad)
                 .slide(begin: Offset(0, -1), end: Offset.zero),
           ])),
       Container(
+              width: widgetWidth * 0.5,
+              height: widgetHeight * 0.5,
               padding: EdgeInsets.all(30),
-              child: Image.asset('assets/homepage/compare.png',
+              child: Image.asset('assets/homepage/desktop4.png',
                   width: widgetWidth * 0.5, height: widgetHeight * 0.5))
           .animate(delay: 1000.ms)
           .fadeIn(duration: 1000.ms, curve: Curves.easeOutQuad)
           .slide(begin: Offset(0, -1), end: Offset.zero),
       Container(
+          width: widgetWidth,
+          height: widgetHeight,
           padding: EdgeInsets.all(30),
           child: FittedBox(
             fit: BoxFit.fitWidth,
             child: Stack(alignment: Alignment.centerLeft, children: [
-              Image.asset('assets/homepage/background4_1.png',
+              Image.asset('assets/homepage/desktop5_1.png',
                   height: widgetHeight * 0.8),
-              Image.asset('assets/homepage/background4_2.png',
+              Image.asset('assets/homepage/desktop5_2.png',
                       width: widgetWidth * 0.5, height: widgetHeight * 0.4)
                   .animate(delay: 1000.ms)
                   .fadeIn(duration: 1000.ms, curve: Curves.easeOutQuad)
                   .slide(begin: Offset(0, 1), end: Offset.zero),
             ]),
           )),
-
       Container(
         width: widgetWidth * 0.7,
+        height: widgetHeight * 0.6,
         margin: EdgeInsets.all(30),
         child: ListView(
           shrinkWrap: true,
@@ -418,6 +426,7 @@ class _HomepageState extends State<Homepage> {
           .slide(begin: Offset(0, 0.2), end: Offset.zero),
       Container(
         width: widgetWidth * 0.7,
+        height: widgetHeight * 0.6,
         margin: EdgeInsets.all(30),
         child: Column(
           children: [
@@ -499,40 +508,40 @@ class _HomepageState extends State<Homepage> {
           .animate(delay: 1000.ms)
           .fadeIn(duration: 1200.ms, curve: Curves.easeOutQuad)
           .slide(begin: Offset(0, 0.2), end: Offset.zero),
-      // Container(
-      //   color: color3,
-      //   child: Container(
-      //     margin: EdgeInsets.symmetric(horizontal: 5.0, vertical: 30.0),
-      //     child: FittedBox(
-      //       child: Row(
-      //         children: [
-      //           kIsWeb
-      //               ? SvgPicture.asset("assets/icons/logo_color_row.svg",
-      //                   color: color,
-      //                   semanticsLabel: '하단로고',
-      //                   fit: BoxFit.contain)
-      //               : SvgPicture.asset("assets/icons/logo_color_row.svg",
-      //                   color: color,
-      //                   semanticsLabel: '하단로고',
-      //                   height: 30,
-      //                   fit: BoxFit.contain),
-      //           Column(
-      //             crossAxisAlignment: CrossAxisAlignment.start,
-      //             children: const [
-      //               FittedBox(
-      //                 child: Text(
-      //                     '(주) NEW EYE CORPORATION | 주소 : 부산광역시 남구 수영로 295, 911호(대연동, 세웅빌딩)'),
-      //               ),
-      //               FittedBox(
-      //                   child: Text(
-      //                       '대표자 김난이 | 사업자 등록번호: 457-86-02417 | 이메일 admin@taxai.co.kr'))
-      //             ],
-      //           ),
-      //         ],
-      //       ),
-      //     ),
-      //   ),
-      // )
+      Container(
+          width: widgetWidth,
+          height: widgetHeight,
+          padding: EdgeInsets.all(30),
+          child: FittedBox(
+            fit: BoxFit.fitWidth,
+            child: Stack(alignment: Alignment.centerLeft, children: [
+              Image.asset('assets/homepage/desktop6.png',
+                  height: widgetHeight * 0.8),
+              Image.asset('assets/homepage/desktop6_1.png',
+                      width: widgetWidth, height: widgetHeight)
+                  .animate(delay: 1000.ms)
+                  .fadeIn(duration: 1000.ms, curve: Curves.easeOutQuad)
+                  .slide(begin: Offset(0, 1), end: Offset.zero),
+              Image.asset('assets/homepage/desktop6_2.png',
+                      width: widgetWidth, height: widgetHeight)
+                  .animate(delay: 1500.ms)
+                  .fadeIn(duration: 1000.ms, curve: Curves.easeOutQuad)
+                  .slide(begin: Offset(0, 1), end: Offset.zero),
+              Image.asset('assets/homepage/desktop6_3.png',
+                      width: widgetWidth, height: widgetHeight)
+                  .animate(delay: 2000.ms)
+                  .fadeIn(duration: 1000.ms, curve: Curves.easeOutQuad)
+                  .slide(begin: Offset(0, 1), end: Offset.zero),
+            ]),
+          )),
+      SizedBox(
+        width: widgetWidth,
+        height: widgetHeight * 1.1,
+        child: FittedBox(
+          fit: BoxFit.fitWidth,
+          child: Image.asset('assets/homepage/desktop7.png'),
+        ),
+      ),
     ];
 
     if (MediaQuery.of(context).size.width > 600) {
