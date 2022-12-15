@@ -1,5 +1,5 @@
-import 'package:capgain/common_widgets/custom_price.dart';
-import 'package:capgain/components/param_controller.dart';
+import 'package:taxai/common_widgets/custom_price.dart';
+import 'package:taxai/components/param_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

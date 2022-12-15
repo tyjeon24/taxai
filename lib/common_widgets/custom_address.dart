@@ -1,7 +1,7 @@
 import 'dart:convert';
 
-import 'package:capgain/components/api_endpoints.dart';
-import 'package:capgain/components/typography.dart';
+import 'package:taxai/components/api_endpoints.dart';
+import 'package:taxai/components/typography.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:get/get.dart';

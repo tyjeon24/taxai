@@ -1,7 +1,7 @@
-import 'package:capgain/capital_gain/constants/first_filter.dart';
-import 'package:capgain/capital_gain/functions/check_condition.dart';
-import 'package:capgain/common_widgets/custom_datepicker.dart';
-import 'package:capgain/common_widgets/custom_oxdropdown.dart';
+import 'package:taxai/capital_gain/constants/first_filter.dart';
+import 'package:taxai/capital_gain/functions/check_condition.dart';
+import 'package:taxai/common_widgets/custom_datepicker.dart';
+import 'package:taxai/common_widgets/custom_oxdropdown.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

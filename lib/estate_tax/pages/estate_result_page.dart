@@ -1,6 +1,6 @@
-import 'package:capgain/common_widgets/page_with_appbar.dart';
-import 'package:capgain/components/colorbase.dart';
-import 'package:capgain/components/param_controller.dart';
+import 'package:taxai/common_widgets/page_with_appbar.dart';
+import 'package:taxai/components/colorbase.dart';
+import 'package:taxai/components/param_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -19,7 +19,7 @@ class EstateResultPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PageWithAppbar(body: EstateResultBody());
+    return ResultTable();
   }
 }
 
@@ -53,8 +53,8 @@ class ResultTable extends StatelessWidget {
       }
     }
 
-    dataTable_1 = SizedBox(
-      width: width,
+    dataTable_1 = Container(
+      padding: EdgeInsets.all(30.0),
       child: FittedBox(
         child: DataTable(
           headingRowColor:
@@ -63,17 +63,19 @@ class ResultTable extends StatelessWidget {
           columns: [
             DataColumn(
               label: SizedBox(
-                  width: 0.05 * width,
+                  width: 0.05 * width * 0.8,
                   child: Center(
                       child: FittedBox(
                           fit: BoxFit.fill,
                           child: Text('순서',
                               textAlign: TextAlign.center,
-                              style: TextStyle(color: Colors.black))))),
+                              style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black))))),
             ),
             DataColumn(
               label: SizedBox(
-                  width: 0.23 * width,
+                  width: 0.23 * width * 0.8,
                   child: Center(
                       child: FittedBox(
                           fit: BoxFit.fill,
@@ -85,19 +87,23 @@ class ResultTable extends StatelessWidget {
             ),
             DataColumn(
               label: SizedBox(
-                  width: 0.2 * width,
+                  width: 0.2 * width * 0.8,
                   child: Center(
                       child: Text('금액',
                           textAlign: TextAlign.center,
-                          style: TextStyle(color: Colors.black)))),
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black)))),
             ),
             DataColumn(
                 label: SizedBox(
-                    width: 0.52 * width,
+                    width: 0.52 * width * 0.8,
                     child: Center(
                         child: Text('비고',
                             textAlign: TextAlign.center,
-                            style: TextStyle(color: Colors.black))))),
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black))))),
           ],
           rows: <DataRow>[
             DataRow(
@@ -106,9 +112,12 @@ class ResultTable extends StatelessWidget {
                 DataCell(Center(child: Text('총 상속재산가액'))),
                 DataCell(Align(
                     alignment: Alignment.centerRight,
-                    child: Text(controller.param[0]["result"]["result"][0]["BA"]
-                            ["value"]
-                        .toString()))),
+                    child: Text(
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, color: Colors.black),
+                        controller.param[0]["result"]["result"][0]["BA"]
+                                ["value"]
+                            .toString()))),
                 DataCell(Text('총 상속자산 - 총 상속부채'))
               ],
             ),
@@ -118,9 +127,12 @@ class ResultTable extends StatelessWidget {
                 DataCell(Center(child: Text('가산하는 증여재산'))),
                 DataCell(Align(
                     alignment: Alignment.centerRight,
-                    child: Text(controller.param[0]["result"]["result"][0]["BB"]
-                            ["value"]
-                        .toString()))),
+                    child: Text(
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, color: Colors.black),
+                        controller.param[0]["result"]["result"][0]["BB"]
+                                ["value"]
+                            .toString()))),
                 DataCell(Text('가산하는 사전증여재산'))
               ],
             ),
@@ -130,9 +142,12 @@ class ResultTable extends StatelessWidget {
                 DataCell(Center(child: Text('공과금 및 장례비용 등'))),
                 DataCell(Align(
                     alignment: Alignment.centerRight,
-                    child: Text(controller.param[0]["result"]["result"][0]["BC"]
-                            ["value"]
-                        .toString()))),
+                    child: Text(
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, color: Colors.black),
+                        controller.param[0]["result"]["result"][0]["BC"]
+                                ["value"]
+                            .toString()))),
                 DataCell(Text('공과금 및 장례비용 등의 합계액'))
               ],
             ),
@@ -142,9 +157,12 @@ class ResultTable extends StatelessWidget {
                 DataCell(Center(child: Text('상속세 과세가액'))),
                 DataCell(Align(
                     alignment: Alignment.centerRight,
-                    child: Text(controller.param[0]["result"]["result"][0]["BD"]
-                            ["value"]
-                        .toString()))),
+                    child: Text(
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, color: Colors.black),
+                        controller.param[0]["result"]["result"][0]["BD"]
+                                ["value"]
+                            .toString()))),
                 DataCell(Text('총 상속재산가액 + 가산하는 증여재산 - 공과금 및 장례비용 등'))
               ],
             ),
@@ -154,9 +172,12 @@ class ResultTable extends StatelessWidget {
                 DataCell(Center(child: Text('일괄공제'))),
                 DataCell(Align(
                     alignment: Alignment.centerRight,
-                    child: Text(controller.param[0]["result"]["result"][0]["BE"]
-                            ["value"]
-                        .toString()))),
+                    child: Text(
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, color: Colors.black),
+                        controller.param[0]["result"]["result"][0]["BE"]
+                                ["value"]
+                            .toString()))),
                 DataCell(Text(dynamicRemarks["일괄공제"]))
               ],
             ),
@@ -166,9 +187,12 @@ class ResultTable extends StatelessWidget {
                 DataCell(Center(child: Text('금융재산 상속공제'))),
                 DataCell(Align(
                     alignment: Alignment.centerRight,
-                    child: Text(controller.param[0]["result"]["result"][0]["BF"]
-                            ["value"]
-                        .toString()))),
+                    child: Text(
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, color: Colors.black),
+                        controller.param[0]["result"]["result"][0]["BF"]
+                                ["value"]
+                            .toString()))),
                 DataCell(Text('순금융재산의 가액의 20%(단, 2천만원≤금융재산상속공제≤2억원)'))
               ],
             ),
@@ -178,9 +202,12 @@ class ResultTable extends StatelessWidget {
                 DataCell(Center(child: Text('배우자 공제'))),
                 DataCell(Align(
                     alignment: Alignment.centerRight,
-                    child: Text(controller.param[0]["result"]["result"][0]["BG"]
-                            ["value"]
-                        .toString()))),
+                    child: Text(
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, color: Colors.black),
+                        controller.param[0]["result"]["result"][0]["BG"]
+                                ["value"]
+                            .toString()))),
                 DataCell(Text(dynamicRemarks["배우자 여부"]))
               ],
             ),
@@ -190,9 +217,12 @@ class ResultTable extends StatelessWidget {
                 DataCell(Center(child: Text('기타 공제'))),
                 DataCell(Align(
                     alignment: Alignment.centerRight,
-                    child: Text(controller.param[0]["result"]["result"][0]["BH"]
-                            ["value"]
-                        .toString()))),
+                    child: Text(
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, color: Colors.black),
+                        controller.param[0]["result"]["result"][0]["BH"]
+                                ["value"]
+                            .toString()))),
                 DataCell(Text('가업상속공제, 동거주택 상속공제 등'))
               ],
             ),
@@ -202,9 +232,12 @@ class ResultTable extends StatelessWidget {
                 DataCell(Center(child: Text('상속세 과세표준'))),
                 DataCell(Align(
                     alignment: Alignment.centerRight,
-                    child: Text(controller.param[0]["result"]["result"][0]["BI"]
-                            ["value"]
-                        .toString()))),
+                    child: Text(
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, color: Colors.black),
+                        controller.param[0]["result"]["result"][0]["BI"]
+                                ["value"]
+                            .toString()))),
                 DataCell(Text('상속세 과세가액 - 공제금액'))
               ],
             ),
@@ -214,9 +247,12 @@ class ResultTable extends StatelessWidget {
                 DataCell(Center(child: Text('최고세율'))),
                 DataCell(Align(
                     alignment: Alignment.centerRight,
-                    child: Text(controller.param[0]["result"]["result"][0]["BJ"]
-                            ["value"]
-                        .toString()))),
+                    child: Text(
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, color: Colors.black),
+                        controller.param[0]["result"]["result"][0]["BJ"]
+                                ["value"]
+                            .toString()))),
                 DataCell(Text(''))
               ],
             ),
@@ -226,9 +262,12 @@ class ResultTable extends StatelessWidget {
                 DataCell(Center(child: Text('상속세 산출세액'))),
                 DataCell(Align(
                     alignment: Alignment.centerRight,
-                    child: Text(controller.param[0]["result"]["result"][0]["BK"]
-                            ["value"]
-                        .toString()))),
+                    child: Text(
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, color: Colors.black),
+                        controller.param[0]["result"]["result"][0]["BK"]
+                                ["value"]
+                            .toString()))),
                 DataCell(Text(''))
               ],
             ),
@@ -238,9 +277,12 @@ class ResultTable extends StatelessWidget {
                 DataCell(Center(child: Text('증여세액공제'))),
                 DataCell(Align(
                     alignment: Alignment.centerRight,
-                    child: Text(controller.param[0]["result"]["result"][0]["BL"]
-                            ["value"]
-                        .toString()))),
+                    child: Text(
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, color: Colors.black),
+                        controller.param[0]["result"]["result"][0]["BL"]
+                                ["value"]
+                            .toString()))),
                 DataCell(Text('기 증여세액'))
               ],
             ),
@@ -250,9 +292,12 @@ class ResultTable extends StatelessWidget {
                 DataCell(Center(child: Text('신고세액공제'))),
                 DataCell(Align(
                     alignment: Alignment.centerRight,
-                    child: Text(controller.param[0]["result"]["result"][0]["BM"]
-                            ["value"]
-                        .toString()))),
+                    child: Text(
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, color: Colors.black),
+                        controller.param[0]["result"]["result"][0]["BM"]
+                                ["value"]
+                            .toString()))),
                 DataCell(Text('상속세 과세표준의 3%'))
               ],
             ),
@@ -262,9 +307,12 @@ class ResultTable extends StatelessWidget {
                 DataCell(Center(child: Text('납부할 세액'))),
                 DataCell(Align(
                     alignment: Alignment.centerRight,
-                    child: Text(controller.param[0]["result"]["result"][0]["BN"]
-                            ["value"]
-                        .toString()))),
+                    child: Text(
+                        style: TextStyle(
+                            fontWeight: FontWeight.bold, color: Colors.black),
+                        controller.param[0]["result"]["result"][0]["BN"]
+                                ["value"]
+                            .toString()))),
                 DataCell(Text('최종 납부할 세액'))
               ],
             ),
@@ -274,13 +322,14 @@ class ResultTable extends StatelessWidget {
     );
 
     if (controller.param[0]["result"]["result"]!.length == 2) {
-      dataTable_2 = FittedBox(
+      dataTable_2 = Container(
+        padding: EdgeInsets.all(30.0),
         child: DataTable(
           headingRowColor: MaterialStateProperty.all<Color>(color),
           columns: [
             DataColumn(
               label: SizedBox(
-                  width: 0.25 * width,
+                  width: 0.25 * width * 0.8,
                   child: Center(
                       child: Text('항목',
                           textAlign: TextAlign.center,
@@ -288,7 +337,7 @@ class ResultTable extends StatelessWidget {
             ),
             DataColumn(
               label: SizedBox(
-                  width: 0.25 * width,
+                  width: 0.25 * width * 0.8,
                   child: Center(
                       child: Text('금액',
                           textAlign: TextAlign.center,
@@ -296,7 +345,7 @@ class ResultTable extends StatelessWidget {
             ),
             DataColumn(
                 label: SizedBox(
-                    width: 0.5 * width,
+                    width: 0.5 * width * 0.8,
                     child: Center(
                         child: Text('비고',
                             textAlign: TextAlign.center,

@@ -1,10 +1,10 @@
-import 'package:capgain/capital_gain/constants/first_filter.dart';
-import 'package:capgain/common_widgets/custom_address_sidetitle.dart';
-import 'package:capgain/common_widgets/custom_dropdown.dart';
-import 'package:capgain/common_widgets/custom_oxdropdown.dart';
-import 'package:capgain/components/param_controller.dart';
-import 'package:capgain/components/spacing.dart';
-import 'package:capgain/components/widgetsize.dart';
+import 'package:taxai/capital_gain/constants/first_filter.dart';
+import 'package:taxai/common_widgets/custom_address_sidetitle.dart';
+import 'package:taxai/common_widgets/custom_dropdown.dart';
+import 'package:taxai/common_widgets/custom_oxdropdown.dart';
+import 'package:taxai/components/param_controller.dart';
+import 'package:taxai/components/spacing.dart';
+import 'package:taxai/components/widgetsize.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

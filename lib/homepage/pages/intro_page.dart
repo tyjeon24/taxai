@@ -1,4 +1,4 @@
-import 'package:capgain/common_widgets/page_with_appbar.dart';
+import 'package:taxai/common_widgets/page_with_appbar.dart';
 import 'package:flutter/material.dart';
 
 class IntroBody extends StatelessWidget {

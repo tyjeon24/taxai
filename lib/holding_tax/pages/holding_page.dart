@@ -1,11 +1,45 @@
-import 'package:capgain/common_widgets/custom_address.dart';
-import 'package:capgain/common_widgets/custom_dropdown.dart';
-import 'package:capgain/common_widgets/custom_oxdropdown.dart';
-import 'package:capgain/common_widgets/custom_percent.dart';
-import 'package:capgain/common_widgets/custom_price.dart';
-import 'package:capgain/components/param_controller.dart';
+import 'dart:convert';
+
+import 'package:taxai/common_widgets/custom_address.dart';
+import 'package:taxai/common_widgets/custom_dropdown.dart';
+import 'package:taxai/common_widgets/custom_oxdropdown.dart';
+import 'package:taxai/common_widgets/custom_percent.dart';
+import 'package:taxai/common_widgets/custom_price.dart';
+import 'package:taxai/components/api_endpoints.dart';
+import 'package:taxai/components/colorbase.dart';
+import 'package:taxai/components/param_controller.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:get/get.dart';
+
+Future calculateHolding() async {
+  var dio = Dio();
+
+  final controller = Get.find<HoldingController>();
+
+  final response = await dio.request(
+    "$holdingEndpoint",
+    options: Options(method: 'GET'),
+    queryParameters: {
+      "input": json.encode([
+        json.encode(controller.param[0]),
+        json.encode(controller.param[1]),
+        json.encode(controller.param[2]),
+        json.encode(controller.param[3]),
+        json.encode(controller.param[4]),
+      ]),
+    },
+  );
+
+  if (response.statusCode == 200) {
+    final result = json.decode(response.data); // json으로 변경
+
+    return result;
+  } else {
+    throw Exception("요청 중 오류가 발생했습니다.");
+  }
+}
 
 class Contents extends StatelessWidget {
   final controller = Get.find<HoldingController>();
@@ -20,7 +54,7 @@ class Contents extends StatelessWidget {
       "가족 구성원 D"
     ];
     return Obx(() {
-      controller.param;
+      print(controller.param);
       return Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -218,6 +252,43 @@ class Contents extends StatelessWidget {
               keyValue: "comp_tax",
               title: "직전년도 종합부동산세액",
               controller: controller),
+          ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                  backgroundColor: calculateBacgroundColor),
+              onPressed: () {
+                showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                          title: Text("계산중..."),
+                          content: SizedBox(
+                            width: double.maxFinite,
+                            child: FutureBuilder(
+                                future: calculateHolding(),
+                                builder: (context, snapshot) {
+                                  if (snapshot.hasData) {
+                                    SchedulerBinding.instance
+                                        .addPostFrameCallback((_) =>
+                                            controller.setParam(
+                                                5, "result", snapshot.data));
+
+                                    return TextButton(
+                                        child: Text('${snapshot.data}'),
+                                        onPressed: () => SchedulerBinding
+                                            .instance
+                                            .addPostFrameCallback(
+                                                (_) => Get.toNamed("/")));
+                                  }
+                                  if (snapshot.connectionState ==
+                                      ConnectionState.waiting) {
+                                    return CircularProgressIndicator();
+                                  }
+                                  return Container();
+                                }),
+                          ));
+                    });
+              },
+              child: Text("보유세 계산결과 확인"))
         ],
       );
     });
@@ -232,11 +303,12 @@ class HoldingTaxPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.find<HoldingController>();
-    holdingController.setParam(0, "init", "init");
-    holdingController.setParam(1, "init", "init");
-    holdingController.setParam(2, "init", "init");
-    holdingController.setParam(3, "init", "init");
-    holdingController.setParam(4, "init", "init");
+    holdingController.setParam(0, "", "");
+    holdingController.setParam(1, "", "");
+    holdingController.setParam(2, "", "");
+    holdingController.setParam(3, "", "");
+    holdingController.setParam(4, "", "");
+    holdingController.setParam(5, "result", "");
     return Scaffold(
       body: SafeArea(
         child: Obx(

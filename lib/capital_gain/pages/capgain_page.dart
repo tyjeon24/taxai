@@ -1,22 +1,53 @@
-import 'package:capgain/capital_gain/pages/components/base_info.dart';
-import 'package:capgain/capital_gain/pages/components/before_reconstruction.dart';
-import 'package:capgain/capital_gain/pages/components/common_additional_info.dart';
-import 'package:capgain/capital_gain/pages/components/conditional_date.dart';
-import 'package:capgain/capital_gain/pages/components/rent_house.dart';
-import 'package:capgain/capital_gain/pages/components/rural_house.dart';
-import 'package:capgain/capital_gain/pages/components/sale_in_lots.dart';
-import 'package:capgain/capital_gain/pages/components/special_tax_dropdowns.dart';
-import 'package:capgain/common_widgets/custom_datepicker.dart';
-import 'package:capgain/common_widgets/custom_dropdown.dart';
-import 'package:capgain/common_widgets/custom_oxdropdown.dart';
-import 'package:capgain/components/colorbase.dart';
-import 'package:capgain/components/param_controller.dart';
-import 'package:capgain/components/spacing.dart';
-import 'package:capgain/components/typography.dart';
-import 'package:capgain/components/widgetsize.dart';
+import 'dart:convert';
+
+import 'package:taxai/capital_gain/pages/components/base_info.dart';
+import 'package:taxai/capital_gain/pages/components/before_reconstruction.dart';
+import 'package:taxai/capital_gain/pages/components/common_additional_info.dart';
+import 'package:taxai/capital_gain/pages/components/conditional_date.dart';
+import 'package:taxai/capital_gain/pages/components/rent_house.dart';
+import 'package:taxai/capital_gain/pages/components/rural_house.dart';
+import 'package:taxai/capital_gain/pages/components/sale_in_lots.dart';
+import 'package:taxai/capital_gain/pages/components/special_tax_dropdowns.dart';
+import 'package:taxai/common_widgets/custom_datepicker.dart';
+import 'package:taxai/common_widgets/custom_dropdown.dart';
+import 'package:taxai/common_widgets/custom_oxdropdown.dart';
+import 'package:taxai/components/api_endpoints.dart';
+import 'package:taxai/components/colorbase.dart';
+import 'package:taxai/components/param_controller.dart';
+import 'package:taxai/components/spacing.dart';
+import 'package:taxai/components/typography.dart';
+import 'package:taxai/components/widgetsize.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:get/get.dart';
 import 'package:responsive_framework/responsive_framework.dart';
+
+Future calculateCapgain() async {
+  var dio = Dio();
+
+  final controller = Get.find<CapitalGainsParameter>();
+
+  final response = await dio.request(
+    capgainEndpoint,
+    options: Options(method: 'GET'),
+    queryParameters: {
+      "input": json.encode([
+        json.encode(controller.param[1]),
+        json.encode(controller.param[2]),
+        json.encode(controller.param[3])
+      ]),
+    },
+  );
+
+  if (response.statusCode == 200) {
+    final result = json.decode(response.data); // json으로 변경
+
+    return result;
+  } else {
+    throw Exception("요청 중 오류가 발생했습니다.");
+  }
+}
 
 class CapitalGainsTaxPage extends StatelessWidget {
   final mainController = Get.put(CapitalGainsParameter());
@@ -158,7 +189,39 @@ class CapitalGainsTaxPage extends StatelessWidget {
               ElevatedButton(
                   style: ElevatedButton.styleFrom(
                       backgroundColor: calculateBacgroundColor),
-                  onPressed: () {},
+                  onPressed: () {
+                    showDialog(
+                        context: context,
+                        builder: (context) {
+                          return AlertDialog(
+                              title: Text("계산중..."),
+                              content: SizedBox(
+                                width: double.maxFinite,
+                                child: FutureBuilder(
+                                    future: calculateCapgain(),
+                                    builder: (context, snapshot) {
+                                      if (snapshot.hasData) {
+                                        SchedulerBinding.instance
+                                            .addPostFrameCallback((_) =>
+                                                controller.setParam(5, "result",
+                                                    snapshot.data));
+
+                                        return TextButton(
+                                            child: Text('${snapshot.data}'),
+                                            onPressed: () => SchedulerBinding
+                                                .instance
+                                                .addPostFrameCallback(
+                                                    (_) => Get.toNamed("/")));
+                                      }
+                                      if (snapshot.connectionState ==
+                                          ConnectionState.waiting) {
+                                        return CircularProgressIndicator();
+                                      }
+                                      return Container();
+                                    }),
+                              ));
+                        });
+                  },
                   child: Text("양도소득세 계산결과 확인"))
             ],
           ),

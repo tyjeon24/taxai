@@ -1,6 +1,6 @@
-import 'package:capgain/common_widgets/custom_oxdropdown.dart';
-import 'package:capgain/common_widgets/custom_sidetitle.dart';
-import 'package:capgain/components/param_controller.dart';
+import 'package:taxai/common_widgets/custom_oxdropdown.dart';
+import 'package:taxai/common_widgets/custom_sidetitle.dart';
+import 'package:taxai/components/param_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

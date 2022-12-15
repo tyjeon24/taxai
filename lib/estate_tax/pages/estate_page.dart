@@ -1,10 +1,10 @@
 import 'dart:convert';
 
-import 'package:capgain/common_widgets/custom_dropdown.dart';
-import 'package:capgain/common_widgets/custom_oxdropdown.dart';
-import 'package:capgain/common_widgets/custom_price.dart';
-import 'package:capgain/components/api_endpoints.dart';
-import 'package:capgain/components/param_controller.dart';
+import 'package:taxai/common_widgets/custom_dropdown.dart';
+import 'package:taxai/common_widgets/custom_oxdropdown.dart';
+import 'package:taxai/common_widgets/custom_price.dart';
+import 'package:taxai/components/api_endpoints.dart';
+import 'package:taxai/components/param_controller.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
@@ -14,10 +14,11 @@ Future calculateEstate() async {
   var dio = Dio();
 
   final controller = Get.find<EstateController>();
+
   final response = await dio.request(
     estateEndpoint,
     options: Options(method: 'GET'),
-    queryParameters: {"input": json.encode(controller.param)},
+    queryParameters: {"0": json.encode(controller.param[0])},
   );
 
   if (response.statusCode == 200) {

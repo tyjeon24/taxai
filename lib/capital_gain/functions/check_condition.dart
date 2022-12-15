@@ -1,8 +1,8 @@
 import 'dart:convert';
 
-import 'package:capgain/capital_gain/constants/first_filter.dart';
-import 'package:capgain/components/api_endpoints.dart';
-import 'package:capgain/components/param_controller.dart';
+import 'package:taxai/capital_gain/constants/first_filter.dart';
+import 'package:taxai/components/api_endpoints.dart';
+import 'package:taxai/components/param_controller.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
