@@ -275,7 +275,6 @@ class _HomepageState extends State<Homepage> {
       Container(
         width: widgetWidth,
         height: widgetHeight,
-        margin: EdgeInsets.only(top: widgetHeight * 0.1),
         child: FittedBox(
             fit: BoxFit.fitWidth,
             child: Stack(alignment: Alignment.centerLeft, children: [
@@ -288,7 +287,7 @@ class _HomepageState extends State<Homepage> {
       Container(
         width: widgetWidth,
         height: widgetHeight,
-        margin: EdgeInsets.only(top: widgetHeight * 0.1),
+        margin: EdgeInsets.only(top: widgetHeight * 0.3),
         child: FittedBox(
             fit: BoxFit.fitWidth,
             child: Stack(alignment: Alignment.centerLeft, children: [
