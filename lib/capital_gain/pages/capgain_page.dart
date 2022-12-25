@@ -202,6 +202,11 @@ class CapitalGainsTaxPage extends StatelessWidget {
                                 child: FutureBuilder(
                                     future: calculateCapgain(),
                                     builder: (context, snapshot) {
+                                      if (snapshot.connectionState ==
+                                          ConnectionState.waiting) {
+                                        return Center(
+                                            child: CircularProgressIndicator());
+                                      }
                                       if (snapshot.hasData) {
                                         SchedulerBinding.instance
                                             .addPostFrameCallback((_) =>
@@ -215,10 +220,6 @@ class CapitalGainsTaxPage extends StatelessWidget {
                                                 .addPostFrameCallback((_) =>
                                                     Get.toNamed(
                                                         "/capgainresult")));
-                                      }
-                                      if (snapshot.connectionState ==
-                                          ConnectionState.waiting) {
-                                        return CircularProgressIndicator();
                                       }
                                       return Container();
                                     }),
@@ -269,11 +270,6 @@ class Contents extends StatelessWidget {
                 index: index,
                 title: "선순위 상속주택",
                 keyValue: "priority",
-                controller: controller),
-            CustomOXDropdownButton(
-                index: index,
-                title: "상속시 동일세대원 여부",
-                keyValue: "same_member",
                 controller: controller),
             CustomOXDropdownButton(
                 index: index,

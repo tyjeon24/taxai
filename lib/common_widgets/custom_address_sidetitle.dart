@@ -96,7 +96,7 @@ class AddressDialog extends StatelessWidget {
                       controller.param[index]["addressSearchKeyword"]),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return Container();
+                      return Center(child: CircularProgressIndicator());
                     }
 
                     List addressList = snapshot.data as List;
@@ -140,7 +140,7 @@ class AddressDialog extends StatelessWidget {
                   future: fetchDetailedAddress(controller.param[index]["pnu"]),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return Container();
+                      return Center(child: CircularProgressIndicator());
                     }
                     List dongList = snapshot.data as List;
 
@@ -179,7 +179,7 @@ class AddressDialog extends StatelessWidget {
                       controller.param[index]["dong"]),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return Container();
+                      return Center(child: CircularProgressIndicator());
                     }
                     List hosuList = snapshot.data as List;
 
@@ -229,7 +229,7 @@ class AddressDialog extends StatelessWidget {
                       controller.param[index]["addressSearchKeyword"]),
                   builder: (context, snapshot) {
                     if (snapshot.connectionState == ConnectionState.waiting) {
-                      return Container();
+                      return Center(child: CircularProgressIndicator());
                     }
 
                     List addressList = snapshot.data as List;

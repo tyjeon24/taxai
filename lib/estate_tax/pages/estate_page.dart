@@ -134,6 +134,11 @@ class Contents extends StatelessWidget {
                             child: FutureBuilder(
                                 future: calculateEstate(),
                                 builder: (context, snapshot) {
+                                  if (snapshot.connectionState ==
+                                      ConnectionState.waiting) {
+                                    return Center(
+                                        child: CircularProgressIndicator());
+                                  }
                                   if (snapshot.hasData) {
                                     SchedulerBinding.instance
                                         .addPostFrameCallback((_) =>
@@ -146,10 +151,6 @@ class Contents extends StatelessWidget {
                                             .instance
                                             .addPostFrameCallback((_) =>
                                                 Get.toNamed("/estateresult")));
-                                  }
-                                  if (snapshot.connectionState ==
-                                      ConnectionState.waiting) {
-                                    return CircularProgressIndicator();
                                   }
                                   return Container();
                                 }),
