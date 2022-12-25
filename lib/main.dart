@@ -2,6 +2,7 @@ import 'package:amplify_auth_cognito/amplify_auth_cognito.dart';
 import 'package:amplify_authenticator/amplify_authenticator.dart';
 import 'package:amplify_flutter/amplify_flutter.dart';
 import 'package:taxai/capital_gain/pages/capgain_page.dart';
+import 'package:taxai/capital_gain/pages/capgain_result_page.dart';
 import 'package:taxai/estate_tax/pages/estate_page.dart';
 import 'package:taxai/estate_tax/pages/estate_result_page.dart';
 import 'package:taxai/holding_tax/pages/holding_page.dart';
@@ -39,6 +40,9 @@ class _MyAppState extends State<MyApp> {
           },
           '/capgain': (BuildContext context) {
             return AuthenticatedView(child: CapitalGainsTaxPage());
+          },
+          '/capgainresult': (BuildContext context) {
+            return AuthenticatedView(child: CapgainResultPage());
           },
           '/holding': (BuildContext context) {
             return AuthenticatedView(child: HoldingTaxPage());

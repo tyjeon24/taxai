@@ -2,7 +2,7 @@ String addressEndpoint =
     'https://ej8sqbr5od.execute-api.ap-northeast-2.amazonaws.com/default/searchAddress';
 
 String capgainEndpoint =
-    "https://kvcqbb97a1.execute-api.ap-northeast-2.amazonaws.com/default/sendtest"; // TOOD 추후 변경
+    "https://skzwwxfbc7.execute-api.ap-northeast-2.amazonaws.com/default/capgain";
 
 String detailedAddressEndpoint =
     'https://mexz3xg9w3.execute-api.ap-northeast-2.amazonaws.com/default/detailedAddress';

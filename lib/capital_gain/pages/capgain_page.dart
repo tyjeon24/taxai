@@ -41,7 +41,7 @@ Future calculateCapgain() async {
   );
 
   if (response.statusCode == 200) {
-    final result = json.decode(response.data); // json으로 변경
+    final result = response.data; // json으로 변경
 
     return result;
   } else {
@@ -57,14 +57,16 @@ class CapitalGainsTaxPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    mainController.setParam(0, "init", DateTime.now());
-    mainController.setParam(1, "init", DateTime.now());
-    mainController.setParam(2, "init", DateTime.now());
-    mainController.setParam(3, "init", DateTime.now());
-    customController.setParam(1, "init", DateTime.now());
-    customController.setParam(2, "init", DateTime.now());
-    customController.setParam(3, "init", DateTime.now());
+    mainController.setParam(0, "", "");
+    mainController.setParam(1, "", DateTime.now().toString());
+    mainController.setParam(2, "", "");
+    mainController.setParam(3, "", "");
+    mainController.setParam(4, "result", "");
+    customController.setParam(1, "", "");
+    customController.setParam(2, "", "");
+    customController.setParam(3, "", "");
     final controller = Get.find<CapitalGainsParameter>();
+
     List<Widget> contents = [];
     return Scaffold(
       body: SafeArea(
@@ -113,7 +115,7 @@ class CapitalGainsTaxPage extends StatelessWidget {
                             // 양도예정일
                             flex: 9,
                             child: CustomDatePicker(
-                                index: 0,
+                                index: 1,
                                 keyValue: "sell_date",
                                 title: "양도 예정일",
                                 controller: controller),
@@ -203,15 +205,16 @@ class CapitalGainsTaxPage extends StatelessWidget {
                                       if (snapshot.hasData) {
                                         SchedulerBinding.instance
                                             .addPostFrameCallback((_) =>
-                                                controller.setParam(5, "result",
+                                                controller.setParam(4, "result",
                                                     snapshot.data));
 
                                         return TextButton(
                                             child: Text('${snapshot.data}'),
                                             onPressed: () => SchedulerBinding
                                                 .instance
-                                                .addPostFrameCallback(
-                                                    (_) => Get.toNamed("/")));
+                                                .addPostFrameCallback((_) =>
+                                                    Get.toNamed(
+                                                        "/capgainresult")));
                                       }
                                       if (snapshot.connectionState ==
                                           ConnectionState.waiting) {
@@ -235,6 +238,7 @@ class Contents extends StatelessWidget {
   final int index;
 
   final controller = Get.find<CapitalGainsParameter>();
+  final customController = Get.find<MyCustomParameter>();
 
   Contents({
     Key? key,
@@ -262,18 +266,30 @@ class Contents extends StatelessWidget {
           if (controller.param[index]["buy_cause"] != null &&
               controller.param[index]["buy_cause"] == "상속") ...[
             CustomOXDropdownButton(
-                index: index, keyValue: "선순위 상속주택", controller: controller),
+                index: index,
+                title: "선순위 상속주택",
+                keyValue: "priority",
+                controller: controller),
             CustomOXDropdownButton(
-                index: index, keyValue: "상속시 동일세대원 여부", controller: controller),
+                index: index,
+                title: "상속시 동일세대원 여부",
+                keyValue: "same_member",
+                controller: controller),
             CustomOXDropdownButton(
-                index: index, keyValue: "소수지분 상속주택", controller: controller),
+                index: index,
+                title: "소수지분 상속주택",
+                keyValue: "minority",
+                controller: controller),
           ], // 21~23 선순위 상속주택
 
           Tooltip(
               message: "최초 분양가액을 입력해 주세요.",
               child: SaleInLots(index: index)), // 24 분양가액
           CustomOXDropdownButton(
-              index: index, keyValue: "임대주택 여부", controller: controller),
+              index: index,
+              title: "임대주택 여부",
+              keyValue: "임대주택 여부",
+              controller: controller),
           Container(
               margin: marginBottom24,
               child: RentHouse(index: index)), // 25 임대주택
