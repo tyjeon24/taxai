@@ -124,8 +124,7 @@ class AddressDialog extends StatelessWidget {
                                     child: ListTile(
                                         title:
                                             Text(addressList[idx]["roadAddr"]),
-                                        subtitle:
-                                            Text(addressList[idx]["oldAddr"]),
+                                        subtitle: Text(addressList[idx]["pnu"]),
                                         onTap: () {
                                           controller.setParam(
                                               index, "addressDialogStage", 2);

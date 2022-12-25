@@ -11,13 +11,14 @@ class CustomOXDropdownButton extends StatelessWidget {
   ];
 
   final int index;
-
+  final String title;
   final String keyValue;
   // ignore: prefer_typing_uninitialized_variables
   final controller;
   CustomOXDropdownButton(
       {Key? key,
       required this.index,
+      required this.title,
       required this.keyValue,
       required this.controller})
       : super(key: key);
@@ -30,7 +31,7 @@ class CustomOXDropdownButton extends StatelessWidget {
         margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
         child: Row(
           children: [
-            Expanded(flex: 7, child: CustomSideTitle(keyValue)),
+            Expanded(flex: 7, child: CustomSideTitle(title)),
             Flexible(flex: 1, child: Container()),
             Flexible(
               flex: 20,

@@ -41,9 +41,7 @@ class CustomDatePicker extends StatelessWidget {
               controller: TextEditingController(
                   text: controller.param[index][keyValue] == null
                       ? ""
-                      : DateFormat('yyyy-MM-dd')
-                          .format(controller.param[index][keyValue])
-                          .toString()),
+                      : controller.param[index][keyValue]),
               readOnly: true,
               onTap: () {
                 Future<DateTime?> future = showDatePicker(
@@ -57,7 +55,8 @@ class CustomDatePicker extends StatelessWidget {
 
                 future.then((date) {
                   if (date != null) {
-                    controller.setParam(index, keyValue, date);
+                    controller.setParam(index, keyValue,
+                        DateFormat('yyyy-MM-dd').format(date).toString());
                     textController.text =
                         DateFormat('yyyy-MM-dd').format(date).toString();
                   }

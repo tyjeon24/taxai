@@ -134,6 +134,7 @@ class RuralHouseChildern extends StatelessWidget {
    - 일반주택이 소재한 읍·면 지역이 아닌곳에서 농어촌 주택을 취득할 것""",
               child: CustomOXDropdownButton(
                   index: index,
+                  title: "조특법 농어촌주택 ",
                   keyValue: "조특법 농어촌주택 ",
                   controller: controller)));
         }
@@ -154,7 +155,10 @@ class RuralHouseChildern extends StatelessWidget {
 3. 가액기준
    - 취득당시 기준시가 2억원 이하""",
               child: CustomOXDropdownButton(
-                  index: index, keyValue: "조특법 고향주택", controller: controller)));
+                  index: index,
+                  title: "조특법 고향주택",
+                  keyValue: "조특법 고향주택",
+                  controller: controller)));
         }
         if (addressList[2] == true) {
           widgets.add(Tooltip(
@@ -170,6 +174,7 @@ class RuralHouseChildern extends StatelessWidget {
    (3) 영농 또는 영어의 목적으로 취득한 귀농주택""",
               child: CustomOXDropdownButton(
                   index: index,
+                  title: "소득세법 농어촌주택",
                   keyValue: "소득세법 농어촌주택",
                   controller: controller)));
         }

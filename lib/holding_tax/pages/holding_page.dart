@@ -221,11 +221,18 @@ class Contents extends StatelessWidget {
             }
             return Container();
           }),
-          CustomPercent(index: 0, keyValue: "주택지분", controller: controller),
+          CustomPercent(
+              index: 0,
+              title: "주택지분",
+              keyValue: "share",
+              controller: controller),
           if (controller.param[0]["num_house"] != null &&
               controller.param[0]["num_house"] != "1세대 1주택") ...[
             CustomOXDropdownButton(
-                index: 0, keyValue: "1세대 1주택으로 보는경우", controller: controller)
+                index: 0,
+                title: "1세대 1주택으로 보는경우",
+                keyValue: "1세대 1주택으로 보는경우",
+                controller: controller)
           ],
           if (controller.param[0]["num_house"] != null &&
               controller.param[0]["num_house"] == "1세대 1주택") ...[

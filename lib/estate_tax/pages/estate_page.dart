@@ -91,7 +91,10 @@ class Contents extends StatelessWidget {
             return Container();
           }),
           CustomOXDropdownButton(
-              index: 0, keyValue: "배우자 여부", controller: controller),
+              index: 0,
+              title: "배우자 여부",
+              keyValue: "배우자 여부",
+              controller: controller),
           CustomDropdownButton(
               index: 0,
               keyValue: "상속인중 직계비속", // TODO 나중에 keyValue 변경

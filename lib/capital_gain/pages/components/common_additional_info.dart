@@ -58,7 +58,10 @@ class CommonAdditionalInfo extends StatelessWidget {
         Tooltip(
           message: "단독명의인 경우 100%를 입력하고 공동명의인 경우 지분을 입력하세요",
           child: CustomPercent(
-              index: index, keyValue: "주택 지분", controller: controller),
+              index: index,
+              title: "주택 지분",
+              keyValue: "share",
+              controller: controller),
         ),
       ],
     );

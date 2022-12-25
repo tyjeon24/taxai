@@ -74,7 +74,8 @@ class RentHouse extends StatelessWidget {
                     "이 주택은 계약일과 취득일에 무주택여부에 따라서 과세유형이 달라집니다. 무주택 여부를 체크해주세요.",
                 child: CustomOXDropdownButton(
                     index: index,
-                    keyValue: "계약&취득 당시 무주택 여부",
+                    title: "계약&취득 당시 무주택 여부",
+                    keyValue: "rent_no_house",
                     controller: controller),
               ));
             }
@@ -120,7 +121,7 @@ class RentHouse extends StatelessWidget {
           index: index,
           keyValue: "rent_area",
           title: "전용면적",
-          contents: const ["85㎡이하", "85㎡초과"],
+          contents: const ["85m이하", "85m초과"],
           controller: controller));
 
       return Column(children: widgets);

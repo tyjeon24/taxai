@@ -19,13 +19,14 @@ String formatPercent(String? percentString) {
 
 class CustomPercent extends StatelessWidget {
   final int index;
-
+  final String title;
   final String keyValue;
   // ignore: prefer_typing_uninitialized_variables
   final controller;
   CustomPercent({
     Key? key,
     required this.index,
+    required this.title,
     required this.keyValue,
     required this.controller,
   }) : super(key: key);
@@ -36,7 +37,7 @@ class CustomPercent extends StatelessWidget {
       controller.param[index][keyValue];
       return Row(
         children: [
-          Expanded(flex: 7, child: CustomSideTitle(keyValue)),
+          Expanded(flex: 7, child: CustomSideTitle(title)),
           Flexible(flex: 1, child: Container()),
           Expanded(
             flex: 20,

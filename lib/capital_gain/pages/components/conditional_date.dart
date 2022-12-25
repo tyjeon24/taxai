@@ -73,7 +73,6 @@ class ConditionalDate extends StatelessWidget {
       )); //
 
       for (Map widgetItem in additionalInfo) {
-        print("추가요소 $widgetItem");
         bool checkedResult = checkCondition(index, widgetItem["condition"]);
         if (checkedResult) {
           if (widgetItem["type"] == "date") {
@@ -86,6 +85,7 @@ class ConditionalDate extends StatelessWidget {
             widgets.add(CustomOXDropdownButton(
                 index: index,
                 keyValue: widgetItem["keyValue"],
+                title: widgetItem["title"],
                 controller: controller));
           }
         }
