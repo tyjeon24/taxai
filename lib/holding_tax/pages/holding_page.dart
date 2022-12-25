@@ -95,14 +95,14 @@ class Contents extends StatelessWidget {
                 CustomAddress(index: 0, controller: controller),
                 CustomDropdownButton(
                     index: 0,
-                    keyValue: "own_name1",
+                    keyValue: "own_name",
                     title: "소유주",
                     contents: owners,
                     controller: controller),
                 CustomAddress(index: 1, controller: controller),
                 CustomDropdownButton(
                     index: 1,
-                    keyValue: "own_name2",
+                    keyValue: "own_name",
                     title: "소유주",
                     contents: owners,
                     controller: controller),
@@ -118,21 +118,21 @@ class Contents extends StatelessWidget {
                 CustomAddress(index: 0, controller: controller),
                 CustomDropdownButton(
                     index: 0,
-                    keyValue: "own_name1",
+                    keyValue: "own_name",
                     title: "소유주",
                     contents: owners,
                     controller: controller),
                 CustomAddress(index: 1, controller: controller),
                 CustomDropdownButton(
                     index: 1,
-                    keyValue: "own_name2",
+                    keyValue: "own_name",
                     title: "소유주",
                     contents: owners,
                     controller: controller),
                 CustomAddress(index: 2, controller: controller),
                 CustomDropdownButton(
                     index: 2,
-                    keyValue: "own_name3",
+                    keyValue: "own_name",
                     title: "소유주",
                     contents: owners,
                     controller: controller),
@@ -148,28 +148,28 @@ class Contents extends StatelessWidget {
                 CustomAddress(index: 0, controller: controller),
                 CustomDropdownButton(
                     index: 0,
-                    keyValue: "own_name1",
+                    keyValue: "own_name",
                     title: "소유주",
                     contents: owners,
                     controller: controller),
                 CustomAddress(index: 1, controller: controller),
                 CustomDropdownButton(
                     index: 1,
-                    keyValue: "own_name2",
+                    keyValue: "own_name",
                     title: "소유주",
                     contents: owners,
                     controller: controller),
                 CustomAddress(index: 2, controller: controller),
                 CustomDropdownButton(
                     index: 2,
-                    keyValue: "own_name3",
+                    keyValue: "own_name",
                     title: "소유주",
                     contents: owners,
                     controller: controller),
                 CustomAddress(index: 3, controller: controller),
                 CustomDropdownButton(
                     index: 3,
-                    keyValue: "own_name4",
+                    keyValue: "own_name",
                     title: "소유주",
                     contents: owners,
                     controller: controller),
@@ -185,35 +185,35 @@ class Contents extends StatelessWidget {
                 CustomAddress(index: 0, controller: controller),
                 CustomDropdownButton(
                     index: 0,
-                    keyValue: "own_name1",
+                    keyValue: "own_name",
                     title: "소유주",
                     contents: owners,
                     controller: controller),
                 CustomAddress(index: 1, controller: controller),
                 CustomDropdownButton(
                     index: 1,
-                    keyValue: "own_name2",
+                    keyValue: "own_name",
                     title: "소유주",
                     contents: owners,
                     controller: controller),
                 CustomAddress(index: 2, controller: controller),
                 CustomDropdownButton(
                     index: 2,
-                    keyValue: "own_name3",
+                    keyValue: "own_name",
                     title: "소유주",
                     contents: owners,
                     controller: controller),
                 CustomAddress(index: 3, controller: controller),
                 CustomDropdownButton(
                     index: 3,
-                    keyValue: "own_name4",
+                    keyValue: "own_name",
                     title: "소유주",
                     contents: owners,
                     controller: controller),
                 CustomAddress(index: 4, controller: controller),
                 CustomDropdownButton(
                     index: 4,
-                    keyValue: "own_name5",
+                    keyValue: "own_name",
                     title: "소유주",
                     contents: owners,
                     controller: controller),
@@ -231,7 +231,7 @@ class Contents extends StatelessWidget {
             CustomOXDropdownButton(
                 index: 0,
                 title: "1세대 1주택으로 보는경우",
-                keyValue: "1세대 1주택으로 보는경우",
+                keyValue: "one_house",
                 controller: controller)
           ],
           if (controller.param[0]["num_house"] != null &&
@@ -273,6 +273,11 @@ class Contents extends StatelessWidget {
                             child: FutureBuilder(
                                 future: calculateHolding(),
                                 builder: (context, snapshot) {
+                                  if (snapshot.connectionState ==
+                                      ConnectionState.waiting) {
+                                    return Center(
+                                        child: CircularProgressIndicator());
+                                  }
                                   if (snapshot.hasData) {
                                     SchedulerBinding.instance
                                         .addPostFrameCallback((_) =>
@@ -285,10 +290,6 @@ class Contents extends StatelessWidget {
                                             .instance
                                             .addPostFrameCallback(
                                                 (_) => Get.toNamed("/")));
-                                  }
-                                  if (snapshot.connectionState ==
-                                      ConnectionState.waiting) {
-                                    return CircularProgressIndicator();
                                   }
                                   return Container();
                                 }),
