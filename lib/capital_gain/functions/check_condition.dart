@@ -10,6 +10,8 @@ import 'package:intl/intl.dart';
 
 void calculateDate(int index, var additionalData) {
   final customController = Get.find<MyCustomParameter>();
+  print("관리");
+  print(customController.param);
   // 1. 취득일, 계약일 계산
   final controller = Get.find<CapitalGainsParameter>();
   var day1 =
@@ -30,7 +32,7 @@ void calculateDate(int index, var additionalData) {
       customController.setParam(index, "param1", day1);
       customController.setParam(index, "param2", day2);
 
-      if (day1.difference(day2).inDays >= 0) {
+      if (DateTime.parse(day1).difference(DateTime.parse(day2)).inDays >= 0) {
         // day1이 더 '늦은' 경우
         customController.setParam(index, "취득일", day1);
         customController.setParam(index, "계약일", day1);
@@ -41,6 +43,8 @@ void calculateDate(int index, var additionalData) {
       }
     }
   }
+  SchedulerBinding.instance.addPostFrameCallback((_) =>
+      controller.setParam(index, "취득일", customController.param[index]["취득일"]));
 }
 
 bool checkCondition(int index, int conditionNumber) {
@@ -58,9 +62,9 @@ bool checkCondition(int index, int conditionNumber) {
         [controller.param[index]["buy_type"]][controller.param[index]["분양권"]];
   }
 
-  if (additionalData["metadata"].containsKey("취득일계약일계산")) {
-    if (customController.param[index]["param1"] == null &&
-        controller.param[index]
+  if (additionalData["metadata"].containsKey("취득일계약일계산") &&
+      controller.param[index]["취득일"] == null) {
+    if (controller.param[index]
                 [additionalData["metadata"]["취득일계약일계산"]["param1"]] !=
             null &&
         controller.param[index]
@@ -85,31 +89,31 @@ bool checkCondition(int index, int conditionNumber) {
   } else if (conditionNumber == 1) {
     // "- 상속개시일 ~ 양도예정일 기간이 2년 미만일 때만"
 
-    if (controller.param[index]["상속개시일"] == null ||
-        controller.param[0]["양도예정일"] == null) {
+    if (controller.param[index]["buy_date1"] == null ||
+        controller.param[1]["sell_date"] == null) {
       return false;
     } else {
-      return controller.param[index]["상속개시일"]
-              .difference(controller.param[0]["양도예정일"])
+      return DateTime.parse(controller.param[index]["buy_date1"])
+              .difference(DateTime.parse(controller.param[1]["sell_date"]))
               .inDays
               .abs() <=
           731;
     }
   } else if (conditionNumber == 2) {
     // 재건축전 주택 상속개시일 ~ 양도예정일 기간이 2년미만일때만
-    if (controller.param[index]["재건축전 주택 상속개시일"] == null ||
-        controller.param[0]["양도예정일"] == null) {
+    if (controller.param[index]["buy_date1"] == null ||
+        controller.param[1]["sell_date"] == null) {
       return false;
     } else {
-      return controller.param[index]["재건축전 주택 상속개시일"]
-              .difference(controller.param[0]["양도예정일"])
+      return DateTime.parse(controller.param[index]["buy_date1"])
+              .difference(DateTime.parse(controller.param[1]["sell_date"]))
               .inDays
               .abs() <=
           731;
     }
   } else if (conditionNumber == 3) {
     // 동일세대원 상속시 (체크ㅇ시만)
-    return controller.param[index]["상속시 동일세대원 여부"] ?? false;
+    return controller.param[index]["same_member"] ?? false;
   } else if (conditionNumber == 4) {
     // 취득일은 조정지역ㅇ, 계약일은 조정지역x 시
 
@@ -123,11 +127,12 @@ bool checkCondition(int index, int conditionNumber) {
 
     String pnu = controller.param[index]["pnu"];
     String date1 = DateFormat('yyyyMMdd')
-        .format(customController.param[index]["취득일"])
+        .format(DateTime.parse(customController.param[index]["취득일"]))
         .toString();
     String date2 = DateFormat('yyyyMMdd')
-        .format(customController.param[index]["계약일"])
+        .format(DateTime.parse(customController.param[index]["계약일"]))
         .toString();
+
     if (customController.param[index]["$pnu-$date1"] != null &&
         customController.param[index]["$pnu-$date2"] != null &&
         customController.param[index]["$pnu-$date1"] != "" &&

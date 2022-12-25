@@ -101,8 +101,8 @@ Map filterMap = {
         "metadata": {
           "취득일계약일계산": {
             "method": "normal",
-            "param1": "잔금청산일과 등기접수일중 빠른날",
-            "param2": "주택 계약일"
+            "param1": "buy_date1",
+            "param2": "buy_date2"
           }
         },
         "data": [
@@ -130,8 +130,8 @@ Map filterMap = {
         "metadata": {
           "취득일계약일계산": {
             "method": "normal",
-            "param1": "재건축전 주택 잔금청산일과 등기접수일중 빠른날",
-            "param2": "재건축전 주택 계약일"
+            "param1": "buy_date1",
+            "param2": "buy_date2"
           }
         },
         "data": [
@@ -165,8 +165,8 @@ Map filterMap = {
         "metadata": {
           "취득일계약일계산": {
             "method": "late",
-            "param1": "잔금청산일과 등기접수일중 빠른날",
-            "param2": "주거용 사용 시작일"
+            "param1": "buy_date1",
+            "param2": "buy_date2"
           }
         },
         "data": [
@@ -194,8 +194,8 @@ Map filterMap = {
         "metadata": {
           "취득일계약일계산": {
             "method": "normal",
-            "param1": "주택 사용 승인일",
-            "param2": "조합원 입주권 계약일"
+            "param1": "buy_date1",
+            "param2": "buy_date3"
           }
         },
         "data": [
@@ -230,8 +230,8 @@ Map filterMap = {
           "metadata": {
             "취득일계약일계산": {
               "method": "normal",
-              "param1": "주택 잔금청산일",
-              "param2": "분양권 계약일"
+              "param1": "buy_date1",
+              "param2": "buy_date2"
             }
           },
           "data": [
@@ -259,8 +259,8 @@ Map filterMap = {
           "metadata": {
             "취득일계약일계산": {
               "method": "normal",
-              "param1": "주택 잔금청산일",
-              "param2": "당첨일"
+              "param1": "buy_date1",
+              "param2": "buy_date2"
             }
           },
           "data": [
@@ -290,8 +290,8 @@ Map filterMap = {
           "metadata": {
             "취득일계약일계산": {
               "method": "normal",
-              "param1": "주택 잔금청산일",
-              "param2": "분양권 계약일"
+              "param1": "buy_date1",
+              "param2": "buy_date2"
             }
           },
           "data": [
@@ -325,8 +325,8 @@ Map filterMap = {
           "metadata": {
             "취득일계약일계산": {
               "method": "normal",
-              "param1": "주택 잔금청산일",
-              "param2": "분양권 당첨일"
+              "param1": "buy_date1",
+              "param2": "buy_date2"
             }
           },
           "data": [
@@ -357,8 +357,8 @@ Map filterMap = {
         "metadata": {
           "취득일계약일계산": {
             "method": "normal",
-            "param1": "등기 접수일",
-            "param2": "등기 접수일"
+            "param1": "buy_date1",
+            "param2": "buy_date1"
           }
         },
         "data": [
@@ -374,8 +374,8 @@ Map filterMap = {
         "metadata": {
           "취득일계약일계산": {
             "method": "normal",
-            "param1": "재건축전 주택 등기접수일",
-            "param2": "재건축전 주택 등기접수일"
+            "param1": "buy_date1",
+            "param2": "buy_date1"
           }
         },
         "data": [
@@ -397,8 +397,8 @@ Map filterMap = {
         "metadata": {
           "취득일계약일계산": {
             "method": "late",
-            "param1": "등기접수일",
-            "param2": "주거용 사용 시작일"
+            "param1": "buy_date1",
+            "param2": "buy_date2"
           }
         },
         "data": [
@@ -471,7 +471,11 @@ Map filterMap = {
     "상속": {
       "주택": {
         "metadata": {
-          "취득일계약일계산": {"method": "normal", "param1": "상속개시일", "param2": "상속개시일"}
+          "취득일계약일계산": {
+            "method": "normal",
+            "param1": "buy_date1",
+            "param2": "buy_date1"
+          }
         },
         "data": [
           {
@@ -498,8 +502,8 @@ Map filterMap = {
         "metadata": {
           "취득일계약일계산": {
             "method": "normal",
-            "param1": "이전주택 상속개시일",
-            "param2": "이전주택 상속개시일"
+            "param1": "buy_date1",
+            "param2": "buy_date1"
           }
         },
         "data": [
@@ -527,8 +531,8 @@ Map filterMap = {
         "metadata": {
           "취득일계약일계산": {
             "method": "late",
-            "param1": "상속개시일",
-            "param2": "주거용 사용 시작일"
+            "param1": "buy_date1",
+            "param2": "buy_date2"
           }
         },
         "data": [
@@ -568,8 +572,8 @@ Map filterMap = {
         "metadata": {
           "취득일계약일계산": {
             "method": "normal",
-            "param1": "주택 사용 승인일",
-            "param2": "주택 사용 승인일"
+            "param1": "buy_date1",
+            "param2": "buy_date1"
           }
         },
         "data": [
@@ -591,8 +595,8 @@ Map filterMap = {
         "metadata": {
           "취득일계약일계산": {
             "method": "normal",
-            "param1": "주택 잔금청산일",
-            "param2": "주택 잔금청산일"
+            "param1": "buy_date1",
+            "param2": "buy_date1"
           }
         },
         "data": [
@@ -608,8 +612,8 @@ Map filterMap = {
         "metadata": {
           "취득일계약일계산": {
             "method": "normal",
-            "param1": "주택 잔금청산일",
-            "param2": "주택 잔금청산일"
+            "param1": "buy_date1",
+            "param2": "buy_date1"
           }
         },
         "data": [
@@ -633,8 +637,8 @@ Map filterMap = {
         "metadata": {
           "취득일계약일계산": {
             "method": "normal",
-            "param1": "사용승인서 교부일, 임시사용일, 사실상 사용일중 빠른날",
-            "param2": "사용승인서 교부일, 임시사용일, 사실상 사용일중 빠른날"
+            "param1": "buy_date1",
+            "param2": "buy_date1"
           }
         },
         "data": [
@@ -650,8 +654,8 @@ Map filterMap = {
         "metadata": {
           "취득일계약일계산": {
             "method": "normal",
-            "param1": "이전주택 사용승인서 교부일, 임시사용일, 사실상 사용일중 빠른날",
-            "param2": "이전주택 사용승인서 교부일, 임시사용일, 사실상 사용일중 빠른날"
+            "param1": "buy_date1",
+            "param2": "buy_date1"
           }
         },
         "data": [
@@ -673,8 +677,8 @@ Map filterMap = {
         "metadata": {
           "취득일계약일계산": {
             "method": "normal",
-            "param1": "사용승인서 교부일, 임시사용일, 사실상 사용일중 빠른날",
-            "param2": "사용승인서 교부일, 임시사용일, 사실상 사용일중 빠른날"
+            "param1": "buy_date1",
+            "param2": "buy_date1"
           }
         },
         "data": [
@@ -694,8 +698,8 @@ Map filterMap = {
         "metadata": {
           "취득일계약일계산": {
             "method": "normal",
-            "param1": "재건축전 주택 잔금청산일과 등기접수일중 빠른날",
-            "param2": "재건축전 주택 계약일"
+            "param1": "buy_date1",
+            "param2": "buy_date2"
           }
         },
         "data": [
