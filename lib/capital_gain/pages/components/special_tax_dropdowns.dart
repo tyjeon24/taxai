@@ -6,17 +6,16 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter/scheduler.dart';
 
-class SpecialTaxChildern extends StatelessWidget {
+class SpecialTaxChildren extends StatelessWidget {
   final int index;
-  final size;
 
-  const SpecialTaxChildern({
+  const SpecialTaxChildren({
     Key? key,
     required this.index,
-    required this.size,
   }) : super(key: key);
   @override
   Widget build(context) {
+    var size = MediaQuery.of(context).size;
     final Color titleColor = Color(0xFF2F5597);
     final Color enabledColor = Color(0xFF8FAADC);
     final Color disabledColor = Color(0xFFD0CECE);
@@ -34,44 +33,63 @@ class SpecialTaxChildern extends StatelessWidget {
         DateTime.parse(Get.find<MyCustomParameter>().param[index]["계약일"]);
 
     widgets.add(Container(
-      margin: EdgeInsets.only(left: size.width * 0.08),
+      padding: EdgeInsets.symmetric(horizontal: size.width * 0.08, vertical: 5),
       width: size.width,
-      height: size.width * 0.2 / 6,
+      height: size.height / 12,
       child: Row(
         children: [
-          SizedBox(
-              width: size.width * 0.2,
-              height: size.width * 0.2 / 6,
-              child: ElevatedButton(
-                  style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all<Color>(titleColor)),
-                  onPressed: () {},
-                  child: Text("취득일 기준"))),
-          SizedBox(
-            width: size.width * 0.2 / 6,
+          Expanded(
+            flex: 20,
+            child: SizedBox(
+                // width: size.width * 0.2,
+
+                height: size.height / 12,
+                child: ElevatedButton(
+                    style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all<Color>(titleColor)),
+                    onPressed: () {},
+                    child: Text("취득일 기준"))),
           ),
-          SizedBox(
-              width: size.width * 0.2,
-              height: size.width * 0.2 / 6,
-              child: ElevatedButton(
-                  style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all<Color>(titleColor)),
-                  onPressed: () {},
-                  child: Text("확인필요 법령조문"))),
-          SizedBox(
-            width: size.width * 0.2,
+          Expanded(
+            flex: 3,
+            child: SizedBox(
+                // width: size.width * 0.2 / 6,
+                ),
           ),
-          SizedBox(
-              width: size.width * 0.2 / 2,
-              height: size.width * 0.2 / 6,
-              child: ElevatedButton(
-                  style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all<Color>(titleColor)),
-                  onPressed: () {},
-                  child: Text("선택"))),
+          Expanded(
+            flex: 20,
+            child: SizedBox(
+                // width: size.width * 0.2,
+
+                height: size.height / 12,
+                child: ElevatedButton(
+                    style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all<Color>(titleColor)),
+                    onPressed: () {},
+                    child: Text("확인필요 법령조문"))),
+          ),
+          Expanded(
+            flex: 20,
+            child: SizedBox(
+              // width: size.width * 0.2,
+              child: Container(),
+            ),
+          ),
+          Expanded(
+            flex: 10,
+            child: SizedBox(
+                // width: size.width * 0.2 / 2,
+
+                height: size.height / 12,
+                child: ElevatedButton(
+                    style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all<Color>(titleColor)),
+                    onPressed: () {},
+                    child: Text("선택"))),
+          ),
         ],
       ),
     ));
@@ -313,45 +331,61 @@ class reducRow extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(top: 10.0, left: size.width * 0.08),
+      padding: EdgeInsets.symmetric(horizontal: size.width * 0.08, vertical: 5),
       width: size.width,
-      height: size.width * 0.2 / 6,
+      height: size.height / 12,
       child: Row(
         children: [
-          SizedBox(
-              width: size.width * 0.2,
-              height: size.width * 0.2 / 6,
-              child: ElevatedButton(
-                  style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all<Color>(buttonColor)),
-                  onPressed: () {},
-                  child: Text(conditionContent))),
-          SizedBox(
-            width: size.width * 0.2 / 6,
+          Expanded(
+            flex: 20,
+            child: SizedBox(
+                // width: size.width * 0.2,
+
+                height: size.height / 12,
+                child: ElevatedButton(
+                    style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all<Color>(buttonColor)),
+                    onPressed: () {},
+                    child: Text(conditionContent))),
           ),
-          SizedBox(
-              width: size.width * 0.2,
-              height: size.width * 0.2 / 6,
-              child: ElevatedButton(
-                  style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all<Color>(buttonColor)),
-                  onPressed: () {},
-                  child: Text(rawContent))),
-          SizedBox(
-            width: size.width * 0.2,
+          Expanded(
+            flex: 3,
+            child: SizedBox(
+                // width: size.width * 0.2 / 6,
+                ),
           ),
-          SizedBox(
-              width: size.width * 0.2 / 2,
-              height: size.width * 0.2 / 6,
-              child: CustomDropdownButton(
-                  index: index,
-                  keyValue: keyValue,
-                  title: "",
-                  needTitle: false,
-                  contents: ["O", "X"],
-                  controller: controller)),
+          Expanded(
+            flex: 20,
+            child: SizedBox(
+                // width: size.width * 0.2,
+                height: size.height / 12,
+                child: ElevatedButton(
+                    style: ButtonStyle(
+                        backgroundColor:
+                            MaterialStateProperty.all<Color>(buttonColor)),
+                    onPressed: () {},
+                    child: Text(rawContent))),
+          ),
+          Expanded(
+            flex: 20,
+            child: SizedBox(
+                // width: size.width * 0.2,
+                ),
+          ),
+          Expanded(
+            flex: 10,
+            child: SizedBox(
+                // width: size.width * 0.2 / 2,
+                height: size.height / 12,
+                child: CustomDropdownButton(
+                    index: index,
+                    keyValue: keyValue,
+                    title: "",
+                    needTitle: false,
+                    contents: ["O", "X"],
+                    controller: controller)),
+          ),
         ],
       ),
     );
@@ -389,10 +423,9 @@ class SpecialTaxDropdowns extends StatelessWidget {
                   showDialog(
                       context: context,
                       builder: (context) {
-                        var size = MediaQuery.of(context).size;
                         return AlertDialog(
                           title: Text("조특법 감면주택 체크리스트"),
-                          content: SpecialTaxChildern(index: index, size: size),
+                          content: SpecialTaxChildren(index: index),
                         );
                       });
                 },
