@@ -28,13 +28,13 @@ environment:
 # versions available, run `flutter pub outdated`.
 dependencies:
   async: ^2.8.2
-  csv: ^5.0.1
+
   http: ^0.13.4
   flutter:
     sdk: flutter
   flutter_localizations: # 달력 한글 출력용
     sdk: flutter
-  lottie:
+
   badges: ^2.0.3
 
 
@@ -47,13 +47,12 @@ dependencies:
   get: ^4.6.5 # 상태 관리
   intl: ^0.17.0 # DateTime 자료형 다루기
   responsive_framework: ^0.2.0 # 모바일, 데스크톱 반응형 페이지 구성용
-  url_strategy: ^0.2.0 # 주소창에 붙는 샵 없애기 예) http://localhost/myWebsite/#/pagename -> http://localhost/myWebsite/pagename
   web_smooth_scroll: ^1.0.0 # 웹 스크롤바 부드럽게
   flutter_animate: ^1.0.0
   flutter_svg: ^1.1.5
-  flutter_colorpicker: ^1.0.3
   url_launcher: ^6.1.6
   dio: ^4.0.6
+  auto_size_text: ^3.0.0
 
 dev_dependencies:
   flutter_test:
