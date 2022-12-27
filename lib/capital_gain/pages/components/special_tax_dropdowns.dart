@@ -5,6 +5,8 @@ import 'package:taxai/components/param_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:auto_size_text/auto_size_text.dart';
 
 class SpecialTaxChildren extends StatelessWidget {
   final int index;
@@ -49,7 +51,12 @@ class SpecialTaxChildren extends StatelessWidget {
                         backgroundColor:
                             MaterialStateProperty.all<Color>(titleColor)),
                     onPressed: () {},
-                    child: Text("취득일 기준"))),
+                    child: AutoSizeText(
+                      "취득일 기준",
+                      style: TextStyle(fontSize: 20),
+                      minFontSize: 1,
+                      maxLines: 2,
+                    ))),
           ),
           Expanded(
             flex: 3,
@@ -68,7 +75,12 @@ class SpecialTaxChildren extends StatelessWidget {
                         backgroundColor:
                             MaterialStateProperty.all<Color>(titleColor)),
                     onPressed: () {},
-                    child: Text("확인필요 법령조문"))),
+                    child: AutoSizeText(
+                      "확인필요 법령조문",
+                      style: TextStyle(fontSize: 20),
+                      minFontSize: 1,
+                      maxLines: 2,
+                    ))),
           ),
           Expanded(
             flex: 20,
@@ -88,7 +100,12 @@ class SpecialTaxChildren extends StatelessWidget {
                         backgroundColor:
                             MaterialStateProperty.all<Color>(titleColor)),
                     onPressed: () {},
-                    child: Text("선택"))),
+                    child: AutoSizeText(
+                      "선택",
+                      style: TextStyle(fontSize: 20),
+                      minFontSize: 1,
+                      maxLines: 1,
+                    ))),
           ),
         ],
       ),
@@ -179,22 +196,26 @@ class SpecialTaxChildren extends StatelessWidget {
     if (commitmentDate.difference(DateTime(2009, 2, 12)).inDays >= 0 &&
         commitmentDate.difference(DateTime(2010, 2, 11)).inDays <= 0) {
       widgets.add(reducRow(
-          size: size,
-          buttonColor: enabledColor,
-          conditionContent: "2009.2.12~20010.2.11 계약",
-          rawContent: "조세특례제한법 제98조의3",
-          index: index,
-          keyValue: "reduc_type5",
-          controller: controller));
+        size: size,
+        buttonColor: enabledColor,
+        conditionContent: "2009.2.12~20010.2.11 계약",
+        rawContent: "조세특례제한법 제98조의3",
+        index: index,
+        keyValue: "reduc_type5",
+        controller: controller,
+        needWebLinkButton: true,
+      ));
     } else {
       widgets.add(reducRow(
-          size: size,
-          buttonColor: disabledColor,
-          conditionContent: "",
-          rawContent: "조세특례제한법 제98조의3",
-          index: index,
-          keyValue: "",
-          controller: controller));
+        size: size,
+        buttonColor: disabledColor,
+        conditionContent: "",
+        rawContent: "조세특례제한법 제98조의3",
+        index: index,
+        keyValue: "",
+        controller: controller,
+        needWebLinkButton: true,
+      ));
     }
 
     if (commitmentDate.difference(DateTime(2010, 2, 11)).inDays >= 0 &&
@@ -309,16 +330,17 @@ class SpecialTaxChildren extends StatelessWidget {
 }
 
 class reducRow extends StatelessWidget {
-  const reducRow({
-    Key? key,
-    required this.size,
-    required this.buttonColor,
-    required this.conditionContent,
-    required this.rawContent,
-    required this.index,
-    required this.keyValue,
-    required this.controller,
-  }) : super(key: key);
+  const reducRow(
+      {Key? key,
+      required this.size,
+      required this.buttonColor,
+      required this.conditionContent,
+      required this.rawContent,
+      required this.index,
+      required this.keyValue,
+      required this.controller,
+      this.needWebLinkButton = false})
+      : super(key: key);
 
   final size;
   final Color buttonColor;
@@ -327,6 +349,7 @@ class reducRow extends StatelessWidget {
   final int index;
   final String keyValue;
   final CapitalGainsParameter controller;
+  final bool needWebLinkButton;
 
   @override
   Widget build(BuildContext context) {
@@ -347,7 +370,12 @@ class reducRow extends StatelessWidget {
                         backgroundColor:
                             MaterialStateProperty.all<Color>(buttonColor)),
                     onPressed: () {},
-                    child: Text(conditionContent))),
+                    child: AutoSizeText(
+                      conditionContent,
+                      style: TextStyle(fontSize: 20),
+                      minFontSize: 1,
+                      maxLines: 2,
+                    ))),
           ),
           Expanded(
             flex: 3,
@@ -365,14 +393,46 @@ class reducRow extends StatelessWidget {
                         backgroundColor:
                             MaterialStateProperty.all<Color>(buttonColor)),
                     onPressed: () {},
-                    child: Text(rawContent))),
+                    child: AutoSizeText(
+                      rawContent,
+                      style: TextStyle(fontSize: 20),
+                      minFontSize: 1,
+                      maxLines: 2,
+                    ))),
           ),
-          Expanded(
-            flex: 20,
-            child: SizedBox(
-                // width: size.width * 0.2,
-                ),
-          ),
+          if (needWebLinkButton) ...[
+            Expanded(flex: 3, child: SizedBox()),
+            Expanded(
+                flex: 14,
+                child: SizedBox(
+                  height: size.height / 12,
+                  child: ElevatedButton(
+                      style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(
+                              Color(0xFFF4472C4))),
+                      onPressed: () async {
+                        final url = Uri.parse(
+                          'https://www.law.go.kr/법령/조세특례제한법',
+                        );
+                        if (await canLaunchUrl(url)) {
+                          launchUrl(url);
+                        } else {
+                          // ignore: avoid_print
+                          print("Can't launch $url");
+                        }
+                      },
+                      child: AutoSizeText(
+                        "법령확인 바로가기",
+                        style: TextStyle(fontSize: 20),
+                        minFontSize: 1,
+                        maxLines: 2,
+                      )),
+                )),
+            Expanded(flex: 3, child: SizedBox()),
+          ],
+          if (needWebLinkButton == false) ...[
+            Expanded(flex: 20, child: SizedBox()),
+          ],
           Expanded(
             flex: 10,
             child: SizedBox(
