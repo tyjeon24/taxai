@@ -7,6 +7,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart' hide Condition;
 import 'package:responsive_framework/responsive_framework.dart';
 import 'package:web_smooth_scroll/web_smooth_scroll.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class GetAppBar extends StatelessWidget {
   final double _width;
@@ -44,13 +45,47 @@ class GetAppBar extends StatelessWidget {
               visibleWhen: const [Condition.largerThan(name: TABLET)],
               child: TextButton(child: Text("공지사항    "), onPressed: () {})),
           ResponsiveVisibility(
-              visible: false,
-              visibleWhen: const [Condition.largerThan(name: TABLET)],
-              child: TextButton(child: Text("기술 문의    "), onPressed: () {})),
+            visible: false,
+            visibleWhen: const [Condition.largerThan(name: TABLET)],
+            child: TextButton(
+              onPressed: () async {
+                final url = Uri(
+                  scheme: 'mailto',
+                  path: 'tech@taxai.co.kr',
+                  query: 'subject=[TAXAI 제휴문의]',
+                );
+                if (await canLaunchUrl(url)) {
+                  launchUrl(url);
+                } else {
+                  // ignore: avoid_print
+                  print("Can't launch $url");
+                }
+              },
+              child: const Text('제휴 문의    '),
+            ),
+          ),
+
           ResponsiveVisibility(
-              visible: false,
-              visibleWhen: const [Condition.largerThan(name: TABLET)],
-              child: TextButton(child: Text("제휴 문의    "), onPressed: () {})),
+            visible: false,
+            visibleWhen: const [Condition.largerThan(name: TABLET)],
+            child: TextButton(
+              onPressed: () async {
+                final url = Uri(
+                  scheme: 'mailto',
+                  path: 'admin@taxai.co.kr',
+                  query: 'subject=[TAXAI 제휴문의]',
+                );
+                if (await canLaunchUrl(url)) {
+                  launchUrl(url);
+                } else {
+                  // ignore: avoid_print
+                  print("Can't launch $url");
+                }
+              },
+              child: const Text('제휴 문의    '),
+            ),
+          ),
+          // child: TextButton(child: Text("제휴 문의    "), onPressed: () {})),
           ResponsiveVisibility(
               visible: false,
               visibleWhen: const [Condition.largerThan(name: TABLET)],
