@@ -1,6 +1,7 @@
-import 'package:taxai/components/colorbase.dart';
+import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:taxai/components/colorbase.dart';
 
 import 'custom_sidetitle.dart';
 
@@ -13,17 +14,19 @@ class CustomOXDropdownButton extends StatelessWidget {
   final int index;
   final String title;
   final bool needTitle;
+  final String tooltip;
   final String keyValue;
   // ignore: prefer_typing_uninitialized_variables
   final controller;
-  CustomOXDropdownButton({
-    Key? key,
-    required this.index,
-    required this.title,
-    required this.keyValue,
-    required this.controller,
-    this.needTitle = true,
-  }) : super(key: key);
+  CustomOXDropdownButton(
+      {Key? key,
+      required this.index,
+      required this.title,
+      required this.keyValue,
+      required this.controller,
+      this.needTitle = true,
+      this.tooltip = ""})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +37,23 @@ class CustomOXDropdownButton extends StatelessWidget {
         child: Row(
           children: [
             if (needTitle) ...[
-              Expanded(flex: 7, child: CustomSideTitle(title))
+              if (tooltip != "") ...[
+                Expanded(
+                    flex: 7,
+                    child: Tooltip(
+                        decoration:
+                            BoxDecoration(color: tooltipBackgroundColor),
+                        textStyle: TextStyle(color: tooltipFontColor),
+                        message: tooltip,
+                        child: Badge(
+                            badgeContent: Icon(Icons.question_mark_rounded,
+                                color: Colors.white),
+                            badgeColor: badgeColor,
+                            child: CustomSideTitle(title))))
+              ],
+              if (tooltip == "") ...[
+                Expanded(flex: 7, child: CustomSideTitle(title))
+              ],
             ],
             Flexible(flex: 1, child: Container()),
             Flexible(

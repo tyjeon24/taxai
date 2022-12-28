@@ -21,6 +21,7 @@ class SaleInLots extends StatelessWidget {
           index: index,
           keyValue: "sale_cost",
           title: "분양가액",
+          tooltip: "최초 분양가액을 입력해 주세요.",
           controller: controller,
         );
       } else {

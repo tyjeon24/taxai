@@ -43,6 +43,7 @@ class CommonAdditionalInfo extends StatelessWidget {
             index: index,
             keyValue: "sell_cost",
             title: "양도가액",
+            tooltip: "※ 매도 예정이 없는 주택은 0을 입력해도 됩니다.",
             controller: controller),
 
         // 9 취득가액 및 필요경비 CustomPrice
@@ -51,18 +52,16 @@ class CommonAdditionalInfo extends StatelessWidget {
             keyValue: "buy_cost",
             title: "취득가액 및 필요경비",
             tooltip:
-                "취득가액과 필요경비의 합산액 입력 : 설비비, 계량비, 자본적지출액, 양도비(취득세, 법무사 수수료 등)",
+                "취득가액과 필요경비 합산액을 입력해 주세요\n필요경비 : 설비비, 계량비, 자본적지출액, 양도비(취득세, 법무사 수수료등n상속이나 증여받은 자산인 경우 당시 신고액(평가액)을 입력해 주세n※ 매도 예정이 없는 주택은 0을 입력해도 됩니다.",
             controller: controller),
 
         // 10 주택 지분
-        Tooltip(
-          message: "단독명의인 경우 100%를 입력하고 공동명의인 경우 지분을 입력하세요",
-          child: CustomPercent(
-              index: index,
-              title: "주택 지분",
-              keyValue: "share",
-              controller: controller),
-        ),
+        CustomPercent(
+            index: index,
+            title: "주택 지분",
+            keyValue: "share",
+            tooltip: "단독명의인 경우 100%를 입력하고 공동명의인 경우 지분을 입력해 주세요",
+            controller: controller),
       ],
     );
   }

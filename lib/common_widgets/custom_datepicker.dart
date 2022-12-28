@@ -1,6 +1,8 @@
+import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:taxai/components/colorbase.dart';
 
 import 'custom_sidetitle.dart';
 
@@ -9,6 +11,7 @@ class CustomDatePicker extends StatelessWidget {
 
   final String keyValue;
   final String title;
+  final String tooltip;
   final controller;
   final textController = TextEditingController();
 
@@ -17,7 +20,8 @@ class CustomDatePicker extends StatelessWidget {
       required this.index,
       required this.keyValue,
       required this.title,
-      required this.controller})
+      required this.controller,
+      this.tooltip = ""})
       : super(key: key);
 
   @override
@@ -26,7 +30,22 @@ class CustomDatePicker extends StatelessWidget {
       // 외부의 Obx와 별개로 내부에서 Obx를 한번 더 호출하는 이유는 드랍다운 값 선택 시 해당 값이 드롭다운에 표기되도록 렌더링하기 위함입니다(setState() 역할)
       return Row(
         children: [
-          Expanded(flex: 7, child: CustomSideTitle(title)),
+          if (tooltip != "") ...[
+            Expanded(
+                flex: 7,
+                child: Tooltip(
+                    decoration: BoxDecoration(color: tooltipBackgroundColor),
+                    textStyle: TextStyle(color: tooltipFontColor),
+                    message: tooltip,
+                    child: Badge(
+                        badgeContent: Icon(Icons.question_mark_rounded,
+                            color: Colors.white),
+                        badgeColor: badgeColor,
+                        child: CustomSideTitle(title))))
+          ],
+          if (tooltip == "") ...[
+            Expanded(flex: 7, child: CustomSideTitle(title))
+          ],
           Flexible(flex: 1, child: Container()),
           Expanded(
             flex: 20,

@@ -46,17 +46,7 @@ class BaseInfo extends StatelessWidget {
       } else {
         controller.param[index].removeWhere((key, value) => key == "buy_cause");
       }
-      if (controller.param[index]["buy_cause"] == "상속") {
-        // 19.5 상속시 동일세대원 여부(20220913 추가)
-        widgets.add(CustomOXDropdownButton(
-            index: index,
-            title: "상속시 동일세대원 여부",
-            keyValue: "same_member",
-            controller: controller));
-      } else {
-        controller.param[index]
-            .removeWhere((key, value) => key == "상속시 동일세대원 여부");
-      }
+
       if (controller.param[index]["buy_cause"] != null) {
         // 취득시 종류
         widgets.add(CustomDropdownButton(

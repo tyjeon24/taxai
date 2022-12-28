@@ -47,34 +47,38 @@ class BeforeReconstruction extends StatelessWidget {
               keyValue: "occupy_cost",
               title: "종전 주택의 평가액",
               controller: controller),
-          Tooltip(
-            message: "납부한 분담금과 지급받은 청산금 중 하나만 입력해 주세요.",
-            child: CustomPrice(
-                index: index,
-                keyValue: "contri_cost",
-                title: "납부한 분담금 또는 지급받은 청산금",
-                controller: controller),
-          ),
-          Tooltip(
-            message: "신주택에서 거주한 기간만 입력하세요 (입주권은 1년미만 선택)",
-            child: CustomDropdownButton(
-                index: index,
-                keyValue: "new_live_day",
-                title: "신주택 거주기간",
-                contents: const [
-                  "1년미만",
-                  "2년미만",
-                  "3년이상",
-                  "4년이상",
-                  "5년이상",
-                  "6년이상",
-                  "7년이상",
-                  "8년이상",
-                  "9년이상",
-                  "10년이상"
-                ],
-                controller: controller),
-          )
+          CustomPrice(
+              index: index,
+              keyValue: "contri_cost",
+              title: "납부한 분담금",
+              tooltip:
+                  "납부한 분담금과 지급받은 청산금 중 하나만 입력해 주세요.\n두 값을 모두 입력 시 나중에 입력한 금액만 적용됩니다.",
+              controller: controller),
+          CustomPrice(
+              index: index,
+              keyValue: "liquid_cost",
+              title: "지급받은 청산금",
+              tooltip:
+                  "납부한 분담금과 지급받은 청산금 중 하나만 입력해 주세요.\n두 값을 모두 입력 시 나중에 입력한 금액만 적용됩니다.",
+              controller: controller),
+          CustomDropdownButton(
+              index: index,
+              keyValue: "new_live_day",
+              title: "신주택 거주기간",
+              contents: const [
+                "1년미만",
+                "2년미만",
+                "3년이상",
+                "4년이상",
+                "5년이상",
+                "6년이상",
+                "7년이상",
+                "8년이상",
+                "9년이상",
+                "10년이상"
+              ],
+              tooltip: "신주택에서 거주한 기간만 입력하세요 (입주권은 1년미만 선택)",
+              controller: controller)
         ],
       );
     });
