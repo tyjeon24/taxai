@@ -3,6 +3,7 @@ import 'package:taxai/components/colorbase.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:flutter/scheduler.dart';
 
 import 'custom_sidetitle.dart';
 
@@ -85,8 +86,23 @@ class CustomPrice extends StatelessWidget {
                   maxLength: 16, // 9999조까지 입력 가능
                   keyboardType: TextInputType.number,
                   inputFormatters: [FilteringTextInputFormatter.digitsOnly],
-                  onChanged: (newPrice) =>
-                      controller.setParam(index, keyValue, newPrice),
+                  onChanged: (newPrice) {
+                    controller.setParam(index, keyValue, newPrice);
+
+                    if (keyValue == "liquid_cost" &&
+                        newPrice.toString() != "0") {
+                      // 납부한 분담금, 지급받은 청산금은 하나만 적용
+                      SchedulerBinding.instance.addPostFrameCallback((_) =>
+                          controller.setParam(index, "contri_cost", "0"));
+                    }
+
+                    if (keyValue == "contri_cost" &&
+                        newPrice.toString() != "0") {
+                      // 납부한 분담금, 지급받은 청산금은 하나만 적용
+                      SchedulerBinding.instance.addPostFrameCallback((_) =>
+                          controller.setParam(index, "liquid_cost", "0"));
+                    }
+                  },
                 ),
                 // Text(formatPrice(controller.param[index][keyValue]),
                 //     style: Theme.of(context).textTheme.caption)

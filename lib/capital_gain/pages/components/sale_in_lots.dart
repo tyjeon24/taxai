@@ -15,8 +15,8 @@ class SaleInLots extends StatelessWidget {
   Widget build(BuildContext context) {
     final controller = Get.find<CapitalGainsParameter>();
     return Obx(() {
-      if (controller.param[index]["sell_type"] == "분양권(2021년 이전 취득)" ||
-          controller.param[index]["sell_type"] == "분양권(2022년 이후 취득)") {
+      if (controller.param[index]["sell_type"] == "분양권(2020년 이전 취득)" ||
+          controller.param[index]["sell_type"] == "분양권(2021년 이후 취득)") {
         return CustomPrice(
           index: index,
           keyValue: "sale_cost",
