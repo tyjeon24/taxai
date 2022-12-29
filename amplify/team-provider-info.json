@@ -1,0 +1,20 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-taxai-dev-230354-authRole",
+      "UnauthRoleArn": "arn:aws:iam::748997271012:role/amplify-taxai-dev-230354-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::748997271012:role/amplify-taxai-dev-230354-authRole",
+      "Region": "ap-northeast-2",
+      "DeploymentBucketName": "amplify-taxai-dev-230354-deployment",
+      "UnauthRoleName": "amplify-taxai-dev-230354-unauthRole",
+      "StackName": "amplify-taxai-dev-230354",
+      "StackId": "arn:aws:cloudformation:ap-northeast-2:748997271012:stack/amplify-taxai-dev-230354/a21c0670-8781-11ed-8eb5-0aad10c61878",
+      "AmplifyAppId": "d1k0d6uxa5j88p"
+    },
+    "categories": {
+      "auth": {
+        "taxaic602f751": {}
+      }
+    }
+  }
+}

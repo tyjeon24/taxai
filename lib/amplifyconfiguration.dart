@@ -12,25 +12,25 @@ const amplifyconfig = ''' {
                 "CredentialsProvider": {
                     "CognitoIdentity": {
                         "Default": {
-                            "PoolId": "ap-northeast-2:70cb34bd-6620-4d74-aad7-9ca1998e1188",
+                            "PoolId": "ap-northeast-2:56060611-4e04-42ab-aed8-d743f74ef87d",
                             "Region": "ap-northeast-2"
                         }
                     }
                 },
                 "CognitoUserPool": {
                     "Default": {
-                        "PoolId": "ap-northeast-2_M9Fj55IMJ",
-                        "AppClientId": "7im54sg8pc43f7mskh7p9d61bj",
+                        "PoolId": "ap-northeast-2_hHSCePll5",
+                        "AppClientId": "14pruor57trimke0r0dcc8epi1",
                         "Region": "ap-northeast-2"
                     }
                 },
                 "Auth": {
                     "Default": {
                         "OAuth": {
-                            "WebDomain": "rktmenhf9e0efe1-f9e0efe1-dev.auth.ap-northeast-2.amazoncognito.com",
-                            "AppClientId": "7im54sg8pc43f7mskh7p9d61bj",
-                            "SignInRedirectURI": "http://localhost:3000/,https://localhost:3000/",
-                            "SignOutRedirectURI": "http://localhost:3000/,https://localhost:3000/",
+                            "WebDomain": "taxaiauth-dev.auth.ap-northeast-2.amazoncognito.com",
+                            "AppClientId": "14pruor57trimke0r0dcc8epi1",
+                            "SignInRedirectURI": "http://localhost:3000/,myapp://,https://localhost:3000/",
+                            "SignOutRedirectURI": "http://localhost:3000/,myapp://,https://localhost:3000/",
                             "Scopes": [
                                 "phone",
                                 "email",
@@ -44,11 +44,11 @@ const amplifyconfig = ''' {
                             "GOOGLE"
                         ],
                         "usernameAttributes": [
-                            "EMAIL",
-                            "PHONE_NUMBER"
+                            "EMAIL"
                         ],
                         "signupAttributes": [
-                            "EMAIL"
+                            "EMAIL",
+                            "NAME"
                         ],
                         "passwordProtectionSettings": {
                             "passwordPolicyMinLength": 8,

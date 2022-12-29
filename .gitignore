@@ -20,6 +20,13 @@ doc/api/
 *.js.deps
 *.js.map
 
+build/
+dist/
+node_modules/
+
+.secret-*
+**.sample
+
 #amplify-do-not-edit-begin
 amplify/\#current-cloud-backend
 amplify/.config/local-*
@@ -33,6 +40,7 @@ node_modules/
 aws-exports.js
 awsconfiguration.json
 amplifyconfiguration.json
+amplifyconfiguration.dart
 amplify-build-config.json
 amplify-gradle-config.json
 amplifytools.xcconfig
